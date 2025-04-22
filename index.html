@@ -33,19 +33,88 @@
         border-bottom: 1px solid #ccc; 
         padding-bottom: 1rem; 
     }
+
+    /* Gaya untuk daftar pilihan */
+    ul {
+        list-style-type: none;      /* Menghapus bullet list */
+        padding-left: 0;
+    }
+
+    li {
+        margin: 10px 0;
+    }
+
+    label {
+        font-size: 1.1em;
+        color: #333;
+    }
+
+    .sub-list {
+        padding-left: 20px;  /* Memberikan indentasi untuk sub-pilihan */
+    }
   </style>
 </head>
 <body>
   <!-- Kontainer untuk gambar dan teks -->
   <div class="header-container">
     <img src="Logo Momoyo.jpg" alt="Logo Momoyo" width="100">
-    <h1>Selamat Datang di Website Aftersales Momoyo</h1>
+    <h1>Silakan Pilih File yang Dibutuhkan!</h1>
     <img src="Logo Momoyo.jpg" alt="Logo Momoyo" width="100">
   </div>
 
   <article>
-    <h2>Postingan Pertama</h2>
-    <p>Halo dunia! Ini adalah postingan pertama di blog pribadi saya. Masih dalam tahap belajar coding 😄</p>
+    <h2>Daftar Pilihan</h2>
+    <ul>
+      <!-- Pilihan Video Maintenance Machine -->
+      <li>
+        <label>
+          <input type="checkbox" name="file" value="Video Maintenance Machine"> Video Maintenance Machine
+        </label>
+        <ul class="sub-list">
+          <li>
+            <label>
+              <input type="checkbox" name="mesin" value="Mesin Es Krim"> Mesin Es Krim
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="mesin" value="Mesin Es Batu"> Mesin Es Batu
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="mesin" value="Mesin Pembuat Roti"> Mesin Pembuat Roti
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="mesin" value="Mesin Penggiling"> Mesin Penggiling
+            </label>
+          </li>
+        </ul>
+      </li>
+      
+      <!-- Pilihan Form Masalah Mesin dan Bahan Baku -->
+      <li>
+        <label>
+          <input type="checkbox" name="file" value="Form Masalah Mesin dan Bahan Baku"> Form Masalah Mesin dan Bahan Baku
+        </label>
+      </li>
+
+      <!-- Pilihan Pengecekan Form yang sudah di lapor -->
+      <li>
+        <label>
+          <input type="checkbox" name="file" value="Pengecekan Form yang sudah di lapor"> Pengecekan Form yang sudah di lapor
+        </label>
+      </li>
+
+      <!-- Pilihan Pengecekan Rembesan Mitra -->
+      <li>
+        <label>
+          <input type="checkbox" name="file" value="Pengecekan Rembesan Mitra"> Pengecekan Rembesan Mitra
+        </label>
+      </li>
+    </ul>
   </article>
 </body>
 </html>
