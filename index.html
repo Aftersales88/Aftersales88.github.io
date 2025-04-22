@@ -6,17 +6,43 @@
   <title>Aftersales Momoyo</title>
   <style>
     body { font-family: sans-serif; max-width: 700px; margin: auto; padding: 20px; }
+
     h1 { 
         color: #ff0000;         /* Warna merah */
         font-weight: bold;      /* Membuat teks menjadi bold */
         text-align: center;     /* Meratakan teks di tengah */
     }
-    article { margin-bottom: 2rem; border-bottom: 1px solid #ccc; padding-bottom: 1rem; }
+
+    /* Kontainer untuk gambar dan teks */
+    .header-container {
+        display: flex;               /* Menggunakan Flexbox */
+        align-items: center;         /* Meratakan secara vertikal */
+        justify-content: center;     /* Meratakan secara horizontal */
+        gap: 20px;                   /* Jarak antara gambar dan teks */
+    }
+
+    /* Gaya untuk gambar */
+    .header-container img {
+        width: 100px;               /* Lebar gambar */
+        height: auto;               /* Menjaga proporsi gambar */
+    }
+
+    /* Artikel gaya */
+    article { 
+        margin-bottom: 2rem; 
+        border-bottom: 1px solid #ccc; 
+        padding-bottom: 1rem; 
+    }
   </style>
 </head>
 <body>
-  <img src="Logo Momoyo.jpg" alt="Logo Momoyo" width="300">
-  <h1> Selamat Datang di Website Aftersales Momoyo</h1>
+  <!-- Kontainer untuk gambar dan teks -->
+  <div class="header-container">
+    <img src="Logo_Momoyo.jpg" alt="Logo Momoyo" width="100">
+    <h1>Selamat Datang di Website Aftersales Momoyo</h1>
+    <img src="Logo_Momoyo.jpg" alt="Logo Momoyo" width="100">
+  </div>
+
   <article>
     <h2>Postingan Pertama</h2>
     <p>Halo dunia! Ini adalah postingan pertama di blog pribadi saya. Masih dalam tahap belajar coding 😄</p>
