@@ -1,128 +1,148 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Momoyo Aftersales | Pusat Bantuan dan File Panduan</title>
   <style>
-    body { font-family: sans-serif; max-width: 700px; margin: auto; padding: 20px; }
+    body {
+      font-family: sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+    }
 
-    h1 { 
-        color: #ff0000;         /* Warna merah */
-        font-weight: bold;      /* Membuat teks menjadi bold */
-        text-align: center;     /* Meratakan teks di tengah */
-        margin-bottom: 0.3em;
+    h1 {
+      color: #ff0000;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 0.3em;
     }
 
     .tagline {
-        text-align: center;
-        color: #555;
-        font-size: 1em;
-        margin-top: 0;
-        margin-bottom: 1.5em;
+      text-align: center;
+      color: #555;
+      font-size: 1em;
+      margin-top: 0;
+      margin-bottom: 1.5em;
     }
 
     .header-container {
-        display: flex;               
-        align-items: center;         
-        justify-content: center;     
-        gap: 20px;                   
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
     }
 
     .header-container img {
-        width: 100px;               
-        height: auto;               
+      width: 100px;
+      height: auto;
     }
 
-    article { 
-        margin-bottom: 2rem; 
-        border-bottom: 1px solid #ccc; 
-        padding-bottom: 1rem; 
+    article {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 1rem;
     }
 
     ul {
-        list-style-type: none;      
-        padding-left: 0;
+      list-style-type: none;
+      padding-left: 0;
     }
 
     li {
-        margin: 10px 0;
+      margin: 10px 0;
     }
 
-    label {
-        font-size: 1.1em;
-        color: #333;
+    .btn {
+      display: inline-block;
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
     }
 
     .sub-list {
-        padding-left: 20px;  
+      padding-left: 20px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .sub-list button {
+      background-color: #17a2b8;
+      margin-top: 5px;
+    }
+
+    .sub-list button:hover {
+      background-color: #117a8b;
     }
   </style>
 </head>
 <body>
-  <!-- Kontainer untuk gambar dan teks -->
+  <!-- Header -->
   <div class="header-container">
-    <img src="Logo Momoyo.jpg" alt="Logo Momoyo" width="100">
+    <img src="Logo Momoyo.jpg" alt="Logo Momoyo" width="100" />
     <h1>Momoyo Aftersales</h1>
-    <img src="Logo Momoyo.jpg" alt="Logo Momoyo" width="100">
+    <img src="Logo Momoyo.jpg" alt="Logo Momoyo" width="100" />
   </div>
 
-  <!-- Tagline -->
-  <p class="tagline">Temukan video panduan, formulir bantuan, dan pengecekan laporan dengan mudah.</p>
+  <p class="tagline">
+    Temukan video panduan, formulir bantuan, dan pengecekan laporan dengan mudah.
+  </p>
 
   <article>
     <h2>Daftar Pilihan</h2>
     <ul>
-      <!-- Pilihan Video Maintenance Machine -->
+      <!-- Video Maintenance Machine -->
       <li>
-        <label>
-          <input type="checkbox" name="file" value="Video Maintenance Machine"> Video Maintenance Machine
-        </label>
-        <ul class="sub-list">
-          <li>
-            <label>
-              <input type="checkbox" name="mesin" value="Mesin Es Krim"> Mesin Es Krim
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" name="mesin" value="Mesin Es Batu"> Mesin Es Batu
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" name="mesin" value="Mesin Pembuat Roti"> Mesin Pembuat Roti
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" name="mesin" value="Mesin Penggiling"> Mesin Penggiling
-            </label>
-          </li>
-        </ul>
-      </li>
-      
-      <!-- Pilihan Form Masalah Mesin dan Bahan Baku -->
-      <li>
-        <label>
-          <input type="checkbox" name="file" value="Form Masalah Mesin dan Bahan Baku"> Form Masalah Mesin dan Bahan Baku
-        </label>
+        <button class="btn" onclick="toggleSubList()">📺 Video Maintenance Machine</button>
+        <div class="sub-list" id="subList">
+          <button class="btn" onclick="window.open('https://example.com/eskrim', '_blank')">Mesin Es Krim</button>
+          <button class="btn" onclick="window.open('https://example.com/esbatu', '_blank')">Mesin Es Batu</button>
+          <button class="btn" onclick="window.open('https://example.com/roti', '_blank')">Mesin Pembuat Roti</button>
+          <button class="btn" onclick="window.open('https://example.com/penggiling', '_blank')">Mesin Penggiling</button>
+        </div>
       </li>
 
-      <!-- Pilihan Pengecekan Form yang sudah di lapor -->
+      <!-- Form Masalah Mesin dan Bahan Baku -->
       <li>
-        <label>
-          <input type="checkbox" name="file" value="Pengecekan Form yang sudah di lapor"> Pengecekan Form yang sudah di lapor
-        </label>
+        <button class="btn" onclick="window.open('https://example.com/form-masalah', '_blank')">
+          📄 Form Masalah Mesin dan Bahan Baku
+        </button>
       </li>
 
-      <!-- Pilihan Pengecekan Rembesan Mitra -->
+      <!-- Pengecekan Form -->
       <li>
-        <label>
-          <input type="checkbox" name="file" value="Pengecekan Rembesan Mitra"> Pengecekan Rembesan Mitra
-        </label>
+        <button class="btn" onclick="window.open('https://example.com/cek-form', '_blank')">
+          ✅ Pengecekan Form yang sudah di lapor
+        </button>
+      </li>
+
+      <!-- Pengecekan Rembesan Mitra -->
+      <li>
+        <button class="btn" onclick="window.open('https://example.com/rembesan', '_blank')">
+          🧪 Pengecekan Rembesan Mitra
+        </button>
       </li>
     </ul>
   </article>
+
+  <!-- Script for toggling -->
+  <script>
+    function toggleSubList() {
+      const subList = document.getElementById('subList');
+      subList.style.display = subList.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
 </body>
 </html>
