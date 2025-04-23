@@ -20,8 +20,8 @@
     }
 
     .tagline {
-      text-align: justify;
-      color: #444;
+      text-align: center;
+      color: #555;
       font-size: 1em;
       margin-top: 0;
       margin-bottom: 1.5em;
@@ -69,4 +69,92 @@
     }
 
     .btn:hover {
-      background-color:
+      background-color: #0056b3;
+    }
+
+    .sub-list {
+      padding-left: 20px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .sub-list button {
+      background-color: #17a2b8;
+      margin-top: 5px;
+    }
+
+    .sub-list button:hover {
+      background-color: #117a8b;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header-container">
+    <img src="Logo Momoyo.jpg" alt="Logo Momoyo" width="100" />
+    <h1>Momoyo Aftersales</h1>
+    <img src="Logo Momoyo.jpg" alt="Logo Momoyo" width="100" />
+  </div>
+
+  <p class="tagline">
+    Terima kasih atas kepercayaan Anda terhadap brand <strong>MOMOYO</strong>.
+    Kami akan memberi Anda layanan Aftersales yang sesuai. Mohon membaca isi pemberitahuan ini dengan seksama agar dapat memiliki gambaran yang lebih jelas mengenai proses layanan Aftersales ini.
+    Untuk mengatasi permasalahan yang dihadapi dalam proses operasional toko dengan lebih cepat, jika ada yang kurang jelas silakan menghubungi hotline layanan: 
+    <strong>+62 813-9849-5855</strong> untuk melaporkannya tepat waktu, dan kami akan merespon.
+  </p>
+
+  <article>
+    <h2>Daftar Pilihan</h2>
+    <ul>
+      <!-- Video Perawatan Mesin -->
+      <li>
+        <button class="btn" onclick="toggleSubList()">📺 Video Perawatan Mesin</button>
+        <div class="sub-list" id="subList">
+          <button class="btn" onclick="window.open('https://example.com/eskrim', '_blank')">Mesin Es Krim</button>
+          <button class="btn" onclick="window.open('https://example.com/esbatu', '_blank')">Mesin Es Batu</button>
+          <button class="btn" onclick="window.open('https://example.com/filter', '_blank')">Mesin Filter</button>
+          <button class="btn" onclick="window.open('https://example.com/chiller', '_blank')">Chiller</button>
+          <button class="btn" onclick="window.open('https://example.com/kulkas', '_blank')">Kulkas</button>
+          <button class="btn" onclick="window.open('https://example.com/fruktosa', '_blank')">Mesin Fruktosa</button>
+          <button class="btn" onclick="window.open('https://example.com/pemanas', '_blank')">Mesin Pemanas</button>
+          <button class="btn" onclick="window.open('https://example.com/sealer', '_blank')">Mesin Sealer</button>
+          <button class="btn" onclick="window.open('https://example.com/smoothies', '_blank')">Mesin Smoothies</button>
+          <button class="btn" onclick="window.open('https://example.com/bakery', '_blank')">Bakery</button>
+          <button class="btn" onclick="window.open('https://example.com/smoothies2', '_blank')">Smoothies</button>
+          <button class="btn" onclick="window.open('https://example.com/listrik', '_blank')">Pengecekan Listrik 2 Phasa dan 3 Phasa</button>
+          <button class="btn" onclick="window.open('https://example.com/dll', '_blank')">DLL</button>
+        </div>
+      </li>
+
+      <!-- Form Masalah Mesin dan Bahan Baku -->
+      <li>
+        <button class="btn" onclick="window.open('https://example.com/form-masalah', '_blank')">
+          📄 Form Masalah Mesin dan Bahan Baku
+        </button>
+      </li>
+
+      <!-- Pengecekan Form -->
+      <li>
+        <button class="btn" onclick="window.open('https://example.com/cek-form', '_blank')">
+          ✅ Pengecekan Form yang sudah di lapor
+        </button>
+      </li>
+
+      <!-- Pengecekan Rembesan Mitra -->
+      <li>
+        <button class="btn" onclick="window.open('https://example.com/rembesan', '_blank')">
+          🧪 Pengecekan Rembesan Mitra
+        </button>
+      </li>
+    </ul>
+  </article>
+
+  <!-- Script -->
+  <script>
+    function toggleSubList() {
+      const subList = document.getElementById('subList');
+      subList.style.display = subList.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
+</body>
+</html>
