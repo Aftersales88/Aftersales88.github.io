@@ -33,16 +33,16 @@
       padding: 0;
     }
 
-    /* Background dengan gambar Momoyo Aftersales dan transparansi */
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
+      background-color: var(--background);
+      color: var(--text-color);
     }
 
-    /* Bagian Header dan Konten Utama dengan Latar Belakang Putih */
     .main-content {
-      background-color: #ffffff;
+      background-color: var(--background);
       color: var(--text-color);
       padding: 20px;
       margin-bottom: 30px;
@@ -50,16 +50,14 @@
 
     .header-container {
       display: flex;
-      justify-content: center;
+      justify-content: space-between; /* Logo kiri-kanan di desktop */
       align-items: center;
-      flex-direction: column;
       gap: 10px;
     }
 
     .header-container img {
       width: 80px; /* Ukuran gambar responsif */
       height: auto;
-      max-width: 100%;
     }
 
     h1 {
@@ -67,6 +65,7 @@
       font-weight: bold;
       text-align: center;
       font-size: 2.5rem;
+      flex-grow: 1; /* Memungkinkan judul untuk mengisi ruang di tengah */
     }
 
     .tagline {
@@ -77,7 +76,6 @@
       color: #1a1a1a;
     }
 
-    /* Bagian Konten dengan Latar Belakang Transparan */
     .section {
       background: var(--card-bg);
       padding: 20px;
@@ -125,19 +123,19 @@
       padding-left: 30px;
     }
 
+    /* Responsif di mobile, tetap kiri-kanan */
     @media (max-width: 600px) {
       .header-container {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .header-container img {
-        width: 70px;
+        flex-direction: row; /* Memastikan logo tetap kiri-kanan di mobile */
       }
 
       .btn {
         font-size: 0.95rem;
         padding: 12px;
+      }
+
+      .section {
+        background: var(--background); /* Mengatur agar bagian bawah tetap responsif */
       }
     }
   </style>
@@ -147,8 +145,11 @@
   <!-- Bagian Konten dengan Latar Belakang Putih -->
   <div class="main-content">
     <div class="header-container">
+      <!-- Logo kiri -->
       <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
+      <!-- Judul di tengah -->
       <h1>Momoyo Aftersales</h1>
+      <!-- Logo kanan -->
       <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
     </div>
 
@@ -169,15 +170,9 @@
         <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1jOTClsuzAt0qKmuQlSfcBm-Rf2ZfflDx?usp=drive_link')">Mesin Sealer</button>
         <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1ZjKakVLsYUDiiKfAsZXS-_bwc8PEX2Qv?usp=drive_link')">Mesin Smoothies</button>
         <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/15GC6Z8rbPGTAU0q6B2HrU_RELTNoWfkR?usp=drive_link')">Bakery</button>
-        <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1KbUxS2R8thbpfrCieyVTD_qmJk3QGi5n?usp=drive_link')">Pengecekan Listrik 2 Phasa dan 3 Phasa</button>
+        <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1KbUxS2R8thbpfrCieyVTD_qmJk3QGi5n?usp=drive_link')">Pengecekan Listrik 2 Phase dan 3 Phase</button>
         <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1TVfKyofIdZux2eAvwvmlF1kNsiMv08Vz?usp=drive_link')">DLL</button>
       </div>
-    </div>
-
-    <div class="section">
-      <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg')">📄 Form Masalah Mesin dan Bahan Baku</button>
-      <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe')">✅ Pengecekan Form yang Sudah di Lapor</button>
-      <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge')">💵 Pengecekan Rembesan Mitra</button>
     </div>
   </div>
 
@@ -187,6 +182,5 @@
       subList.classList.toggle('show');
     }
   </script>
-
 </body>
 </html>
