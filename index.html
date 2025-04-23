@@ -41,6 +41,7 @@
       font-weight: bold;
       text-align: center;
       margin-bottom: 0.3em;
+      margin-top: 40px;
     }
 
     .tagline {
@@ -128,11 +129,19 @@
       right: 10px;
       cursor: pointer;
       font-size: 16px;
-      padding: 8px;
+      padding: 8px 16px;
       background-color: var(--primary);
       color: var(--btn-text);
       border-radius: 8px;
       z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .language-selector img {
+      width: 20px;
+      height: 15px;
     }
 
     /* Responsive adjustments for mobile screens */
@@ -201,9 +210,9 @@
 </head>
 
 <body>
-  <!-- Language switch -->
+  <!-- Language switch with flags -->
   <button class="language-selector" onclick="switchLanguage()">
-    中文 / Indonesia
+    <img src="path_to_indonesia_flag.png" alt="Indonesia Flag"> 中文 / Indonesia
   </button>
 
   <!-- Header logo dan judul -->
