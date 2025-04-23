@@ -224,6 +224,31 @@
           "bakery": "🥐 Bakery",
           "others": "🧰 DLL (Lain-lain)"
         }
+      },
+      zh: {
+        title: "Momoyo 售后服务",
+        welcomeText: "🌟 <strong>欢迎来到Momoyo 售后服务官方网站！</strong> 🌟<br />本网站专为帮助您处理店内设备问题而设计。<br />我们为您提供了设备维护指南、视频和技术支持服务，确保您的商店运营顺利！",
+        optionsHeader: "选项列表",
+        videoTitle: "📺 机器保养视频",
+        machineForm: "📄 机器和原料问题表格",
+        formCheck: "✅ 已提交表格检查",
+        partnerCheck: "💰 合作伙伴漏损检查",
+        closingText: "感谢您对Momoyo品牌的信任。我们将为您提供合适的售后服务。请仔细阅读此通知，以更好地了解售后服务的过程。如果有任何问题，请通过电话联系 <strong>+62 813-9849-5855</strong> 进行报告。",
+        subList: {
+          "ice-cream-machine": "🍦 冰淇淋机",
+          "ice-machine": "🧊 制冰机",
+          "filter-machine": "💧 过滤机",
+          "chiller": "❄️ 冷却机",
+          "fridge": "🥶 冰箱",
+          "fructose-machine": "🍬 果糖机",
+          "sealer-machine": "🥤 密封机",
+          "heater-machine": "🔥 加热机",
+          "coffee-machine": "☕ 咖啡机",
+          "smoothies-machine": "🧃 果汁机 (搅拌机)",
+          "electric-check": "⚡ 电力检查（2 & 3 相）",
+          "bakery": "🥐 烘焙设备",
+          "others": "🧰 其他"
+        }
       }
     };
 
@@ -252,6 +277,9 @@
         document.getElementById(key).innerHTML = translations[language].subList[key];
       }
     }
+
+    // Initialize with default language
+    updateContent();
   </script>
 </body>
 </html>
