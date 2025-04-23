@@ -108,7 +108,7 @@
     <ul>
       <!-- Video Perawatan Mesin -->
       <li>
-        <button class="btn" onclick="toggleSubList()">📺 Video Perawatan Mesin</button>
+        <button class="btn" onclick="showSubList()">📺 Video Perawatan Mesin</button>
         <div class="sub-list" id="subList">
           <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link', '_blank')">Mesin Es Krim</button>
           <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1mhdlSBADG1QJYoKxcHmuJJIa_2R2rbXR?usp=drive_link', '_blank')">Mesin Es Batu</button>
@@ -150,9 +150,10 @@
 
   <!-- Script -->
   <script>
-    function toggleSubList() {
+    function showSubList() {
       const subList = document.getElementById('subList');
-      subList.style.display = subList.style.display === 'none' ? 'block' : 'none';
+      // Toggle sub-list visibility without needing to toggle button
+      subList.style.display = subList.style.display === 'none' ? 'block' : 'block';
     }
   </script>
 </body>
