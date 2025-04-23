@@ -3,178 +3,171 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Momoyo Aftersales | Pusat Bantuan</title>
+  <title>Momoyo Aftersales | Pusat Bantuan dan File Panduan</title>
   <style>
     :root {
-      --primary: #e53935;
-      --primary-dark: #b71c1c;
-      --background: #ffffff;
-      --text-color: #1a1a1a;
-      --card-bg: #f9f9f9;
-      --border: #ddd;
-      --button-text: #ffffff;
+      --primary: #d32f2f;
+      --primary-dark: #9a0007;
+      --secondary: #ffffff;
+      --text: #222;
+      --bg: #fff;
+      --btn-text: #fff;
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --primary: #ef9a9a;
-        --primary-dark: #e53935;
-        --background: #121212;
-        --text-color: #f5f5f5;
-        --card-bg: #1e1e1e;
-        --border: #333;
-        --button-text: #ffffff;
+        --primary: #ef5350;
+        --primary-dark: #d32f2f;
+        --secondary: #1e1e1e;
+        --text: #f5f5f5;
+        --bg: #121212;
+        --btn-text: #fff;
       }
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--background);
-      color: var(--text-color);
-    }
-
-    .main-content {
-      background-color: var(--background);
-      color: var(--text-color);
+      font-family: sans-serif;
+      max-width: 700px;
+      margin: auto;
       padding: 20px;
-      margin-bottom: 30px;
-    }
-
-    .header-container {
-      display: flex;
-      justify-content: space-between; /* Logo kiri-kanan di desktop */
-      align-items: center;
-      gap: 10px;
-    }
-
-    .header-container img {
-      width: 80px; /* Ukuran gambar responsif */
-      height: auto;
+      background-color: var(--bg);
+      color: var(--text);
     }
 
     h1 {
-      color: #ff0000;
+      color: var(--primary);
       font-weight: bold;
       text-align: center;
-      font-size: 2.5rem;
-      flex-grow: 1; /* Memungkinkan judul untuk mengisi ruang di tengah */
+      margin-bottom: 0.3em;
     }
 
     .tagline {
       text-align: center;
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      line-height: 1.5;
-      color: #1a1a1a;
+      color: var(--text);
+      font-size: 1em;
+      margin-top: 0;
+      margin-bottom: 1.5em;
     }
 
-    .section {
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .header-container img {
+      width: 100px;
+      height: auto;
+    }
+
+    article {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 1rem;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    li {
+      margin: 10px 0;
     }
 
     .btn {
-      display: block;
+      display: inline-block;
       width: 100%;
-      padding: 14px 16px;
-      font-size: 1rem;
+      padding: 12px 16px;
+      font-size: 1em;
       font-weight: 600;
-      background-color: var(--primary);
-      color: var(--button-text);
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--btn-text);
       border: none;
-      border-radius: 8px;
-      margin: 8px 0;
-      transition: background-color 0.3s, transform 0.2s;
       text-align: left;
       cursor: pointer;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s ease, transform 0.2s ease;
     }
 
     .btn:hover {
-      background-color: var(--primary-dark);
-      transform: translateY(-2px);
+      background: linear-gradient(135deg, var(--primary-dark), #7f0000);
+      transform: scale(1.02);
     }
 
     .sub-list {
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height 0.4s ease, opacity 0.4s ease;
+      padding-left: 20px;
+      margin-top: 10px;
+      display: none;
     }
 
-    .sub-list.show {
-      max-height: 2000px;
-      opacity: 1;
-    }
-
-    .sub-list .btn {
-      background-color: #d32f2f;
+    .sub-list button {
+      background: linear-gradient(135deg, #b71c1c, #d32f2f);
+      margin-top: 6px;
       font-weight: 500;
-      padding-left: 30px;
+      color: white;
     }
 
-    /* Responsif di mobile, tetap kiri-kanan */
-    @media (max-width: 600px) {
-      .header-container {
-        flex-direction: row; /* Memastikan logo tetap kiri-kanan di mobile */
-      }
-
-      .btn {
-        font-size: 0.95rem;
-        padding: 12px;
-      }
-
-      .section {
-        background: var(--background); /* Mengatur agar bagian bawah tetap responsif */
-      }
+    .sub-list button:hover {
+      background: linear-gradient(135deg, #9a0007, #7f0000);
     }
   </style>
 </head>
 <body>
-
-  <!-- Bagian Konten dengan Latar Belakang Putih -->
-  <div class="main-content">
-    <div class="header-container">
-      <!-- Logo kiri -->
-      <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
-      <!-- Judul di tengah -->
-      <h1>Momoyo Aftersales</h1>
-      <!-- Logo kanan -->
-      <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
-    </div>
-
-    <p class="tagline">
-      Terima kasih atas kepercayaan Anda terhadap brand <strong>MOMOYO</strong>. Kami akan memberi Anda layanan Aftersales yang sesuai. Mohon membaca isi pemberitahuan ini dengan seksama agar dapat memiliki gambaran yang lebih jelas mengenai proses layanan Aftersales ini. Jika ada yang kurang jelas, silakan hubungi <strong>+62 813-9849-5855</strong> untuk pelaporan.
-    </p>
-
-    <div class="section">
-      <button class="btn" onclick="toggleSubList()">📺 Video Perawatan Mesin</button>
-      <div class="sub-list" id="subList">
-        <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link')">Mesin Es Krim</button>
-        <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1mhdlSBADG1QJYoKxcHmuJJIa_2R2rbXR?usp=drive_link')">Mesin Es Batu</button>
-        <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1zZTlVi8E4bx6xNZRYI3UuISGcvlv-AKZ?usp=drive_link')">Mesin Filter</button>
-        <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1lkFbW6__WGske43U_M_gJhdsjlI-h8FJ?usp=drive_link')">Chiller</button>
-        <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1py4B_g4zKiYKay0dEbJKv7bIYwHlLJC-?usp=drive_link')">Kulkas</button>
-        <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1SbSW5Y6gDGm-9rWnr2IBk4z0KtfkI-d_?usp=drive_link')">Mesin Fruktosa</button>
-        <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/19w9CR1hvprLaGusrG02OyS5vyp_23Djn?usp=drive_link')">Mesin Pemanas</button>
-        <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1jOTClsuzAt0qKmuQlSfcBm-Rf2ZfflDx?usp=drive_link')">Mesin Sealer</button>
-        <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1ZjKakVLsYUDiiKfAsZXS-_bwc8PEX2Qv?usp=drive_link')">Mesin Smoothies</button>
-        <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/15GC6Z8rbPGTAU0q6B2HrU_RELTNoWfkR?usp=drive_link')">Bakery</button>
-        <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1KbUxS2R8thbpfrCieyVTD_qmJk3QGi5n?usp=drive_link')">Pengecekan Listrik 2 Phase dan 3 Phase</button>
-        <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1TVfKyofIdZux2eAvwvmlF1kNsiMv08Vz?usp=drive_link')">DLL</button>
-      </div>
-    </div>
+  <div class="header-container">
+    <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
+    <h1>Momoyo Aftersales</h1>
+    <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
   </div>
+
+  <p class="tagline">
+    Terima kasih atas kepercayaan Anda terhadap brand <strong>MOMOYO</strong>.
+    Kami akan memberi Anda layanan Aftersales yang sesuai. Mohon membaca isi pemberitahuan ini dengan seksama agar dapat memiliki gambaran yang lebih jelas mengenai proses layanan Aftersales ini.
+    Jika ada yang kurang jelas, silakan hubungi <strong>+62 813-9849-5855</strong> untuk pelaporan.
+  </p>
+
+  <article>
+    <h2>Daftar Pilihan</h2>
+    <ul>
+      <li>
+        <button class="btn" onclick="toggleSubList()">📺 Video Perawatan Mesin</button>
+        <div class="sub-list" id="subList">
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link')">Mesin Es Krim</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1mhdlSBADG1QJYoKxcHmuJJIa_2R2rbXR?usp=drive_link')">Mesin Es Batu</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1zZTlVi8E4bx6xNZRYI3UuISGcvlv-AKZ?usp=drive_link')">Mesin Filter</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1lkFbW6__WGske43U_M_gJhdsjlI-h8FJ?usp=drive_link')">Chiller</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1py4B_g4zKiYKay0dEbJKv7bIYwHlLJC-?usp=drive_link')">Kulkas</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1SbSW5Y6gDGm-9rWnr2IBk4z0KtfkI-d_?usp=drive_link')">Mesin Fruktosa</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/19w9CR1hvprLaGusrG02OyS5vyp_23Djn?usp=drive_link')">Mesin Pemanas</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1jOTClsuzAt0qKmuQlSfcBm-Rf2ZfflDx?usp=drive_link')">Mesin Sealer</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1ZjKakVLsYUDiiKfAsZXS-_bwc8PEX2Qv?usp=drive_link')">Mesin Smoothies</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/15GC6Z8rbPGTAU0q6B2HrU_RELTNoWfkR?usp=drive_link')">Bakery</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1KbUxS2R8thbpfrCieyVTD_qmJk3QGi5n?usp=drive_link')">Pengecekan Listrik 2 Phase dan 3 Phase</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1TVfKyofIdZux2eAvwvmlF1kNsiMv08Vz?usp=drive_link')">DLL</button>
+        </div>
+      </li>
+
+      <li>
+        <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg')">
+          📄 Form Masalah Mesin dan Bahan Baku
+        </button>
+      </li>
+
+      <li>
+        <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe')">
+          ✅ Pengecekan Form yang Sudah di Lapor
+        </button>
+      </li>
+
+      <li>
+        <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge')">
+          🧪 Pengecekan Rembesan Mitra
+        </button>
+      </li>
+    </ul>
+  </article>
 
   <script>
     function toggleSubList() {
