@@ -20,8 +20,8 @@
     }
 
     .tagline {
-      text-align: center;
-      color: #555;
+      text-align: justify;
+      color: #444;
       font-size: 1em;
       margin-top: 0;
       margin-bottom: 1.5em;
@@ -69,80 +69,4 @@
     }
 
     .btn:hover {
-      background-color: #0056b3;
-    }
-
-    .sub-list {
-      padding-left: 20px;
-      margin-top: 10px;
-      display: none;
-    }
-
-    .sub-list button {
-      background-color: #17a2b8;
-      margin-top: 5px;
-    }
-
-    .sub-list button:hover {
-      background-color: #117a8b;
-    }
-  </style>
-</head>
-<body>
-  <!-- Header -->
-  <div class="header-container">
-    <img src="Logo Momoyo.jpg" alt="Logo Momoyo" width="100" />
-    <h1>Momoyo Aftersales</h1>
-    <img src="Logo Momoyo.jpg" alt="Logo Momoyo" width="100" />
-  </div>
-
-  <p class="tagline">
-    Temukan video panduan, formulir bantuan, dan pengecekan laporan dengan mudah.
-  </p>
-
-  <article>
-    <h2>Daftar Pilihan</h2>
-    <ul>
-      <!-- Video Maintenance Machine -->
-      <li>
-        <button class="btn" onclick="toggleSubList()">📺 Video Maintenance Machine</button>
-        <div class="sub-list" id="subList">
-          <button class="btn" onclick="window.open('https://example.com/eskrim', '_blank')">Mesin Es Krim</button>
-          <button class="btn" onclick="window.open('https://example.com/esbatu', '_blank')">Mesin Es Batu</button>
-          <button class="btn" onclick="window.open('https://example.com/roti', '_blank')">Mesin Pembuat Roti</button>
-          <button class="btn" onclick="window.open('https://example.com/penggiling', '_blank')">Mesin Penggiling</button>
-        </div>
-      </li>
-
-      <!-- Form Masalah Mesin dan Bahan Baku -->
-      <li>
-        <button class="btn" onclick="window.open('https://example.com/form-masalah', '_blank')">
-          📄 Form Masalah Mesin dan Bahan Baku
-        </button>
-      </li>
-
-      <!-- Pengecekan Form -->
-      <li>
-        <button class="btn" onclick="window.open('https://example.com/cek-form', '_blank')">
-          ✅ Pengecekan Form yang sudah di lapor
-        </button>
-      </li>
-
-      <!-- Pengecekan Rembesan Mitra -->
-      <li>
-        <button class="btn" onclick="window.open('https://example.com/rembesan', '_blank')">
-          🧪 Pengecekan Rembesan Mitra
-        </button>
-      </li>
-    </ul>
-  </article>
-
-  <!-- Script for toggling -->
-  <script>
-    function toggleSubList() {
-      const subList = document.getElementById('subList');
-      subList.style.display = subList.style.display === 'none' ? 'block' : 'none';
-    }
-  </script>
-</body>
-</html>
+      background-color:
