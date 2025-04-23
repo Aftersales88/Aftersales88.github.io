@@ -29,11 +29,13 @@
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: var(--background);
+      background: linear-gradient(to bottom right, #FF1744, #FF80AB);
       color: var(--text-color);
       margin: 0;
       padding: 20px;
@@ -48,9 +50,10 @@
     }
 
     h1 {
-      color: var(--primary);
+      color: #fff;
       text-align: center;
       margin-bottom: 0.5rem;
+      font-size: 2rem;
     }
 
     .tagline {
@@ -58,11 +61,13 @@
       font-size: 1rem;
       margin-bottom: 2rem;
       line-height: 1.5;
+      color: #ffffff;
     }
 
+    /* Menggunakan Flexbox untuk header */
     .header-container {
       display: flex;
-      justify-content: center;
+      justify-content: space-between; /* Memastikan gambar berada di kiri dan kanan */
       align-items: center;
       gap: 20px;
       flex-wrap: wrap;
@@ -70,12 +75,17 @@
     }
 
     .header-container img {
-      width: 80px;
+      width: 80px; /* Ukuran gambar responsif */
       height: auto;
+      max-width: 100%;
     }
 
     .section {
       margin-bottom: 2rem;
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     .btn {
@@ -107,7 +117,7 @@
     }
 
     .sub-list.show {
-      max-height: 2000px; /* cukup tinggi agar seluruh isi muncul */
+      max-height: 2000px;
       opacity: 1;
     }
 
@@ -128,11 +138,12 @@
       }
 
       .header-container {
-        flex-direction: column;
+        flex-direction: column; /* Agar logo menjadi vertikal di perangkat kecil */
+        align-items: center; /* Rata tengah */
       }
 
       .header-container img {
-        width: 70px;
+        width: 70px; /* Ukuran gambar lebih kecil pada perangkat kecil */
       }
     }
   </style>
