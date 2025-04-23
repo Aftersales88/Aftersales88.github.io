@@ -224,33 +224,13 @@
           "bakery": "🥐 Bakery",
           "others": "🧰 DLL (Lain-lain)"
         }
-      },
-      zh: {
-        title: "Momoyo 售后服务",
-        welcomeText: "🌟 <strong>欢迎来到 Momoyo 售后服务网站！</strong> 🌟<br />此网站专为帮助您处理店铺中机器问题而创建。<br />您可以找到我们的指导、保养视频和技术支持服务，帮助您的店铺运营保持顺畅，感谢您选择<strong>MOMOYO</strong> 💼🛠️",
-        optionsHeader: "选项列表",
-        videoTitle: "📺 机器保养视频",
-        machineForm: "📄 机器和原材料问题表格",
-        formCheck: "✅ 已报告表单检查",
-        partnerCheck: "💰 报销检查",
-        closingText: "感谢您对品牌 <strong>MOMOYO</strong> 的信任。我们将为您提供适当的售后服务。请仔细阅读此通知，以便更清楚地了解售后服务流程。如果有任何疑问，请联系 <strong>+62 813-9849-5855</strong> 报告问题。",
-        subList: {
-          "ice-cream-machine": "🍦 冰淇淋机",
-          "ice-machine": "🧊 制冰机",
-          "filter-machine": "💧 净水机",
-          "chiller": "❄️ 冷柜",
-          "fridge": "🥶 冰箱",
-          "fructose-machine": "🍬 果糖机",
-          "sealer-machine": "🥤 封口机",
-          "heater-machine": "🔥 开水机",
-          "coffee-machine": "☕ 咖啡机",
-          "smoothies-machine": "🧃 沙冰机",
-          "electric-check": "⚡ 电压检查（2和3相）",
-          "bakery": "🥐 烘焙",
-          "others": "🧰 其他"
-        }
       }
     };
+
+    function toggleSubList() {
+      const subList = document.getElementById('subList');
+      subList.classList.toggle('show');
+    }
 
     function switchLanguage() {
       language = (language === 'id') ? 'zh' : 'id';  // toggle language
