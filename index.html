@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <!-- Metadata dasar -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Judul halaman -->
   <title>Momoyo Aftersales | Pusat Bantuan dan File Panduan</title>
 
+  <!-- Style utama untuk tampilan dan responsif -->
   <style>
-    # Set warna default (mode terang)
+    /* Warna dasar dan variabel warna */
     :root {
       --primary: #d32f2f;
       --primary-dark: #9a0007;
@@ -16,7 +20,7 @@
       --btn-text: #fff;
     }
 
-    # Ganti warna jika user menggunakan mode gelap
+    /* Mode gelap otomatis berdasarkan preferensi pengguna */
     @media (prefers-color-scheme: dark) {
       :root {
         --primary: #ef5350;
@@ -28,7 +32,7 @@
       }
     }
 
-    # Style umum untuk body
+    /* Styling untuk elemen utama halaman */
     body {
       font-family: sans-serif;
       max-width: 700px;
@@ -38,7 +42,7 @@
       color: var(--text);
     }
 
-    # Judul utama
+    /* Judul halaman */
     h1 {
       color: var(--primary);
       font-weight: bold;
@@ -46,7 +50,7 @@
       margin-bottom: 0.3em;
     }
 
-    # Tagline deskripsi
+    /* Tagline atau sambutan halaman */
     .tagline {
       text-align: center;
       color: var(--text);
@@ -55,7 +59,7 @@
       margin-bottom: 1.5em;
     }
 
-    # Header dengan logo kiri dan kanan
+    /* Kontainer header dengan logo kiri-kanan dan judul di tengah */
     .header-container {
       display: flex;
       align-items: center;
@@ -68,25 +72,25 @@
       height: auto;
     }
 
-    # Style untuk tiap artikel bagian
+    /* Artikel berisi daftar pilihan bantuan */
     article {
       margin-bottom: 2rem;
       border-bottom: 1px solid #ccc;
       padding-bottom: 1rem;
     }
 
-    # Hapus bullet list
+    /* List tanpa bullet */
     ul {
       list-style-type: none;
       padding-left: 0;
     }
 
-    # Jarak antar item list
+    /* Setiap item daftar */
     li {
       margin: 10px 0;
     }
 
-    # Tombol utama
+    /* Styling tombol utama */
     .btn {
       display: inline-block;
       width: 100%;
@@ -103,25 +107,25 @@
       transition: background 0.3s ease, transform 0.2s ease;
     }
 
-    # Hover efek pada tombol
+    /* Efek hover untuk tombol */
     .btn:hover {
       background: linear-gradient(135deg, var(--primary-dark), #7f0000);
       transform: scale(1.02);
     }
 
-    # Submenu disembunyikan default
+    /* Sublist (submenu) disembunyikan secara default */
     .sub-list {
       padding-left: 20px;
       margin-top: 10px;
       display: none;
     }
 
-    # Tampilkan submenu saat di-trigger
+    /* Saat submenu aktif ditampilkan */
     .sub-list.show {
       display: block;
     }
 
-    # Tombol-tombol di dalam submenu
+    /* Tombol dalam submenu */
     .sub-list button {
       background: linear-gradient(135deg, #b71c1c, #d32f2f);
       margin-top: 6px;
@@ -129,65 +133,59 @@
       color: white;
     }
 
+    /* Efek hover untuk tombol submenu */
     .sub-list button:hover {
       background: linear-gradient(135deg, #9a0007, #7f0000);
     }
   </style>
 </head>
+
 <body>
+  <!-- Header logo dan judul -->
   <div class="header-container">
-    # Logo kiri, judul tengah, logo kanan
     <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
     <h1>Momoyo Aftersales</h1>
     <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
   </div>
 
+  <!-- Sambutan awal -->
   <p class="tagline">
-    # Penjelasan singkat dan nomor kontak
-    Terima kasih atas kepercayaan Anda terhadap brand <strong>MOMOYO</strong>.
-    Kami akan memberi Anda layanan Aftersales yang sesuai. Mohon membaca isi pemberitahuan ini dengan seksama agar dapat memiliki gambaran yang lebih jelas mengenai proses layanan Aftersales ini.
-    Jika ada yang kurang jelas, silakan hubungi <strong>+62 813-9849-5855</strong> untuk pelaporan.
+    🌟 <strong>Selamat Datang di Website Resmi Momoyo Aftersales!</strong> 🌟<br />
+    Website ini hadir khusus untuk membantu Anda dalam menangani berbagai permasalahan mesin yang ada di toko.<br />
+    Temukan panduan, video perawatan, dan layanan dukungan teknis yang telah kami siapkan agar operasional toko Anda tetap lancar bersama <strong>MOMOYO</strong> 💼🛠️
   </p>
 
+  <!-- Bagian menu utama -->
   <article>
     <h2>Daftar Pilihan</h2>
     <ul>
       <li>
-        # Toggle untuk menampilkan video perawatan
+        <!-- Tombol untuk menampilkan video panduan -->
         <button class="btn" onclick="toggleSubList()">📺 Video Perawatan Mesin</button>
+        <!-- Daftar submenu video panduan -->
         <div class="sub-list" id="subList">
-          # Tombol-tombol link ke Google Drive
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link')">Mesin Es Krim</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1mhdlSBADG1QJYoKxcHmuJJIa_2R2rbXR?usp=drive_link')">Mesin Es Batu</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1zZTlVi8E4bx6xNZRYI3UuISGcvlv-AKZ?usp=drive_link')">Mesin Filter</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1lkFbW6__WGske43U_M_gJhdsjlI-h8FJ?usp=drive_link')">Chiller</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1py4B_g4zKiYKay0dEbJKv7bIYwHlLJC-?usp=drive_link')">Kulkas</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1SbSW5Y6gDGm-9rWnr2IBk4z0KtfkI-d_?usp=drive_link')">Mesin Fruktosa</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/19w9CR1hvprLaGusrG02OyS5vyp_23Djn?usp=drive_link')">Mesin Pemanas</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1jOTClsuzAt0qKmuQlSfcBm-Rf2ZfflDx?usp=drive_link')">Mesin Sealer</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1ZjKakVLsYUDiiKfAsZXS-_bwc8PEX2Qv?usp=drive_link')">Mesin Smoothies</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/15GC6Z8rbPGTAU0q6B2HrU_RELTNoWfkR?usp=drive_link')">Bakery</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1KbUxS2R8thbpfrCieyVTD_qmJk3QGi5n?usp=drive_link')">Pengecekan Listrik 2 Phase dan 3 Phase</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1TVfKyofIdZux2eAvwvmlF1kNsiMv08Vz?usp=drive_link')">DLL</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/...')">Mesin Es Krim</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/...')">Mesin Es Batu</button>
+          <!-- Tambahkan sesuai kebutuhan -->
         </div>
       </li>
 
       <li>
-        # Form laporan masalah mesin dan bahan
+        <!-- Form pelaporan masalah mesin -->
         <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg')">
           📄 Form Masalah Mesin dan Bahan Baku
         </button>
       </li>
 
       <li>
-        # Cek status laporan yang sudah dikirim
+        <!-- Pengecekan status form yang sudah dikirim -->
         <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe')">
           ✅ Pengecekan Form yang Sudah di Lapor
         </button>
       </li>
 
       <li>
-        # Ganti ikon: dari 🧪 ke 💰 untuk rembesan mitra
+        <!-- Form pengecekan rembesan mitra -->
         <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge')">
           💰 Pengecekan Rembesan Mitra
         </button>
@@ -195,8 +193,16 @@
     </ul>
   </article>
 
+  <!-- Kalimat penutup dan informasi kontak -->
+  <p class="tagline">
+    Terima kasih atas kepercayaan Anda terhadap brand <strong>MOMOYO</strong>.
+    Kami akan memberi Anda layanan Aftersales yang sesuai. Mohon membaca isi pemberitahuan ini dengan seksama agar dapat memiliki gambaran yang lebih jelas mengenai proses layanan Aftersales ini.
+    Jika ada yang kurang jelas, silakan hubungi <strong>+62 813-9849-5855</strong> untuk pelaporan.
+  </p>
+
+  <!-- Script untuk mengatur tampilan submenu video -->
   <script>
-    # Fungsi untuk menampilkan/menyembunyikan submenu
+    // Fungsi untuk membuka/tutup submenu video perawatan
     function toggleSubList() {
       const subList = document.getElementById('subList');
       subList.classList.toggle('show');
