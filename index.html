@@ -44,31 +44,9 @@
 
     .tagline {
       text-align: center;
-      color: var(--text);
       font-size: 1em;
       margin-top: 0;
       margin-bottom: 1.5em;
-    }
-
-    .language-selector {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
-    .language-selector button {
-      background-color: var(--primary);
-      color: var(--btn-text);
-      padding: 10px;
-      font-weight: bold;
-      cursor: pointer;
-      border: none;
-      border-radius: 8px;
-      margin: 5px;
-    }
-
-    .language-selector button:hover {
-      background-color: var(--primary-dark);
     }
 
     .header-container {
@@ -139,113 +117,87 @@
     .sub-list button:hover {
       background: linear-gradient(135deg, #9a0007, #7f0000);
     }
-
   </style>
 </head>
 
 <body>
-  <div class="language-selector">
-    <button onclick="setLanguage('id')">Bahasa Indonesia</button>
-    <button onclick="setLanguage('zh')">中文 (Mandarin)</button>
-  </div>
-
+  <!-- Header logo dan judul -->
   <div class="header-container">
     <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
     <h1 id="title">Momoyo Aftersales</h1>
     <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
   </div>
 
-  <p id="welcome" class="tagline">
+  <!-- Sambutan awal -->
+  <p class="tagline" id="welcome">
     🌟 <strong>Selamat Datang di Website Resmi Momoyo Aftersales!</strong> 🌟<br />
     Website ini hadir khusus untuk membantu Anda dalam menangani berbagai permasalahan mesin yang ada di toko.<br />
     Temukan panduan, video perawatan, dan layanan dukungan teknis yang telah kami siapkan agar operasional toko Anda tetap lancar bersama <strong>MOMOYO</strong> 💼🛠️
   </p>
 
+  <!-- Bagian menu utama -->
   <article>
     <h2 id="menu-title">Daftar Pilihan</h2>
     <ul>
       <li>
+        <!-- Tombol untuk menampilkan video panduan -->
         <button class="btn" onclick="toggleSubList()">📺 Video Perawatan Mesin</button>
+        
+        <!-- Daftar submenu video panduan -->
         <div class="sub-list" id="subList">
+          <!-- Link dengan ikon dan komentar -->
           <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link')">🍦 Mesin Es Krim</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1mhdlSBADG1QJYoKxcHmuJJIa_2R2rbXR?usp=drive_link')">❄️ Mesin Es Batu</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1zZTlVi8E4bx6xNZRYI3UuISGcvlv-AKZ?usp=drive_link')">🔧 Mesin Filter</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1mhdlSBADG1QJYoKxcHmuJJIa_2R2rbXR?usp=drive_link')">🧊 Mesin Es Batu</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1zZTlVi8E4bx6xNZRYI3UuISGcvlv-AKZ?usp=drive_link')">💧 Mesin Filter</button>
           <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1lkFbW6__WGske43U_M_gJhdsjlI-h8FJ?usp=drive_link')">❄️ Chiller</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1py4B_g4zKiYKay0dEbJKv7bIYwHlLJC-?usp=drive_link')">🧊 Kulkas</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1SbSW5Y6gDGm-9rWnr2IBk4z0KtfkI-d_?usp=drive_link')">🍯 Mesin Fruktosa</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1jOTClsuzAt0qKmuQlSfcBm-Rf2ZfflDx?usp=drive_link')">🛠️ Mesin Sealer</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1py4B_g4zKiYKay0dEbJKv7bIYwHlLJC-?usp=drive_link')">🥶 Kulkas</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1SbSW5Y6gDGm-9rWnr2IBk4z0KtfkI-d_?usp=drive_link')">🍬 Mesin Fruktosa</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1jOTClsuzAt0qKmuQlSfcBm-Rf2ZfflDx?usp=drive_link')">🥤 Mesin Sealer</button>
           <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/19w9CR1hvprLaGusrG02OyS5vyp_23Djn?usp=drive_link')">🔥 Mesin Pemanas</button>
           <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1GaSGz1s4mHddk0EgY-9LhleXwlLeRTX0?usp=drive_link')">☕ Mesin Kopi</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1ZjKakVLsYUDiiKfAsZXS-_bwc8PEX2Qv?usp=drive_link')">🥤 Mesin Smoothies</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1KbUxS2R8thbpfrCieyVTD_qmJk3QGi5n?usp=drive_link')">⚡ Pengecekan Listrik 2 Phase dan 3 Phase</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/15GC6Z8rbPGTAU0q6B2HrU_RELTNoWfkR?usp=drive_link')">🍞 Bakery</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1TVfKyofIdZux2eAvwvmlF1kNsiMv08Vz?usp=drive_link')">📂 Lainnya</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1ZjKakVLsYUDiiKfAsZXS-_bwc8PEX2Qv?usp=drive_link')">🧃 Mesin Smoothies (Blender)</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1KbUxS2R8thbpfrCieyVTD_qmJk3QGi5n?usp=drive_link')">⚡ Pengecekan Listrik (2 & 3 Phase)</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/15GC6Z8rbPGTAU0q6B2HrU_RELTNoWfkR?usp=drive_link')">🥐 Bakery</button>
+          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1TVfKyofIdZux2eAvwvmlF1kNsiMv08Vz?usp=drive_link')">🧰 DLL (Lain-lain)</button>
         </div>
+      </li>
+
+      <!-- Form pelaporan masalah mesin -->
+      <li>
+        <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg')">
+          📄 Form Masalah Mesin dan Bahan Baku
+        </button>
+      </li>
+
+      <!-- Pengecekan form -->
+      <li>
+        <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe')">
+          ✅ Pengecekan Form yang Sudah di Lapor
+        </button>
+      </li>
+
+      <!-- Cek rembesan mitra -->
+      <li>
+        <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge')">
+          💰 Pengecekan Rembesan Mitra
+        </button>
       </li>
     </ul>
   </article>
 
-  <!-- Form Masalah -->
-  <article id="problem-form">
-    <h2 id="problem-title">Form Masalah</h2>
-    <p id="problem-desc">
-      Mohon pilih masalah yang Anda hadapi dan masukkan detailnya pada form yang disediakan.
-    </p>
-    <form>
-      <label for="issue-type">Tipe Masalah:</label>
-      <select id="issue-type" name="issue-type">
-        <option value="machine-issue">Masalah Mesin</option>
-        <option value="electric-issue">Masalah Listrik</option>
-        <option value="water-issue">Masalah Air</option>
-      </select>
-
-      <label for="issue-desc">Deskripsi Masalah:</label>
-      <textarea id="issue-desc" name="issue-desc" rows="4" placeholder="Tulis deskripsi masalah..."></textarea>
-
-      <button type="submit" class="btn">Kirim Masalah</button>
-    </form>
-  </article>
-
-  <p id="thanks" class="tagline">
+  <!-- Kalimat penutup -->
+  <p class="tagline" id="closing">
     Terima kasih atas kepercayaan Anda terhadap brand <strong>MOMOYO</strong>.
     Kami akan memberi Anda layanan Aftersales yang sesuai. Mohon membaca isi pemberitahuan ini dengan seksama agar dapat memiliki gambaran yang lebih jelas mengenai proses layanan Aftersales ini.
     Jika ada yang kurang jelas, silakan hubungi <strong>+62 813-9849-5855</strong> untuk pelaporan.
   </p>
 
+  <!-- Script untuk menampilkan/menyembunyikan submenu -->
   <script>
-    // Mengatur bahasa tampilan
-    const translations = {
-      id: {
-        title: "Momoyo Aftersales",
-        welcome: "🌟 <strong>Selamat Datang di Website Resmi Momoyo Aftersales!</strong> 🌟<br /> Website ini hadir khusus untuk membantu Anda dalam menangani berbagai permasalahan mesin yang ada di toko.<br /> Temukan panduan, video perawatan, dan layanan dukungan teknis yang telah kami siapkan agar operasional toko Anda tetap lancar bersama <strong>MOMOYO</strong> 💼🛠️",
-        menuTitle: "Daftar Pilihan",
-        thanks: "Terima kasih atas kepercayaan Anda terhadap brand <strong>MOMOYO</strong>. Kami akan memberi Anda layanan Aftersales yang sesuai. Mohon membaca isi pemberitahuan ini dengan seksama agar dapat memiliki gambaran yang lebih jelas mengenai proses layanan Aftersales ini. Jika ada yang kurang jelas, silakan hubungi <strong>+62 813-9849-5855</strong> untuk pelaporan.",
-        problemTitle: "Form Masalah",
-        problemDesc: "Mohon pilih masalah yang Anda hadapi dan masukkan detailnya pada form yang disediakan.",
-      },
-      zh: {
-        title: "Momoyo Aftersales",
-        welcome: "🌟 <strong>感谢您对Momoyo Aftersales官网的信任！</strong> 🌟<br /> 本网站专为帮助您解决店内设备问题而设计。<br /> 找到我们为您准备的指南、保养视频和技术支持服务，确保您的商店运营顺畅。<strong>MOMOYO</strong> 💼🛠️",
-        menuTitle: "菜单选项",
-        thanks: "感谢您对<strong>MOMOYO</strong>品牌的信任。我们将为您提供适当的售后服务。请仔细阅读此通知的内容，以便更清楚地了解该售后服务的流程。如有任何疑问，请联系<strong>+62 813-9849-5855</strong>进行报告。",
-        problemTitle: "问题表格",
-        problemDesc: "请选择您遇到的问题并填写提供的表单以便描述问题。",
-      },
-    };
-
-    // Fungsi untuk mengubah bahasa tampilan
-    function setLanguage(lang) {
-      const languageData = translations[lang];
-      document.getElementById('title').innerHTML = languageData.title;
-      document.getElementById('welcome').innerHTML = languageData.welcome;
-      document.getElementById('menu-title').innerHTML = languageData.menuTitle;
-      document.getElementById('thanks').innerHTML = languageData.thanks;
-      document.getElementById('problem-title').innerHTML = languageData.problemTitle;
-      document.getElementById('problem-desc').innerHTML = languageData.problemDesc;
+    function toggleSubList() {
+      const subList = document.getElementById('subList');
+      subList.classList.toggle('show');
     }
-
-    // Set default language to Bahasa Indonesia
-    setLanguage('id');
   </script>
 </body>
 </html>
