@@ -50,18 +50,19 @@
       height: auto;
     }
 
-    /* Dropdown bahasa di pojok kanan atas */
+    /* Pilihan bahasa */
     .language-selector {
       position: absolute;
       top: 20px;
       right: 20px;
-      font-size: 0.9em;
+      font-size: 1.2em;
       padding: 5px;
-      border-radius: 5px;
       background-color: var(--primary);
       color: var(--btn-text);
       cursor: pointer;
       border: none;
+      border-radius: 5px;
+      transition: background 0.3s ease;
     }
 
     .language-selector:hover {
@@ -103,36 +104,12 @@
       background: linear-gradient(135deg, var(--primary-dark), #7f0000);
       transform: scale(1.02);
     }
-
-    .sub-list {
-      padding-left: 20px;
-      margin-top: 10px;
-      display: none;
-    }
-
-    .sub-list.show {
-      display: block;
-    }
-
-    .sub-list button {
-      background: linear-gradient(135deg, #b71c1c, #d32f2f);
-      margin-top: 6px;
-      font-weight: 500;
-      color: white;
-    }
-
-    .sub-list button:hover {
-      background: linear-gradient(135deg, #9a0007, #7f0000);
-    }
   </style>
 </head>
 
 <body>
   <!-- Pilihan Bahasa -->
-  <select id="languageSelector" class="language-selector" onchange="changeLanguage()">
-    <option value="id">Bahasa Indonesia</option>
-    <option value="zh">中文 (Mandarin)</option>
-  </select>
+  <button class="language-selector" id="languageToggle" onclick="changeLanguage()">中文</button>
 
   <!-- Header logo dan judul -->
   <div class="header-container">
@@ -153,40 +130,16 @@
     <h2 id="menu-title">Daftar Pilihan</h2>
     <ul>
       <li>
-        <button class="btn" onclick="toggleSubList()">📺 Video Perawatan Mesin</button>
-        <div class="sub-list" id="subList">
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link')" id="machine-video-1">🍦 Mesin Es Krim</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1mhdlSBADG1QJYoKxcHmuJJIa_2R2rbXR?usp=drive_link')" id="machine-video-2">🧊 Mesin Es Batu</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1zZTlVi8E4bx6xNZRYI3UuISGcvlv-AKZ?usp=drive_link')" id="machine-video-3">💧 Mesin Filter</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1lkFbW6__WGske43U_M_gJhdsjlI-h8FJ?usp=drive_link')" id="machine-video-4">❄️ Chiller</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1py4B_g4zKiYKay0dEbJKv7bIYwHlLJC-?usp=drive_link')" id="machine-video-5">🥶 Kulkas</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1SbSW5Y6gDGm-9rWnr2IBk4z0KtfkI-d_?usp=drive_link')" id="machine-video-6">🍬 Mesin Fruktosa</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1jOTClsuzAt0qKmuQlSfcBm-Rf2ZfflDx?usp=drive_link')" id="machine-video-7">🥤 Mesin Sealer</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/19w9CR1hvprLaGusrG02OyS5vyp_23Djn?usp=drive_link')" id="machine-video-8">🔥 Mesin Pemanas</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1GaSGz1s4mHddk0EgY-9LhleXwlLeRTX0?usp=drive_link')" id="machine-video-9">☕ Mesin Kopi</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1ZjKakVLsYUDiiKfAsZXS-_bwc8PEX2Qv?usp=drive_link')" id="machine-video-10">🧃 Mesin Smoothies (Blender)</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1KbUxS2R8thbpfrCieyVTD_qmJk3QGi5n?usp=drive_link')" id="machine-video-11">⚡ Pengecekan Listrik (2 & 3 Phase)</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/15GC6Z8rbPGTAU0q6B2HrU_RELTNoWfkR?usp=drive_link')" id="machine-video-12">🥐 Bakery</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1TVfKyofIdZux2eAvwvmlF1kNsiMv08Vz?usp=drive_link')" id="machine-video-13">🧰 DLL (Lain-lain)</button>
-        </div>
+        <button class="btn">📺 Video Perawatan Mesin</button>
       </li>
-
       <li>
-        <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg')" id="form-1">
-          📄 Form Masalah Mesin dan Bahan Baku
-        </button>
+        <button class="btn">📄 Form Masalah Mesin dan Bahan Baku</button>
       </li>
-
       <li>
-        <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe')" id="form-2">
-          ✅ Pengecekan Form yang Sudah di Lapor
-        </button>
+        <button class="btn">✅ Pengecekan Form yang Sudah di Lapor</button>
       </li>
-
       <li>
-        <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge')" id="form-3">
-          💰 Pengecekan Rembesan Mitra
-        </button>
+        <button class="btn">💰 Pengecekan Rembesan Mitra</button>
       </li>
     </ul>
   </article>
@@ -197,62 +150,33 @@
     Jika ada yang kurang jelas, silakan hubungi <strong>+62 813-9849-5855</strong> untuk pelaporan.
   </p>
 
-  <!-- Script untuk menampilkan/menyembunyikan submenu -->
+  <!-- Script untuk mengubah bahasa -->
   <script>
-    function toggleSubList() {
-      const subList = document.getElementById('subList');
-      subList.classList.toggle('show');
-    }
+    let isIndonesian = true; // Status bahasa awal adalah Bahasa Indonesia
 
     function changeLanguage() {
-      const lang = document.getElementById('languageSelector').value;
-      if (lang === 'zh') {
+      if (isIndonesian) {
+        // Ganti teks menjadi bahasa Mandarin
         document.getElementById('title').innerText = 'Momoyo Aftersales';
         document.getElementById('welcome').innerHTML = '🌟 <strong>欢迎来到Momoyo售后服务官方网站！</strong> 🌟<br />此网站旨在帮助您处理店铺内的各种机器问题。<br />我们提供的指南、维护视频和技术支持服务，帮助您保持店铺运营顺畅。';
         document.getElementById('menu-title').innerText = '选择列表';
         document.getElementById('thank-you').innerHTML = '感谢您对<strong>MOMOYO</strong>品牌的信任。我们将为您提供合适的售后服务。请仔细阅读此通知，以便更清楚地了解售后服务过程。如有疑问，请联系<strong>+62 813-9849-5855</strong>报告问题。';
 
-        // Update buttons and submenu text for Mandarin
-        document.getElementById('machine-video-1').innerText = '🍦 冰淇淋机';
-        document.getElementById('machine-video-2').innerText = '🧊 冰块机';
-        document.getElementById('machine-video-3').innerText = '💧 过滤机';
-        document.getElementById('machine-video-4').innerText = '❄️ 冷却机';
-        document.getElementById('machine-video-5').innerText = '🥶 冰箱';
-        document.getElementById('machine-video-6').innerText = '🍬 果糖机';
-        document.getElementById('machine-video-7').innerText = '🥤 封口机';
-        document.getElementById('machine-video-8').innerText = '🔥 加热机';
-        document.getElementById('machine-video-9').innerText = '☕ 咖啡机';
-        document.getElementById('machine-video-10').innerText = '🧃 冰沙机 (搅拌机)';
-        document.getElementById('machine-video-11').innerText = '⚡ 电力检查 (2 & 3 相)';
-        document.getElementById('machine-video-12').innerText = '🥐 烘焙';
-        document.getElementById('machine-video-13').innerText = '🧰 其他 (杂项)';
-        document.getElementById('form-1').innerText = '📄 机器及原料问题表单';
-        document.getElementById('form-2').innerText = '✅ 已报告表单检查';
-        document.getElementById('form-3').innerText = '💰 合作伙伴漏水检查';
+        // Ubah teks tombol untuk memilih bahasa
+        document.getElementById('languageToggle').innerText = 'Bahasa Indonesia';
       } else {
+        // Kembalikan teks ke Bahasa Indonesia
         document.getElementById('title').innerText = 'Momoyo Aftersales';
         document.getElementById('welcome').innerHTML = '🌟 <strong>Selamat Datang di Website Resmi Momoyo Aftersales!</strong> 🌟<br />Website ini hadir khusus untuk membantu Anda dalam menangani berbagai permasalahan mesin yang ada di toko.<br />Temukan panduan, video perawatan, dan layanan dukungan teknis yang telah kami siapkan agar operasional toko Anda tetap lancar bersama <strong>MOMOYO</strong> 💼🛠️';
         document.getElementById('menu-title').innerText = 'Daftar Pilihan';
         document.getElementById('thank-you').innerHTML = 'Terima kasih atas kepercayaan Anda terhadap brand <strong>MOMOYO</strong>.<br />Kami akan memberi Anda layanan Aftersales yang sesuai. Mohon membaca isi pemberitahuan ini dengan seksama agar dapat memiliki gambaran yang lebih jelas mengenai proses layanan Aftersales ini.<br />Jika ada yang kurang jelas, silakan hubungi <strong>+62 813-9849-5855</strong> untuk pelaporan.';
         
-        // Update buttons and submenu text for Indonesian
-        document.getElementById('machine-video-1').innerText = '🍦 Mesin Es Krim';
-        document.getElementById('machine-video-2').innerText = '🧊 Mesin Es Batu';
-        document.getElementById('machine-video-3').innerText = '💧 Mesin Filter';
-        document.getElementById('machine-video-4').innerText = '❄️ Chiller';
-        document.getElementById('machine-video-5').innerText = '🥶 Kulkas';
-        document.getElementById('machine-video-6').innerText = '🍬 Mesin Fruktosa';
-        document.getElementById('machine-video-7').innerText = '🥤 Mesin Sealer';
-        document.getElementById('machine-video-8').innerText = '🔥 Mesin Pemanas';
-        document.getElementById('machine-video-9').innerText = '☕ Mesin Kopi';
-        document.getElementById('machine-video-10').innerText = '🧃 Mesin Smoothies (Blender)';
-        document.getElementById('machine-video-11').innerText = '⚡ Pengecekan Listrik (2 & 3 Phase)';
-        document.getElementById('machine-video-12').innerText = '🥐 Bakery';
-        document.getElementById('machine-video-13').innerText = '🧰 DLL (Lain-lain)';
-        document.getElementById('form-1').innerText = '📄 Form Masalah Mesin dan Bahan Baku';
-        document.getElementById('form-2').innerText = '✅ Pengecekan Form yang Sudah di Lapor';
-        document.getElementById('form-3').innerText = '💰 Pengecekan Rembesan Mitra';
+        // Ubah teks tombol untuk memilih bahasa
+        document.getElementById('languageToggle').innerText = '中文';
       }
+
+      // Toggle status bahasa
+      isIndonesian = !isIndonesian;
     }
   </script>
 </body>
