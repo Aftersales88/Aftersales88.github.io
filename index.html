@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Momoyo Aftersales | Pusat Bantuan dan File Panduan</title>
+
   <style>
-    /* Tujuan: Menetapkan warna default dan warna untuk mode terang dan gelap */
+    # Set warna default (mode terang)
     :root {
       --primary: #d32f2f;
       --primary-dark: #9a0007;
@@ -15,9 +16,9 @@
       --btn-text: #fff;
     }
 
+    # Ganti warna jika user menggunakan mode gelap
     @media (prefers-color-scheme: dark) {
       :root {
-        /* Tujuan: Mengubah warna untuk mode gelap */
         --primary: #ef5350;
         --primary-dark: #d32f2f;
         --secondary: #1e1e1e;
@@ -27,7 +28,7 @@
       }
     }
 
-    /* Tujuan: Mengatur style dasar untuk body halaman */
+    # Style umum untuk body
     body {
       font-family: sans-serif;
       max-width: 700px;
@@ -37,7 +38,7 @@
       color: var(--text);
     }
 
-    /* Tujuan: Mengatur style untuk judul utama */
+    # Judul utama
     h1 {
       color: var(--primary);
       font-weight: bold;
@@ -45,7 +46,7 @@
       margin-bottom: 0.3em;
     }
 
-    /* Tujuan: Styling untuk tagline (deskripsi) di bawah judul */
+    # Tagline deskripsi
     .tagline {
       text-align: center;
       color: var(--text);
@@ -54,7 +55,7 @@
       margin-bottom: 1.5em;
     }
 
-    /* Tujuan: Mengatur tata letak container header (gambar dan teks) */
+    # Header dengan logo kiri dan kanan
     .header-container {
       display: flex;
       align-items: center;
@@ -67,25 +68,25 @@
       height: auto;
     }
 
-    /* Tujuan: Mengatur tata letak artikel */
+    # Style untuk tiap artikel bagian
     article {
       margin-bottom: 2rem;
       border-bottom: 1px solid #ccc;
       padding-bottom: 1rem;
     }
 
-    /* Tujuan: Mengatur styling untuk daftar (ul) tanpa bullet */
+    # Hapus bullet list
     ul {
       list-style-type: none;
       padding-left: 0;
     }
 
-    /* Tujuan: Styling untuk setiap item di dalam daftar (li) */
+    # Jarak antar item list
     li {
       margin: 10px 0;
     }
 
-    /* Tujuan: Menata tombol agar terlihat menarik */
+    # Tombol utama
     .btn {
       display: inline-block;
       width: 100%;
@@ -102,25 +103,25 @@
       transition: background 0.3s ease, transform 0.2s ease;
     }
 
-    /* Tujuan: Efek hover untuk tombol */
+    # Hover efek pada tombol
     .btn:hover {
       background: linear-gradient(135deg, var(--primary-dark), #7f0000);
       transform: scale(1.02);
     }
 
-    /* Tujuan: Menyembunyikan sublist (menu bagian-bagian) secara default */
+    # Submenu disembunyikan default
     .sub-list {
       padding-left: 20px;
       margin-top: 10px;
       display: none;
     }
 
-    /* Tujuan: Menampilkan sublist ketika di-trigger (klik tombol) */
+    # Tampilkan submenu saat di-trigger
     .sub-list.show {
       display: block;
     }
 
-    /* Tujuan: Styling tombol dalam sublist */
+    # Tombol-tombol di dalam submenu
     .sub-list button {
       background: linear-gradient(135deg, #b71c1c, #d32f2f);
       margin-top: 6px;
@@ -128,7 +129,6 @@
       color: white;
     }
 
-    /* Tujuan: Efek hover untuk tombol dalam sublist */
     .sub-list button:hover {
       background: linear-gradient(135deg, #9a0007, #7f0000);
     }
@@ -136,14 +136,14 @@
 </head>
 <body>
   <div class="header-container">
-    <!-- Tujuan: Menampilkan logo di kiri dan kanan serta judul di tengah -->
+    # Logo kiri, judul tengah, logo kanan
     <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
     <h1>Momoyo Aftersales</h1>
     <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
   </div>
 
   <p class="tagline">
-    <!-- Tujuan: Deskripsi singkat mengenai tujuan halaman ini -->
+    # Penjelasan singkat dan nomor kontak
     Terima kasih atas kepercayaan Anda terhadap brand <strong>MOMOYO</strong>.
     Kami akan memberi Anda layanan Aftersales yang sesuai. Mohon membaca isi pemberitahuan ini dengan seksama agar dapat memiliki gambaran yang lebih jelas mengenai proses layanan Aftersales ini.
     Jika ada yang kurang jelas, silakan hubungi <strong>+62 813-9849-5855</strong> untuk pelaporan.
@@ -153,10 +153,10 @@
     <h2>Daftar Pilihan</h2>
     <ul>
       <li>
-        <!-- Tujuan: Tombol yang akan memunculkan sublist video perawatan mesin -->
+        # Toggle untuk menampilkan video perawatan
         <button class="btn" onclick="toggleSubList()">📺 Video Perawatan Mesin</button>
         <div class="sub-list" id="subList">
-          <!-- Tujuan: Tombol untuk membuka folder Google Drive per bagian -->
+          # Tombol-tombol link ke Google Drive
           <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link')">Mesin Es Krim</button>
           <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1mhdlSBADG1QJYoKxcHmuJJIa_2R2rbXR?usp=drive_link')">Mesin Es Batu</button>
           <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1zZTlVi8E4bx6xNZRYI3UuISGcvlv-AKZ?usp=drive_link')">Mesin Filter</button>
@@ -173,30 +173,30 @@
       </li>
 
       <li>
-        <!-- Tujuan: Tombol untuk membuka form masalah mesin -->
+        # Form laporan masalah mesin dan bahan
         <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg')">
           📄 Form Masalah Mesin dan Bahan Baku
         </button>
       </li>
 
       <li>
-        <!-- Tujuan: Tombol untuk mengecek form yang sudah dilapor -->
+        # Cek status laporan yang sudah dikirim
         <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe')">
           ✅ Pengecekan Form yang Sudah di Lapor
         </button>
       </li>
 
       <li>
-        <!-- Tujuan: Tombol untuk pengecekan rembesan mitra -->
+        # Ganti ikon: dari 🧪 ke 💰 untuk rembesan mitra
         <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge')">
-          🧪 Pengecekan Rembesan Mitra
+          💰 Pengecekan Rembesan Mitra
         </button>
       </li>
     </ul>
   </article>
 
   <script>
-    /* Tujuan: Fungsi untuk menampilkan atau menyembunyikan sublist */
+    # Fungsi untuk menampilkan/menyembunyikan submenu
     function toggleSubList() {
       const subList = document.getElementById('subList');
       subList.classList.toggle('show');
