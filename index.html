@@ -208,7 +208,22 @@
         machineForm: "📄 Form Masalah Mesin dan Bahan Baku",
         formCheck: "✅ Pengecekan Form yang Sudah di Lapor",
         partnerCheck: "💰 Pengecekan Rembesan Mitra",
-        closingText: "Terima kasih atas kepercayaan Anda terhadap brand <strong>MOMOYO</strong>. Kami akan memberi Anda layanan Aftersales yang sesuai. Mohon membaca isi pemberitahuan ini dengan seksama agar dapat memiliki gambaran yang lebih jelas mengenai proses layanan Aftersales ini. Jika ada yang kurang jelas, silakan hubungi <strong>+62 813-9849-5855</strong> untuk pelaporan."
+        closingText: "Terima kasih atas kepercayaan Anda terhadap brand <strong>MOMOYO</strong>. Kami akan memberi Anda layanan Aftersales yang sesuai. Mohon membaca isi pemberitahuan ini dengan seksama agar dapat memiliki gambaran yang lebih jelas mengenai proses layanan Aftersales ini. Jika ada yang kurang jelas, silakan hubungi <strong>+62 813-9849-5855</strong> untuk pelaporan.",
+        subList: {
+          "ice-cream-machine": "🍦 Mesin Es Krim",
+          "ice-machine": "🧊 Mesin Es Batu",
+          "filter-machine": "💧 Mesin Filter",
+          "chiller": "❄️ Chiller",
+          "fridge": "🥶 Kulkas",
+          "fructose-machine": "🍬 Mesin Fruktosa",
+          "sealer-machine": "🥤 Mesin Sealer",
+          "heater-machine": "🔥 Mesin Pemanas",
+          "coffee-machine": "☕ Mesin Kopi",
+          "smoothies-machine": "🧃 Mesin Smoothies (Blender)",
+          "electric-check": "⚡ Pengecekan Listrik (2 & 3 Phase)",
+          "bakery": "🥐 Bakery",
+          "others": "🧰 DLL (Lain-lain)"
+        }
       },
       zh: {
         title: "Momoyo 售后服务",
@@ -218,7 +233,22 @@
         machineForm: "📄 机器和原材料问题表格",
         formCheck: "✅ 已报告表单检查",
         partnerCheck: "💰 报销检查",
-        closingText: "感谢您对品牌 <strong>MOMOYO</strong> 的信任。我们将为您提供适当的售后服务。请仔细阅读此通知，以便更清楚地了解售后服务流程。如果有任何疑问，请联系 <strong>+62 813-9849-5855</strong> 报告问题。"
+        closingText: "感谢您对品牌 <strong>MOMOYO</strong> 的信任。我们将为您提供适当的售后服务。请仔细阅读此通知，以便更清楚地了解售后服务流程。如果有任何疑问，请联系 <strong>+62 813-9849-5855</strong> 报告问题。",
+        subList: {
+          "ice-cream-machine": "🍦 冰淇淋机",
+          "ice-machine": "🧊 制冰机",
+          "filter-machine": "💧 净水机",
+          "chiller": "❄️ 冷柜",
+          "fridge": "🥶 冰箱",
+          "fructose-machine": "🍬 果糖机",
+          "sealer-machine": "🥤 封口机",
+          "heater-machine": "🔥 开水机",
+          "coffee-machine": "☕ 咖啡机",
+          "smoothies-machine": "🧃 沙冰机",
+          "electric-check": "⚡ 电压检查（2和3相）",
+          "bakery": "🥐 烘焙",
+          "others": "🧰 其他"
+        }
       }
     };
 
@@ -238,23 +268,9 @@
       document.getElementById('closing-text').innerHTML = translations[language].closingText;
 
       // Update Submenu Items
-      document.getElementById('ice-cream-machine').innerHTML = (language === 'id') ? '🍦 Mesin Es Krim' : '🍦 冰淇淋机';
-      document.getElementById('ice-machine').innerHTML = (language === 'id') ? '🧊 Mesin Es Batu' : '🧊 制冰机';
-      document.getElementById('filter-machine').innerHTML = (language === 'id') ? '💧 Mesin Filter' : '💧 净水机';
-      document.getElementById('chiller').innerHTML = (language === 'id') ? '❄️ Chiller' : '❄️ 冷柜';
-      document.getElementById('fridge').innerHTML = (language === 'id') ? '🥶 Kulkas' : '🥶 冰箱';
-      document.getElementById('fructose-machine').innerHTML = (language === 'id') ? '🍬 Mesin Fruktosa' : '🍬 果糖机';
-      document.getElementById('sealer-machine').innerHTML = (language === 'id') ? '🥤 Mesin Sealer' : '🥤 封口机';
-      document.getElementById('heater-machine').innerHTML = (language === 'id') ? '🔥 Mesin Pemanas' : '🔥 开水机';
-      document.getElementById('coffee-machine').innerHTML = (language === 'id') ? '☕ Mesin Kopi' : '☕ 咖啡机';
-      document.getElementById('smoothies-machine').innerHTML = (language === 'id') ? '🧃 Mesin Smoothies (Blender)' : '🧃 沙冰机';
-      document.getElementById('electric-check').innerHTML = (language === 'id') ? '⚡ Pengecekan Listrik (2 & 3 Phase)' : '⚡ 电压检查（2和3相）';
-      document.getElementById('bakery').innerHTML = (language === 'id') ? '🥐 Bakery' : '🥐 烘焙';
-      document.getElementById('others').innerHTML = (language === 'id') ? '🧰 DLL (Lain-lain)' : '🧰 其他';
-    }
-
-    function toggleSubList() {
-      document.getElementById("subList").classList.toggle("show");
+      for (let key in translations[language].subList) {
+        document.getElementById(key).innerHTML = translations[language].subList[key];
+      }
     }
   </script>
 </body>
