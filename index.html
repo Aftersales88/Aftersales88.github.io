@@ -131,11 +131,18 @@
       border-radius: 8px;
       display: flex;
       align-items: center;
+      z-index: 1000; /* Ensures it appears above other elements */
     }
 
     .language-selector img {
       width: 20px;
       margin: 0 8px;
+    }
+
+    /* Fix for clickable buttons */
+    .btn, .sub-list button {
+      position: relative;
+      z-index: 2; /* Ensures buttons stay clickable */
     }
   </style>
 </head>
@@ -143,9 +150,9 @@
 <body>
   <!-- Language switch -->
   <button class="language-selector" onclick="switchLanguage()">
-    <img src="indonesia-flag.png" alt="Indonesian Flag" />
+    <img src="indonesia-flag.webp" alt="Indonesian Flag" />
     <span>Bahasa</span>
-    <img src="china-flag.png" alt="Chinese Flag" />
+    <img src="china-flag.jpg" alt="Chinese Flag" />
   </button>
 
   <!-- Header logo dan judul -->
@@ -282,6 +289,11 @@
     function switchLanguage() {
       language = (language === 'id') ? 'zh' : 'id';
       updateContent();
+    }
+
+    function toggleSubList() {
+      const subList = document.getElementById('subList');
+      subList.classList.toggle('show');
     }
 
     // Initial load
