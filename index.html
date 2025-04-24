@@ -7,8 +7,7 @@
 
   <style>
     .logo {
-    background-image: url(https://www.momoyodrink.com/_nuxt/img/brand_logo.c4de7e0.png)
-    
+      background-image: url(https://www.momoyodrink.com/_nuxt/img/brand_logo.c4de7e0.png);
     }
     :root {
       --primary: #d32f2f;
@@ -16,7 +15,7 @@
       --btn-text: #000000;
     }
 
-    @media (prefers-color-scheme: white) {
+    @media (prefers-color-scheme: dark) {
       :root {
         --primary: #ef5350;
         --primary-dark: #d32f2f;
@@ -35,9 +34,8 @@
       padding: 3px 5px;
       color: white;
     }
-    
+
     body {
-      background-image: url(
       font-family: sans-serif;
       max-width: 700px;
       margin: auto;
@@ -150,7 +148,8 @@
       width: 20px;
       margin: 0 8px;
     }
-    dropdown {
+
+    .dropdown {
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -171,11 +170,12 @@
       position: absolute;
       background-color: white;
       min-width: 160px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
       z-index: 1;
       border-radius: 5px;
     }
-        .dropdown-content a {
+
+    .dropdown-content a {
       color: black;
       padding: 12px 16px;
       text-decoration: none;
@@ -185,31 +185,49 @@
     .dropdown-content a:hover {
       background-color: #f1f1f1;
     }
-    
+
     .dropdown:hover .dropdown-content {
       display: block;
+    }
 
     /* Fix for clickable buttons */
     .btn, .sub-list button {
       position: relative;
       z-index: 2; /* Ensures buttons stay clickable */
     }
+
+    /* Switch Button Styles */
+    .switch-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 10px 15px;
+      background-color: var(--primary);
+      color: var(--btn-text);
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .switch-btn:hover {
+      background-color: #b71c1c;
+    }
+
   </style>
 </head>
 
 <body>
+  <!-- Mode Switch Button -->
+  <button class="switch-btn" id="modeSwitchBtn" onclick="toggleMode()">Switch to Dark Mode</button>
+
   <!-- Language switch -->
-  <div style="display: flex; justify-content: flex-end;">
-  <div class="dropdown">
-  <button class="dropbtn">Bahasa / 语言 ▼
-  <div class="dropdown-content">
-  <a><div onclick="bahasa()">Indonesia</div></a>
-  <a><div onclick="chinese()">中文</div></a>
+  <div class="dropdown" style="display: flex; justify-content: flex-end;">
+    <button class="dropbtn">Bahasa / 语言 ▼</button>
+    <div class="dropdown-content">
+      <a href="javascript:void(0);" onclick="bahasa()">Indonesia</a>
+      <a href="javascript:void(0);" onclick="chinese()">中文</a>
+    </div>
   </div>
-      </div>
-          </div>
-    </button>
-    </a>
 
   <!-- Header logo dan judul -->
   <div class="header-container">
@@ -217,7 +235,6 @@
     <h1 id="title">Momoyo Aftersales</h1>
     <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
   </div>
-
   <!-- Sambutan awal -->
   <a href="https://www.momoyodrink.com"><p class="tagline" id="Momoyo Image"><img src="https://www.momoyodrink.com/_nuxt/img/brand_logo.c4de7e0.png" class="logo-momo"></a></p>
   <p class="tagline" id="welcome-text">
@@ -369,6 +386,23 @@
 
     // Initial load
     updateContent();
+  <script> 
+// Toggle mode function
+    function toggleMode() {
+      // Toggle dark/light mode class on the body
+      document.body.classList.toggle("dark-mode");
+
+      // Change button text based on mode
+      const modeButton = document.getElementById("modeSwitchBtn");
+      if (document.body.classList.contains("dark-mode")) {
+        modeButton.textContent = "Switch to Light Mode";
+      } else {
+        modeButton.textContent = "Switch to Dark Mode";
+      }
+    }
+
+    // Add dark mode styles
+    document.body.classList.contains('dark-mode') && document.body.classList.add('dark-mode');
   </script>
 </body>
 </html>
