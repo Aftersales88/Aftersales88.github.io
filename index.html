@@ -6,10 +6,14 @@
   <title>Momoyo Aftersales | Pusat Bantuan dan File Panduan</title>
 
   <style>
-    .logo {
-    background-image: url(https://www.momoyodrink.com/_nuxt/img/brand_logo.c4de7e0.png)
-    
+    /* CSS untuk membuat gambar responsif */
+    .logo-momo {
+      max-width: 100%; /* Gambar akan menyesuaikan lebar layar */
+      height: auto; /* Menjaga rasio gambar tetap */
+      display: block; /* Menghindari ruang kosong di bawah gambar */
+      margin: 0 auto; /* Memusatkan gambar */
     }
+
     :root {
       --primary: #d32f2f;
       --bg: #fff;
@@ -35,9 +39,8 @@
       padding: 3px 5px;
       color: white;
     }
-    
+
     body {
-      background-image: url(
       font-family: sans-serif;
       max-width: 700px;
       margin: auto;
@@ -51,7 +54,6 @@
       font-weight: bold;
       text-align: center;
       margin-bottom: 0.3em;
-      font-family: 'baloo';
     }
 
     .tagline {
@@ -130,7 +132,6 @@
       background: linear-gradient(135deg, #9a0007, #7f0000);
     }
 
-    /* Language switch styles */
     .language-selector {
       position: absolute;
       top: 10px;
@@ -143,14 +144,15 @@
       border-radius: 8px;
       display: flex;
       align-items: center;
-      z-index: 1000; /* Ensures it appears above other elements */
+      z-index: 1000;
     }
 
     .language-selector img {
       width: 20px;
       margin: 0 8px;
     }
-    dropdown {
+
+    .dropdown {
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -175,7 +177,8 @@
       z-index: 1;
       border-radius: 5px;
     }
-        .dropdown-content a {
+
+    .dropdown-content a {
       color: black;
       padding: 12px 16px;
       text-decoration: none;
@@ -185,14 +188,14 @@
     .dropdown-content a:hover {
       background-color: #f1f1f1;
     }
-    
+
     .dropdown:hover .dropdown-content {
       display: block;
+    }
 
-    /* Fix for clickable buttons */
     .btn, .sub-list button {
       position: relative;
-      z-index: 2; /* Ensures buttons stay clickable */
+      z-index: 2;
     }
   </style>
 </head>
@@ -200,16 +203,15 @@
 <body>
   <!-- Language switch -->
   <div style="display: flex; justify-content: flex-end;">
-  <div class="dropdown">
-  <button class="dropbtn">Bahasa / 语言 ▼
-  <div class="dropdown-content">
-  <a><div onclick="bahasa()">Indonesia</div></a>
-  <a><div onclick="chinese()">中文</div></a>
+    <div class="dropdown">
+      <button class="dropbtn">Bahasa / 语言 ▼
+        <div class="dropdown-content">
+          <a><div onclick="bahasa()">Indonesia</div></a>
+          <a><div onclick="chinese()">中文</div></a>
+        </div>
+      </button>
+    </div>
   </div>
-      </div>
-          </div>
-    </button>
-    </a>
 
   <!-- Header logo dan judul -->
   <div class="header-container">
@@ -219,8 +221,10 @@
   </div>
 
   <!-- Sambutan awal -->
-  <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
-  <p class="tagline" id="welcome-text">
+  <p class="tagline" id="welcome-text">Selamat datang di Pusat Bantuan Momoyo. Kami siap membantu Anda.</p>
+  
+  <!-- Gambar logo di tengah halaman -->
+  <img src="Logo Momoyo.jpg" alt="Logo Momoyo" class="logo-momo" />
     🌟 <strong>Selamat Datang di Website Resmi Momoyo Aftersales!</strong> 🌟<br />
     Website ini hadir khusus untuk membantu Anda dalam menangani berbagai permasalahan mesin yang ada di toko.<br />
     Temukan panduan, video perawatan, dan layanan dukungan teknis yang telah kami siapkan agar operasional toko Anda tetap lancar bersama <strong>MOMOYO</strong> 💼🛠️
