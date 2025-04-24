@@ -6,14 +6,10 @@
   <title>Momoyo Aftersales | Pusat Bantuan dan File Panduan</title>
 
   <style>
-    /* CSS untuk membuat gambar responsif */
-    .logo-momo {
-      max-width: 100%; /* Gambar akan menyesuaikan lebar layar */
-      height: auto; /* Menjaga rasio gambar tetap */
-      display: block; /* Menghindari ruang kosong di bawah gambar */
-      margin: 0 auto; /* Memusatkan gambar */
+    .logo {
+    background-image: url(https://www.momoyodrink.com/_nuxt/img/brand_logo.c4de7e0.png)
+    
     }
-
     :root {
       --primary: #d32f2f;
       --bg: #fff;
@@ -39,8 +35,9 @@
       padding: 3px 5px;
       color: white;
     }
-
+    
     body {
+      background-image: url(
       font-family: sans-serif;
       max-width: 700px;
       margin: auto;
@@ -54,6 +51,7 @@
       font-weight: bold;
       text-align: center;
       margin-bottom: 0.3em;
+      font-family: 'baloo';
     }
 
     .tagline {
@@ -132,6 +130,7 @@
       background: linear-gradient(135deg, #9a0007, #7f0000);
     }
 
+    /* Language switch styles */
     .language-selector {
       position: absolute;
       top: 10px;
@@ -144,15 +143,14 @@
       border-radius: 8px;
       display: flex;
       align-items: center;
-      z-index: 1000;
+      z-index: 1000; /* Ensures it appears above other elements */
     }
 
     .language-selector img {
       width: 20px;
       margin: 0 8px;
     }
-
-    .dropdown {
+    dropdown {
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -177,8 +175,7 @@
       z-index: 1;
       border-radius: 5px;
     }
-
-    .dropdown-content a {
+        .dropdown-content a {
       color: black;
       padding: 12px 16px;
       text-decoration: none;
@@ -188,14 +185,14 @@
     .dropdown-content a:hover {
       background-color: #f1f1f1;
     }
-
+    
     .dropdown:hover .dropdown-content {
       display: block;
-    }
 
+    /* Fix for clickable buttons */
     .btn, .sub-list button {
       position: relative;
-      z-index: 2;
+      z-index: 2; /* Ensures buttons stay clickable */
     }
   </style>
 </head>
@@ -203,14 +200,16 @@
 <body>
   <!-- Language switch -->
   <div style="display: flex; justify-content: flex-end;">
-    <div class="dropdown">
-      <button class="dropbtn">Bahasa / 语言 ▼</button>
-      <div class="dropdown-content">
-        <a href="#" onclick="switchLanguage('id')">Indonesia</a>
-        <a href="#" onclick="switchLanguage('zh')">中文</a>
-      </div>
-    </div>
+  <div class="dropdown">
+  <button class="dropbtn">Bahasa / 语言 ▼
+  <div class="dropdown-content">
+  <a><div onclick="bahasa()">Indonesia</div></a>
+  <a><div onclick="chinese()">中文</div></a>
   </div>
+      </div>
+          </div>
+    </button>
+    </a>
 
   <!-- Header logo dan judul -->
   <div class="header-container">
@@ -220,15 +219,14 @@
   </div>
 
   <!-- Sambutan awal -->
-  <p class="tagline" id="welcome-text">Selamat datang di Pusat Bantuan Momoyo. Kami siap membantu Anda.</p>
-  
-  <!-- Gambar logo di tengah halaman -->
-  <img src="Logo Momoyo.jpg" alt="Logo Momoyo" class="logo-momo" />
-  🌟 <strong>Selamat Datang di Website Resmi Momoyo Aftersales!</strong> 🌟<br />
-  Website ini hadir khusus untuk membantu Anda dalam menangani berbagai permasalahan mesin yang ada di toko.<br />
-  Temukan panduan, video perawatan, dan layanan dukungan teknis yang telah kami siapkan agar operasional toko Anda tetap lancar bersama <strong>MOMOYO</strong> 💼🛠️
+  <a href="https://www.momoyodrink.com"><p class="tagline" id="Momoyo Image"><img src="https://www.momoyodrink.com/_nuxt/img/brand_logo.c4de7e0.png" class="logo-momo"></a></p>
+  <p class="tagline" id="welcome-text">
+    🌟 <strong>Selamat Datang di Website Resmi Momoyo Aftersales!</strong> 🌟<br />
+    Website ini hadir khusus untuk membantu Anda dalam menangani berbagai permasalahan mesin yang ada di toko.<br />
+    Temukan panduan, video perawatan, dan layanan dukungan teknis yang telah kami siapkan agar operasional toko Anda tetap lancar bersama <strong>MOMOYO</strong> 💼🛠️
+  </p>
 
-<!-- Bagian menu utama -->
+  <!-- Bagian menu utama -->
   <article>
     <h2 id="options-header">Daftar Pilihan</h2>
     <ul>
@@ -271,8 +269,12 @@
     Jika ada yang kurang jelas, silakan hubungi <strong>+62 813-9849-5855</strong> untuk pelaporan.
   </p>
 
+  </article>
+
   <!-- Skrip JavaScript untuk Mengubah Bahasa -->
   <script>
+    let language = 'id';  // Default Language is Indonesian
+
     const translations = {
       id: {
         title: "Momoyo Aftersales",
@@ -280,11 +282,23 @@
         optionsHeader: "Daftar Pilihan",
         videoTitle: "📺 Video Perawatan Mesin",
         machineForm: "📄 Form Masalah Mesin dan Bahan Baku",
+        formCheck: "✅ Pengecekan Form yang Sudah di Lapor",
+        partnerCheck: "💰 Pengecekan Rembesan Mitra",
         closingText: "Terima kasih atas kepercayaan Anda terhadap brand <strong>MOMOYO</strong>. Kami akan memberi Anda layanan Aftersales yang sesuai. Mohon membaca isi pemberitahuan ini dengan seksama agar dapat memiliki gambaran yang lebih jelas mengenai proses layanan Aftersales ini. Jika ada yang kurang jelas, silakan hubungi <strong>+62 813-9849-5855</strong> untuk pelaporan.",
         subMenu: {
           iceCreamMachine: "🍦 Mesin Es Krim",
           iceMachine: "🧊 Mesin Es Batu",
-          // Add other menu items here
+          filterMachine: "💧 Mesin Filter",
+          chiller: "❄️ Chiller",
+          fridge: "🥶 Kulkas",
+          fructoseMachine: "🍬 Mesin Fruktosa",
+          sealerMachine: "🥤 Mesin Sealer",
+          heaterMachine: "🔥 Mesin Pemanas",
+          coffeeMachine: "☕ Mesin Kopi",
+          smoothiesMachine: "🧃 Mesin Smoothies (Blender)",
+          electricCheck: "⚡ Pengecekan Listrik (2 & 3 Phase)",
+          bakery: "🥐 Bakery",
+          others: "🧰 DLL (Lain-lain)"
         }
       },
       zh: {
@@ -293,6 +307,8 @@
         optionsHeader: "选项列表",
         videoTitle: "📺 机器保养视频",
         machineForm: "📄 机器和原材料问题表格",
+        formCheck: "✅ 已报告表单检查",
+        partnerCheck: "💰 报销检查",
         closingText: "感谢您对品牌 <strong>MOMOYO</strong> 的信任。我们将为您提供适当的售后服务。请仔细阅读此通知，以便更清楚地了解售后服务流程。如果有任何疑问，请联系 <strong>+62 813-9849-5855</strong> 报告问题。",
         subMenu: {
           iceCreamMachine: "🍦 冰淇淋机",
@@ -312,24 +328,43 @@
       }
     };
 
-    let language = 'id';  // Default language is Indonesian
-
-    function switchLanguage(lang) {
-      language = lang;
-      updateContent();
-    }
-
     function updateContent() {
       document.getElementById('title').innerHTML = translations[language].title;
       document.getElementById('welcome-text').innerHTML = translations[language].welcomeText;
       document.getElementById('options-header').innerHTML = translations[language].optionsHeader;
       document.getElementById('video-title').innerHTML = translations[language].videoTitle;
       document.getElementById('machine-form').innerHTML = translations[language].machineForm;
+      document.getElementById('form-check').innerHTML = translations[language].formCheck;
+      document.getElementById('partner-check').innerHTML = translations[language].partnerCheck;
       document.getElementById('closing-text').innerHTML = translations[language].closingText;
 
       document.getElementById('ice-cream-machine').innerHTML = translations[language].subMenu.iceCreamMachine;
       document.getElementById('ice-machine').innerHTML = translations[language].subMenu.iceMachine;
-      // Update other menu items similarly
+      document.getElementById('filter-machine').innerHTML = translations[language].subMenu.filterMachine;
+      document.getElementById('chiller').innerHTML = translations[language].subMenu.chiller;
+      document.getElementById('fridge').innerHTML = translations[language].subMenu.fridge;
+      document.getElementById('fructose-machine').innerHTML = translations[language].subMenu.fructoseMachine;
+      document.getElementById('sealer-machine').innerHTML = translations[language].subMenu.sealerMachine;
+      document.getElementById('heater-machine').innerHTML = translations[language].subMenu.heaterMachine;
+      document.getElementById('coffee-machine').innerHTML = translations[language].subMenu.coffeeMachine;
+      document.getElementById('smoothies-machine').innerHTML = translations[language].subMenu.smoothiesMachine;
+      document.getElementById('electric-check').innerHTML = translations[language].subMenu.electricCheck;
+      document.getElementById('bakery').innerHTML = translations[language].subMenu.bakery;
+      document.getElementById('others').innerHTML = translations[language].subMenu.others;
+    }
+
+    function chinese() {
+      language = (language === 'id') ? 'zh' : 'zh';
+      updateContent();
+    }
+    function bahasa() {
+    language = (language === 'zh') ? 'id' : 'id';
+    updateContent();
+    }
+    
+    function toggleSubList() {
+      const subList = document.getElementById('subList');
+      subList.classList.toggle('show');
     }
 
     // Initial load
