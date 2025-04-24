@@ -39,11 +39,22 @@ body.dark-mode .theme-icon {
     background-image: url(https://www.momoyodrink.com/_nuxt/img/brand_logo.c4de7e0.png)
     
     }
-    :root {
-      --primary: #d32f2f;
-      --bg: #fff;
-      --btn-text: #000000;
-    }
+    /* Default: Light Mode */
+:root {
+  --primary: #d32f2f;    /* Warna utama (misalnya tombol) */
+  --bg: #fff;            /* Warna latar belakang untuk Light Mode */
+  --text: #000;          /* Warna teks untuk Light Mode */
+  --btn-text: #000000;   /* Warna teks pada tombol untuk Light Mode */
+}
+
+/* Dark Mode */
+body.dark-mode {
+  --primary: #ef5350;    /* Warna utama (misalnya tombol) di Dark Mode */
+  --bg: #121212;         /* Warna latar belakang untuk Dark Mode */
+  --text: #f5f5f5;       /* Warna teks untuk Dark Mode */
+  --btn-text: #fff;      /* Warna teks pada tombol untuk Dark Mode */
+}
+
 
     @media (prefers-color-scheme: white) {
       :root {
@@ -247,6 +258,11 @@ body.dark-mode .theme-icon {
   </button>
 </div>
   <div class="dropdown">
+<!-- Tombol untuk Mengubah Mode Terang/Gelap -->
+<button onclick="toggleTheme()" style="margin-left: 10px; padding: 8px 12px; background-color: var(--primary); color: var(--btn-text); border: none; border-radius: 8px; cursor: pointer;">
+  🌗 Mode
+</button>
+
   <button class="dropbtn">Bahasa / 语言 ▼
   <div class="dropdown-content">
   <a><div onclick="bahasa()">Indonesia</div></a>
@@ -319,6 +335,11 @@ body.dark-mode .theme-icon {
 
   <!-- Skrip JavaScript untuk Mengubah Bahasa -->
   <script>
+function toggleTheme() {
+  // Menambahkan atau menghapus class "dark-mode" pada body
+  document.body.classList.toggle("dark-mode");
+}
+
     let language = 'id';  // Default Language is Indonesian
 
     const translations = {
