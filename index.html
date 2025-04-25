@@ -6,10 +6,11 @@
   <title>Momoyo Aftersales | Pusat Bantuan dan File Panduan</title>
 
   <style>
-    .logo {
-    background-image: url(https://www.momoyodrink.com/_nuxt/img/brand_logo.c4de7e0.png)
     
-    }
+    
+	img.logo-momo{
+    width: 150px;
+}
     :root {
       --primary: #d32f2f;
       --bg: #fff;
@@ -37,12 +38,11 @@
     }
     
     body {
-      background-image: url(
       font-family: sans-serif;
       max-width: 700px;
       margin: auto;
       padding: 20px;
-      background-color: var(--bg);
+      background-color: rgba(;
       color: var(--text);
     }
 
@@ -198,6 +198,13 @@
 </head>
 
 <body>
+<body class="bg-white text-black dark:bg-black dark:text-white transition-colors duration-500">
+  <button
+    id="themeToggle"
+    class="text-3xl fixed top-4 left-4 p-2 rounded-full hover:rotate-12 transition-transform duration-300"
+  >
+    🌙
+  </button>
   <!-- Language switch -->
   <div style="display: flex; justify-content: flex-end;">
   <div class="dropdown">
@@ -231,34 +238,34 @@
     <h2 id="options-header">Daftar Pilihan</h2>
     <ul>
       <li>
-        <button class="btn" onclick="toggleSubList()" id="video-title">📺 Video Perawatan Mesin</button>
+        <button onclick="toggleSubList()" id="video-title" class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left">📺 Video Perawatan Mesin</button>
         <div class="sub-list" id="subList">
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link')" id="ice-cream-machine">🍦 Mesin Es Krim</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1mhdlSBADG1QJYoKxcHmuJJIa_2R2rbXR?usp=drive_link')" id="ice-machine">🧊 Mesin Es Batu</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1zZTlVi8E4bx6xNZRYI3UuISGcvlv-AKZ?usp=drive_link')" id="filter-machine">💧 Mesin Filter</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1lkFbW6__WGske43U_M_gJhdsjlI-h8FJ?usp=drive_link')" id="chiller">❄️ Chiller</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1py4B_g4zKiYKay0dEbJKv7bIYwHlLJC-?usp=drive_link')" id="fridge">🥶 Kulkas</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1SbSW5Y6gDGm-9rWnr2IBk4z0KtfkI-d_?usp=drive_link')" id="fructose-machine">🍬 Mesin Fruktosa</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1jOTClsuzAt0qKmuQlSfcBm-Rf2ZfflDx?usp=drive_link')" id="sealer-machine">🥤 Mesin Sealer</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/19w9CR1hvprLaGusrG02OyS5vyp_23Djn?usp=drive_link')" id="heater-machine">🔥 Mesin Pemanas</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1GaSGz1s4mHddk0EgY-9LhleXwlLeRTX0?usp=drive_link')" id="coffee-machine">☕ Mesin Kopi</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1ZjKakVLsYUDiiKfAsZXS-_bwc8PEX2Qv?usp=drive_link')" id="smoothies-machine">🧃 Mesin Smoothies (Blender)</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1KbUxS2R8thbpfrCieyVTD_qmJk3QGi5n?usp=drive_link')" id="electric-check">⚡ Pengecekan Listrik (2 & 3 Phase)</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/15GC6Z8rbPGTAU0q6B2HrU_RELTNoWfkR?usp=drive_link')" id="bakery">🥐 Bakery</button>
-          <button class="btn" onclick="window.open('https://drive.google.com/drive/folders/1TVfKyofIdZux2eAvwvdtJMbXswAp-REY?usp=drive_link')" id="others">🧰 DLL (Lain-lain)</button>
+          <button class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left" onclick="window.open('https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link')" id="ice-cream-machine">🍦 Mesin Es Krim</button>
+          <button class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left" onclick="window.open('https://drive.google.com/drive/folders/1mhdlSBADG1QJYoKxcHmuJJIa_2R2rbXR?usp=drive_link')" id="ice-machine">🧊 Mesin Es Batu</button>
+          <button class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left" onclick="window.open('https://drive.google.com/drive/folders/1zZTlVi8E4bx6xNZRYI3UuISGcvlv-AKZ?usp=drive_link')" id="filter-machine">💧 Mesin Filter</button>
+          <button class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left" onclick="window.open('https://drive.google.com/drive/folders/1lkFbW6__WGske43U_M_gJhdsjlI-h8FJ?usp=drive_link')" id="chiller">❄️ Chiller</button>
+          <button class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left" onclick="window.open('https://drive.google.com/drive/folders/1py4B_g4zKiYKay0dEbJKv7bIYwHlLJC-?usp=drive_link')" id="fridge">🥶 Kulkas</button>
+          <button class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left" onclick="window.open('https://drive.google.com/drive/folders/1SbSW5Y6gDGm-9rWnr2IBk4z0KtfkI-d_?usp=drive_link')" id="fructose-machine">🍬 Mesin Fruktosa</button>
+          <button class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left" onclick="window.open('https://drive.google.com/drive/folders/1jOTClsuzAt0qKmuQlSfcBm-Rf2ZfflDx?usp=drive_link')" id="sealer-machine">🥤 Mesin Sealer</button>
+          <button class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left" onclick="window.open('https://drive.google.com/drive/folders/19w9CR1hvprLaGusrG02OyS5vyp_23Djn?usp=drive_link')" id="heater-machine">🔥 Mesin Pemanas</button>
+          <button class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left" onclick="window.open('https://drive.google.com/drive/folders/1GaSGz1s4mHddk0EgY-9LhleXwlLeRTX0?usp=drive_link')" id="coffee-machine">☕ Mesin Kopi</button>
+          <button class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left" onclick="window.open('https://drive.google.com/drive/folders/1ZjKakVLsYUDiiKfAsZXS-_bwc8PEX2Qv?usp=drive_link')" id="smoothies-machine">🧃 Mesin Smoothies (Blender)</button>
+          <button class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left" onclick="window.open('https://drive.google.com/drive/folders/1KbUxS2R8thbpfrCieyVTD_qmJk3QGi5n?usp=drive_link')" id="electric-check">⚡ Pengecekan Listrik (2 & 3 Phase)</button>
+          <button class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left" onclick="window.open('https://drive.google.com/drive/folders/15GC6Z8rbPGTAU0q6B2HrU_RELTNoWfkR?usp=drive_link')" id="bakery">🥐 Bakery</button>
+          <button class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left" onclick="window.open('https://drive.google.com/drive/folders/1TVfKyofIdZux2eAvwvdtJMbXswAp-REY?usp=drive_link')" id="others">🧰 DLL (Lain-lain)</button>
         </div>
       </li>
       
       <li>
-        <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg')" id="machine-form">📄 Form Masalah Mesin dan Bahan Baku</button>
+        <button class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg')" id="machine-form">📄 Form Masalah Mesin dan Bahan Baku</button>
       </li>
 
       <li>
-        <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe')" id="form-check">✅ Pengecekan Form yang Sudah di Lapor</button>
+        <button class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe')" id="form-check">✅ Pengecekan Form yang Sudah di Lapor</button>
       </li>
 
       <li>
-        <button class="btn" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge')" id="partner-check">💰 Pengecekan Rembesan Mitra</button>
+        <button class="btn bg-white text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 px-4 py-2 rounded mb-2 w-full text-left" onclick="window.open('https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge')" id="partner-check">💰 Pengecekan Rembesan Mitra</button>
       </li>
     </ul>
   </article>
@@ -272,8 +279,12 @@
   </article>
 
   <!-- Skrip JavaScript untuk Mengubah Bahasa -->
+<script src="https://cdn.tailwindcss.com"></script>
   <script>
     let language = 'id';  // Default Language is Indonesian
+	tailwind.config = {
+      darkMode: 'class',
+    }
 
     const translations = {
       id: {
@@ -366,6 +377,16 @@
       const subList = document.getElementById('subList');
       subList.classList.toggle('show');
     }
+
+	const toggleButton = document.getElementById("themeToggle");
+    let isDark = false;
+
+    toggleButton.addEventListener("click", () => {
+      isDark = !isDark;
+
+      document.documentElement.classList.toggle("dark", isDark);
+      toggleButton.textContent = isDark ? "☀️" : "🌙";
+    })
 
     // Initial load
     updateContent();
