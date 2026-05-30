@@ -59,7 +59,8 @@
       color: var(--text);
       transition: background-color 0.4s ease, color 0.4s ease;
       line-height: 1.6;
-      overflow-x: auto; /* Bisa gulir horizontal di HP */
+      overflow-x: auto;
+      padding-bottom: 80px; /* Beri ruang agar tidak ketutupan WA */
     }
 
     h1 {
@@ -123,7 +124,6 @@
       transform: scale(1.05);
     }
 
-    /* --- TATA LETAK BAGIAN ATAS --- */
     .top-bar {
       position: absolute;
       top: 16px;
@@ -133,49 +133,60 @@
       justify-content: flex-end;
       align-items: center;
       padding: 0 20px;
-      gap: 12px;
+      gap: 10px; /* Jarak antar tombol bahasa & mode */
       z-index: 1000;
       flex-wrap: nowrap;
     }
 
-    /* Tombol Bahasa */
+    /* Tombol Bahasa: Pakai Gambar/Bendera Saja */
+    .language-selector {
+      position: relative;
+      display: inline-block;
+    }
     .language-selector .dropbtn {
-      background: linear-gradient(135deg, #ff3336, #d32f2f);
-      color: white;
-      padding: 8px 12px;
-      border-radius: 10px;
-      border: none;
+      background-color: var(--card-bg);
+      border: 1px solid var(--search-border);
+      color: var(--text);
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-weight: 500;
-      box-shadow: 0 3px 6px var(--shadow);
-      transition: transform 0.2s ease;
-      font-size: clamp(0.75em, 1.5vw, 0.85em);
-      white-space: nowrap;
+      justify-content: center;
+      box-shadow: 0 2px 4px var(--shadow);
+      transition: all 0.2s ease;
+      padding: 0;
     }
-
+    .language-selector .dropbtn img {
+      width: 24px;
+      height: 16px;
+      object-fit: cover;
+      border-radius: 2px;
+    }
     .language-selector .dropbtn:hover {
       transform: scale(1.05);
+      background-color: var(--primary);
+      border-color: var(--primary);
     }
-
+    .language-selector:hover .dropdown-content {
+      display: block;
+    }
     .dropdown-content {
       display: none;
       position: absolute;
-      right: 20px;
+      right: 0;
       background-color: var(--card-bg);
-      min-width: 180px;
+      min-width: 120px;
       box-shadow: 0 8px 20px var(--shadow);
-      border-radius: 10px;
+      border-radius: 8px;
       overflow: hidden;
-      margin-top: 8px;
       border: 1px solid var(--search-border);
+      z-index: 1001;
     }
-
     .dropdown-content a {
       color: var(--text);
-      padding: 12px 16px;
+      padding: 10px 12px;
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -186,12 +197,10 @@
       cursor: pointer;
       white-space: nowrap;
     }
-
     .dropdown-content a:hover {
       background-color: var(--primary);
       color: white;
     }
-
     .flag-icon {
       width: 22px;
       height: 16px;
@@ -199,34 +208,55 @@
       border-radius: 2px;
     }
 
-    /* Kotak Info Kanan Atas - Klik ke WA */
-    .top-info {
+    /* Tombol Mode Terang/Gelap - di samping bahasa */
+    #themeToggle {
       background-color: var(--card-bg);
-      color: var(--primary);
-      font-weight: 600;
-      font-size: clamp(0.75em, 1.5vw, 0.85em);
-      padding: 8px 12px;
-      border-radius: 10px;
-      box-shadow: 0 3px 6px var(--shadow);
       border: 1px solid var(--search-border);
+      color: var(--text);
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      white-space: nowrap;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 2px 4px var(--shadow);
+      transition: all 0.2s ease;
+      z-index: 1001;
     }
-    .top-info:hover {
+    #themeToggle:hover {
+      transform: scale(1.05);
       background-color: var(--primary);
+      border-color: var(--primary);
       color: white;
     }
 
-    .dark .top-info {
-      background-color: var(--card-bg);
-      border-color: var(--search-border);
+    /* Logo WhatsApp di Pojok Kanan Bawah */
+    .wa-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background-color: #25d366;
+      color: white;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 9999;
+      transition: all 0.3s ease;
+    }
+    .wa-float:hover {
+      transform: scale(1.1);
+      background-color: #128c7e;
+      color: white;
     }
 
-    /* --- TOMBOL TAB DI ATAS --- */
     .tab-container {
       display: flex;
       background-color: var(--card-bg);
@@ -236,11 +266,10 @@
       box-shadow: 0 4px 12px var(--shadow);
       border: 1px solid var(--search-border);
       width: 100%;
-      overflow-x: auto; /* Gulir horizontal jika tombol kepanjangan */
+      overflow-x: auto;
       gap: 4px;
       flex-wrap: nowrap;
     }
-
     .tab-btn {
       flex: 0 0 auto;
       min-width: 120px;
@@ -256,30 +285,26 @@
       text-align: center;
       white-space: nowrap;
     }
-
     .tab-btn.active {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
       box-shadow: 0 3px 8px rgba(211, 47, 47, 0.25);
     }
-
     .tab-btn:hover:not(.active) {
       background-color: rgba(211, 47, 47, 0.08);
       color: var(--primary);
     }
 
-    /* --- KONTEN YANG MUNCUL DI BAWAH --- */
     .content-box {
       background-color: var(--card-bg);
       border-radius: 16px;
       padding: 0;
       box-shadow: 0 4px 12px var(--shadow);
       border: 1px solid rgba(0,0,0,0.03);
-      min-height: 300px;
       width: 100%;
-      overflow: hidden;
+      overflow: visible;
+      min-height: calc(100vh - 250px); /* Agar tinggi sampai bawah */
     }
-
     .dark .content-box {
       border: 1px solid rgba(255,255,255,0.05);
     }
@@ -288,15 +313,34 @@
       display: none;
       animation: fadeIn 0.4s ease;
       width: 100%;
+      padding: 20px;
     }
-
     .tab-content.active {
       display: block;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    .alamat-item {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed #ddd;
+    }
+    .alamat-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .alamat-item p {
+      font-size: 0.95em;
+      line-height: 1.5;
+      margin: 2px 0;
+    }
+    .alamat-item a {
+      color: var(--primary);
+      text-decoration: none;
     }
 
     .item-link {
@@ -315,33 +359,11 @@
       font-size: clamp(0.85em, 2vw, 1em);
       white-space: nowrap;
     }
-
     .item-link:hover {
       background: linear-gradient(135deg, #b71c1c, #c62828);
       transform: translateX(4px);
       box-shadow: 0 4px 12px rgba(183, 28, 28, 0.3);
       color: white;
-    }
-
-    .address-card {
-      background-color: var(--card-bg);
-      border: 1px solid var(--search-border);
-      border-radius: 12px;
-      padding: 20px;
-      margin: 15px;
-      box-shadow: 0 3px 8px var(--shadow);
-    }
-
-    .address-card h4 {
-      color: var(--primary);
-      margin-bottom: 10px;
-      font-size: 1em;
-    }
-
-    .address-card p {
-      margin: 4px 0;
-      font-size: 0.95em;
-      line-height: 1.6;
     }
 
     .sub-list {
@@ -352,46 +374,22 @@
       display: block;
     }
 
+    /* Tampilan penuh sampai bawah, tanpa scroll */
     .iframe-container {
       width: 100%;
-      height: clamp(400px, 70vh, 600px);
+      height: calc(100vh - 300px); /* Tinggi pas sampai bawah layar */
+      min-height: 600px;
       border: none;
       background-color: white;
+      overflow: visible;
     }
-
     .iframe-container iframe {
       width: 100%;
       height: 100%;
       border: none;
+      display: block;
     }
 
-    /* Tombol Tema */
-    #themeToggle {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      border: none;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: white;
-      font-size: 22px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 999;
-    }
-
-    #themeToggle:hover {
-      transform: rotate(15deg) scale(1.1);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-    }
-
-    /* Kotak Pencarian */
     .search-container {
       max-width: 100%;
       margin: 0 auto 20px;
@@ -402,7 +400,6 @@
       box-shadow: 0 4px 12px var(--shadow);
       width: 100%;
     }
-
     #searchInput {
       width: 100%;
       padding: 16px 16px 16px 50px;
@@ -414,16 +411,13 @@
       transition: all 0.3s ease;
       outline: none;
     }
-
     #searchInput:focus {
       border-color: var(--primary-light);
       box-shadow: 0 0 0 4px rgba(239, 83, 80, 0.1);
     }
-
     #searchInput::placeholder {
       color: var(--text-light);
     }
-
     .search-icon {
       position: absolute;
       left: 18px;
@@ -433,7 +427,6 @@
       color: var(--primary);
       opacity: 0.7;
     }
-
     .no-result {
       text-align: center;
       color: var(--text-light);
@@ -452,42 +445,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Baloo:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- BAR ATAS: WA & BAHASA DI KANAN -->
   <div class="top-bar">
-    <!-- NOMOR HP LANGSUNG KE WHATSAPP -->
-    <a href="https://wa.me/6281398495855" target="_blank" class="top-info">
-      <i class="fa fa-whatsapp"></i> +62 813-9849-5855
-    </a>
-
-    <div class="language-selector dropdown">
+    <!-- Ganti Bahasa: Cuma Bendera/Gambar -->
+    <div class="language-selector">
       <button class="dropbtn">
-        <i class="fa fa-globe"></i> 
-        Bahasa / 语言 ▼
+        <img src="https://flagcdn.com/w20/id.png" id="current-lang-flag" alt="Bahasa" />
       </button>
       <div class="dropdown-content">
-        <a onclick="bahasa()">
-          <img src="indonesia-flag.webp" class="flag-icon" alt="Indonesia">
-          Indonesia <br><small>Bahasa Indonesia</small>
+        <a onclick="ubahBahasa('id')">
+          <img src="https://flagcdn.com/w20/id.png" class="flag-icon" alt="Indonesia">
+          Indonesia
         </a>
-        <a onclick="chinese()">
-          <img src="china-flag.jpg" class="flag-icon" alt="China">
-          中文 <br><small>Bahasa Mandarin</small>
+        <a onclick="ubahBahasa('zh')">
+          <img src="https://flagcdn.com/w20/cn.png" class="flag-icon" alt="China">
+          中文
         </a>
       </div>
     </div>
+
+    <!-- Tombol Mode Terang/Gelap di samping bahasa -->
+    <button id="themeToggle">🌙</button>
   </div>
 
-  <!-- Tombol Ganti Tema -->
-  <button id="themeToggle">🌙</button>
+  <!-- Logo WhatsApp Tetap di Kanan Bawah -->
+  <a href="https://wa.me/6281398495855" target="_blank" class="wa-float">
+    <i class="fa fa-whatsapp"></i>
+  </a>
 
-  <!-- Header -->
   <div class="header-container">
     <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
     <h1 id="title">Momoyo Aftersales</h1>
     <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
   </div>
 
-  <!-- Sambutan -->
   <div class="flex items-center justify-center">
     <p class="text-center mb-2"><img src="MomoMagnifier.png" class="logo-momo" alt="Ikon Pencarian"></p>
   </div>
@@ -497,27 +487,23 @@
     Seluruh informasi telah kami susun agar mudah dipahami dan siap diterapkan. Kepuasan Anda serta kelancaran operasional toko adalah prioritas utama kami. Bersama <strong>MOMOYO</strong>, urusan teknis menjadi lebih sederhana dan terjamin! 💼🛠️
   </p>
 
-  <!-- Kotak Pencarian -->
   <div class="search-container">
     <span class="search-icon"><i class="fa fa-search"></i></span>
     <input type="text" id="searchInput" onkeyup="cariData()" placeholder="Cari jenis mesin, layanan, atau formulir..." />
   </div>
   <div class="no-result" id="noResult">😔 Maaf, data yang Anda cari tidak ditemukan</div>
 
-  <!-- --- TOMBOL TAB DI ATAS --- -->
   <div class="tab-container">
-    <button class="tab-btn active" onclick="bukaTab(event, 'panduan', 'https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link')">📺 Panduan Mesin</button>
-    <button class="tab-btn" onclick="bukaTab(event, 'formulir', 'https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg')">📄 Laporan Kendala</button>
-    <button class="tab-btn" onclick="bukaTab(event, 'status', 'https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe')">✅ Cek Status</button>
-    <button class="tab-btn" onclick="bukaTab(event, 'mitra', 'https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge')">💰 Info Mitra</button>
-    <button class="tab-btn" onclick="bukaTab(event, 'pengiriman')">📦 Pengiriman Balik</button>
+    <button class="tab-btn active" onclick="bukaTab(event, 'panduan', 'https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link')" id="btn-panduan">📺 Panduan Mesin</button>
+    <button class="tab-btn" onclick="bukaTab(event, 'formulir', 'https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg')" id="btn-laporan">📄 Laporan Kendala</button>
+    <button class="tab-btn" onclick="bukaTab(event, 'status', 'https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe')" id="btn-status">✅ Cek Status</button>
+    <button class="tab-btn" onclick="bukaTab(event, 'mitra', 'https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge')" id="btn-mitra">💰 Info Mitra</button>
+    <button class="tab-btn" onclick="bukaTab(event, 'pengiriman', null)" id="btn-pengiriman">📦 Pengiriman Balik</button>
   </div>
 
-  <!-- --- KONTEN YANG MUNCUL DI BAWAH --- -->
   <div class="content-box">
-    <!-- TAB 1: PANDUAN MESIN -->
     <div id="panduan" class="tab-content active">
-      <div class="sub-list show" id="subListPanduan">
+      <div class="sub-list show">
         <a href="https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link" class="item-link" target="kontenFrame">🍦 Mesin Pembuat Es Krim</a>
         <a href="https://drive.google.com/drive/folders/1mhdlSBADG1QJYoKxcHmuJJIa_2R2rbXR?usp=drive_link" class="item-link" target="kontenFrame">🧊 Mesin Pembuat Es Batu</a>
         <a href="https://drive.google.com/drive/folders/1zZTlVi8E4bx6xNZRYI3UuISGcvlv-AKZ?usp=drive_link" class="item-link" target="kontenFrame">💧 Mesin Penyaring Air</a>
@@ -534,91 +520,87 @@
       </div>
     </div>
 
-    <!-- TAB 2: FORMULIR -->
     <div id="formulir" class="tab-content"></div>
-
-    <!-- TAB 3: STATUS -->
     <div id="status" class="tab-content"></div>
-
-    <!-- TAB 4: MITRA -->
     <div id="mitra" class="tab-content"></div>
 
-    <!-- TAB 5: PENGIRIMAN BALIK -->
     <div id="pengiriman" class="tab-content">
-      <div class="address-card">
-        <h4>📦 Pengiriman Sparepart</h4>
+      <div class="alamat-item">
         <p><strong>Penerima:</strong> Dian</p>
-        <p><strong>No. HP:</strong> <a href="https://wa.me/6285171206902" target="_blank" style="color:var(--primary); text-decoration:none;">+62 851-7120-6902</a></p>
+        <p><strong>No. HP:</strong> <a href="https://wa.me/6285171206902" target="_blank">+62 851-7120-6902</a></p>
         <p><strong>Alamat:</strong> Gudang Momoyo, Jl. Industri VIII No.8, RT.002/RW.003, Pasir Jaya, Kec. Jatiuwung, Kota Tangerang, Banten 15135</p>
       </div>
-
-      <div class="address-card">
-        <h4>🛠️ Pengiriman Mesin Rusak</h4>
+      <div class="alamat-item">
         <p><strong>Penerima:</strong> Aftersales Momoyo</p>
-        <p><strong>No. HP:</strong> <a href="https://wa.me/6281398495855" target="_blank" style="color:var(--primary); text-decoration:none;">+62 813-9849-5855</a></p>
-        <p><strong>Alamat:</strong> Mom training Center, Jl. HOS Cokroaminoto, RT.3/RW.9, Larangan Utara, Kec. Larangan, Kota Tangerang, Banten 15154</p>
+        <p><strong>No. HP:</strong> <a href="https://wa.me/6281398495855" target="_blank">+62 813-9849-5855</a></p>
+        <p><strong>Alamat:</strong> Momoyo Training Center, Jl. HOS Cokroaminoto, RT.3/RW.9, Larangan Utara, Kec. Larangan, Kota Tangerang, Banten 15154</p>
       </div>
     </div>
 
-    <!-- TEMPAT ISI LINK DI BAWAH -->
     <div class="iframe-container">
       <iframe name="kontenFrame" src="https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link"></iframe>
     </div>
   </div>
 
-  <!-- Kata Penutup -->
   <p class="tagline" id="closing-text" style="margin-top:20px;">
     Terima kasih telah mempercayakan kebutuhan usaha Anda kepada <strong>MOMOYO</strong>. Kami senantiasa berkomitmen memberikan pelayanan purna jual yang cepat, tanggap, dan berkualitas demi kelancaran operasional toko Anda setiap harinya. Apabila terdapat hal yang kurang jelas atau memerlukan bantuan langsung, tim dukungan teknis kami siap melayani Anda di nomor <strong>+62 813-9849-5855</strong>. Kesuksesan dan kelancaran usaha Anda adalah kebahagiaan terbesar bagi kami.
   </p>
 
   <script>
-    let language = 'id';
+    let bahasaSaatIni = 'id';
     tailwind.config = { darkMode: 'class' };
 
-    const translations = {
+    const terjemahan = {
       id: {
-        title: "Momoyo Aftersales",
-        welcomeText: "🌟 <strong>Selamat Datang di Pusat Bantuan Momoyo Aftersales!</strong> 🌟<br />Kami hadir sebagai mitra terpercaya Anda dalam perawatan dan penanganan segala jenis mesin penunjang usaha. Di sini tersedia panduan lengkap, video tutorial, serta solusi praktis untuk mengatasi setiap kendala teknis yang mungkin Anda temui.<br />Seluruh informasi telah kami susun agar mudah dipahami dan siap diterapkan. Kepuasan Anda serta kelancaran operasional toko adalah prioritas utama kami. Bersama <strong>MOMOYO</strong>, urusan teknis menjadi lebih sederhana dan terjamin! 💼🛠️",
-        closingText: "Terima kasih telah mempercayakan kebutuhan usaha Anda kepada <strong>MOMOYO</strong>. Kami senantiasa berkomitmen memberikan pelayanan purna jual yang cepat, tanggap, dan berkualitas demi kelancaran operasional toko Anda setiap harinya. Apabila terdapat hal yang kurang jelas atau memerlukan bantuan langsung, tim dukungan teknis kami siap melayani Anda di nomor <strong>+62 813-9849-5855</strong>. Kesuksesan dan kelancaran usaha Anda adalah kebahagiaan terbesar bagi kami."
+        judul: "Momoyo Aftersales",
+        selamat: "🌟 <strong>Selamat Datang di Pusat Bantuan Momoyo Aftersales!</strong> 🌟<br />Kami hadir sebagai mitra terpercaya Anda dalam perawatan dan penanganan segala jenis mesin penunjang usaha. Di sini tersedia panduan lengkap, video tutorial, serta solusi praktis untuk mengatasi setiap kendala teknis yang mungkin Anda temui.<br />Seluruh informasi telah kami susun agar mudah dipahami dan siap diterapkan. Kepuasan Anda serta kelancaran operasional toko adalah prioritas utama kami. Bersama <strong>MOMOYO</strong>, urusan teknis menjadi lebih sederhana dan terjamin! 💼🛠️",
+        cari: "Cari jenis mesin, layanan, atau formulir...",
+        tidakAda: "😔 Maaf, data yang Anda cari tidak ditemukan",
+        penutup: "Terima kasih telah mempercayakan kebutuhan usaha Anda kepada <strong>MOMOYO</strong>. Kami senantiasa berkomitmen memberikan pelayanan purna jual yang cepat, tanggap, dan berkualitas demi kelancaran operasional toko Anda setiap harinya. Apabila terdapat hal yang kurang jelas atau memerlukan bantuan langsung, tim dukungan teknis kami siap melayani Anda di nomor <strong>+62 813-9849-5855</strong>. Kesuksesan dan kelancaran usaha Anda adalah kebahagiaan terbesar bagi kami.",
+        panduan: "📺 Panduan Mesin",
+        laporan: "📄 Laporan Kendala",
+        status: "✅ Cek Status",
+        mitra: "💰 Info Mitra",
+        pengiriman: "📦 Pengiriman Balik"
       },
       zh: {
-        title: "Momoyo 售后服务中心",
-        welcomeText: "🌟 <strong>欢迎来到 Momoyo 售后服务支持中心！</strong> 🌟<br />我们是您最信赖的合作伙伴，致力于为您提供各类商用设备的维护与技术支持。在这里，您可以找到完整的操作指南、教学视频以及解决各种技术问题的实用方案。<br />所有资料均经过精心整理，确保内容通俗易懂、便于应用。您的满意与门店的顺利运营，始终是我们的首要目标。选择<strong>MOMOYO</strong>，让技术服务更简单、更有保障！ 💼🛠️",
-        closingText: "感谢您选择<strong>MOMOYO</strong>，并信任我们的产品与服务。我们承诺始终为您提供快速、专业且优质的售后服务，确保您的日常业务顺畅无阻。如果您有任何疑问或需要直接协助，我们的技术支持团队随时为您服务，联系电话：<strong>+62 813-9849-5855</strong>。祝您生意兴隆，事业蒸蒸日上。"
+        judul: "Momoyo 售后服务中心",
+        selamat: "🌟 <strong>欢迎来到 Momoyo 售后服务支持中心！</strong> 🌟<br />我们是您最信赖的合作伙伴，致力于为您提供各类商用设备的维护与技术支持。在这里，您可以找到完整的操作指南、教学视频以及解决各种技术问题的实用方案。<br />所有资料均经过精心整理，确保内容通俗易懂、便于应用。您的满意与门店的顺利运营，始终是我们的首要目标。选择<strong>MOMOYO</strong>，让技术服务更简单、更有保障！ 💼🛠️",
+        cari: "搜索机器类型、服务或表格...",
+        tidakAda: "😔 抱歉，未找到您搜索的数据",
+        penutup: "感谢您选择<strong>MOMOYO</strong>，并信任我们的产品与服务。我们承诺始终为您提供快速、专业且优质的售后服务，确保您的日常业务顺畅无阻。如果您有任何疑问或需要直接协助，我们的技术支持团队随时为您服务，联系电话：<strong>+62 813-9849-5855</strong>。祝您生意兴隆，事业蒸蒸日上。",
+        panduan: "📺 设备指南",
+        laporan: "📄 故障报告",
+        status: "✅ 状态查询",
+        mitra: "💰 合作信息",
+        pengiriman: "📦 寄回地址"
       }
     };
 
-    function updateContent() {
-      document.getElementById('title').innerHTML = translations[language].title;
-      document.getElementById('welcome-text').innerHTML = translations[language].welcomeText;
-      document.getElementById('closing-text').innerHTML = translations[language].closingText;
+    function ubahBahasa(kode) {
+      bahasaSaatIni = kode;
+      const t = terjemahan[kode];
+      document.getElementById('title').textContent = t.judul;
+      document.getElementById('welcome-text').innerHTML = t.selamat;
+      document.getElementById('searchInput').placeholder = t.cari;
+      document.getElementById('noResult').textContent = t.tidakAda;
+      document.getElementById('closing-text').innerHTML = t.penutup;
+      document.getElementById('btn-panduan').textContent = t.panduan;
+      document.getElementById('btn-laporan').textContent = t.laporan;
+      document.getElementById('btn-status').textContent = t.status;
+      document.getElementById('btn-mitra').textContent = t.mitra;
+      document.getElementById('btn-pengiriman').textContent = t.pengiriman;
+      document.getElementById('current-lang-flag').src = kode === 'id' ? 'https://flagcdn.com/w20/id.png' : 'https://flagcdn.com/w20/cn.png';
     }
 
-    function chinese() {
-      language = 'zh';
-      updateContent();
-    }
-    function bahasa() {
-      language = 'id';
-      updateContent();
-    }
-
-    // FUNGSI BUKA TAB
     function bukaTab(evt, tabName, linkUrl) {
-      let i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tab-content");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].classList.remove("active");
-      }
-      tablinks = document.getElementsByClassName("tab-btn");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
-      }
+      let tabcontent = document.getElementsByClassName("tab-content");
+      for (let i = 0; i < tabcontent.length; i++) tabcontent[i].classList.remove("active");
+      let tablinks = document.getElementsByClassName("tab-btn");
+      for (let i = 0; i < tablinks.length; i++) tablinks[i].classList.remove("active");
       document.getElementById(tabName).classList.add("active");
       evt.currentTarget.classList.add("active");
-
-      // Muat link jika ada
-      if(linkUrl) {
+      if (linkUrl !== null) {
         document.querySelector('iframe[name="kontenFrame"]').src = linkUrl;
       }
     }
@@ -631,34 +613,24 @@
       toggleButton.textContent = isDark ? "☀️" : "🌙";
     })
 
-    // Pencarian
     function cariData() {
       let input = document.getElementById('searchInput');
       let filter = input.value.toUpperCase().trim();
       let links = document.querySelectorAll('.item-link');
       let noResult = document.getElementById('noResult');
       let hasilDitemukan = false;
-
       if (filter === "") {
         links.forEach(link => link.style.display = "");
         noResult.style.display = "none";
         return;
       }
-
       links.forEach(link => {
         let txt = link.textContent || link.innerText;
-        if (txt.toUpperCase().includes(filter)) {
-          link.style.display = "";
-          hasilDitemukan = true;
-        } else {
-          link.style.display = "none";
-        }
+        link.style.display = txt.toUpperCase().includes(filter) ? "" : "none";
+        if (txt.toUpperCase().includes(filter)) hasilDitemukan = true;
       });
-
       noResult.style.display = hasilDitemukan ? "none" : "block";
     }
-
-    updateContent();
   </script>
 </body>
 </html>
