@@ -14,33 +14,33 @@
     }
 
     :root {
-      --primary: #d32f2f;
-      --primary-light: #ef5350;
-      --primary-dark: #b71c1c;
+      --primary: #1565C0;
+      --primary-light: #1976D2;
+      --primary-dark: #0D47A1;
       --secondary: #263238;
       --text: #263238;
       --text-light: #546e7a;
-      --bg: #fafafa;
+      --bg: #fafbfe;
       --card-bg: #ffffff;
       --btn-text: #ffffff;
       --search-bg: #ffffff;
-      --search-border: #e0e0e0;
-      --shadow: rgba(0, 0, 0, 0.08);
+      --search-border: #e0e7ee;
+      --shadow: rgba(21, 101, 192, 0.08);
     }
 
     .dark {
-      --primary: #ef5350;
-      --primary-light: #e57373;
-      --primary-dark: #d32f2f;
+      --primary: #42A5F5;
+      --primary-light: #64B5F6;
+      --primary-dark: #1976D2;
       --secondary: #eceff1;
       --text: #f5f5f5;
       --text-light: #b0bec5;
-      --bg: #121212;
-      --card-bg: #1e1e1e;
+      --bg: #121a29;
+      --card-bg: #1e293b;
       --btn-text: #ffffff;
-      --search-bg: #2d2d2d;
-      --search-border: #424242;
-      --shadow: rgba(0, 0, 0, 0.2);
+      --search-bg: #273449;
+      --search-border: #334155;
+      --shadow: rgba(66, 165, 245, 0.12);
     }
 
     * {
@@ -55,12 +55,40 @@
       min-width: 320px;
       margin: auto;
       padding: 24px 20px;
-      background-color: var(--bg);
+      /* ✅ LATAR BELAKANG BIRU LEMBUT */
+      background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 50%, #dceeff 100%);
+      background-attachment: fixed;
       color: var(--text);
       transition: background-color 0.4s ease, color 0.4s ease;
       line-height: 1.6;
       overflow-x: auto;
-      padding-bottom: 80px; /* Beri ruang agar tidak ketutupan WA */
+      padding-bottom: 80px;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.4;
+      z-index: -1;
+      background-image: 
+        radial-gradient(circle at 20% 20%, rgba(21, 101, 192, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(13, 71, 161, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(25, 118, 210, 0.05) 0%, transparent 60%);
+    }
+
+    .dark body {
+      background: linear-gradient(135deg, #121a29 0%, #1a2436 50%, #141e30 100%);
+    }
+    .dark body::before {
+      background-image: 
+        radial-gradient(circle at 20% 20%, rgba(66, 165, 245, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(25, 118, 210, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(41, 121, 255, 0.08) 0%, transparent 60%);
     }
 
     h1 {
@@ -87,18 +115,17 @@
       padding: 20px;
       border-radius: 16px;
       box-shadow: 0 4px 12px var(--shadow);
-      border: 1px solid rgba(0,0,0,0.03);
+      border: 1px solid rgba(21, 101, 192, 0.05);
       transition: transform 0.3s ease;
       width: 100%;
+      backdrop-filter: blur(8px);
+      background-color: rgba(255, 255, 255, 0.85);
     }
-
     .dark .tagline {
-      border: 1px solid rgba(255,255,255,0.05);
+      border: 1px solid rgba(66, 165, 245, 0.08);
+      background-color: rgba(30, 41, 59, 0.85);
     }
-
-    .tagline:hover {
-      transform: translateY(-2px);
-    }
+    .tagline:hover { transform: translateY(-2px); }
 
     .header-container {
       display: flex;
@@ -112,127 +139,83 @@
       box-shadow: 0 6px 16px var(--shadow);
       width: 100%;
       flex-wrap: nowrap;
+      backdrop-filter: blur(8px);
+      background-color: rgba(255, 255, 255, 0.85);
     }
-
+    .dark .header-container { background-color: rgba(30, 41, 59, 0.85); }
     .header-container img {
       width: clamp(60px, 12vw, 90px);
       height: auto;
       transition: transform 0.3s ease;
     }
+    .header-container img:hover { transform: scale(1.05); }
 
-    .header-container img:hover {
-      transform: scale(1.05);
-    }
-
-    .top-bar {
-      position: absolute;
-      top: 16px;
-      left: 0;
-      right: 0;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 0 20px;
-      gap: 10px; /* Jarak antar tombol bahasa & mode */
-      z-index: 1000;
-      flex-wrap: nowrap;
-    }
-
-    /* Tombol Bahasa: Pakai Gambar/Bendera Saja */
-    .language-selector {
-      position: relative;
-      display: inline-block;
-    }
-    .language-selector .dropbtn {
+    /* ✅ TOMBOL BAHASA: DI ATAS KANAN, MENGIKUTI SCROLL */
+    .lang-float {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 45px;
+      height: 45px;
+      border-radius: 10px;
       background-color: var(--card-bg);
       border: 1px solid var(--search-border);
       color: var(--text);
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2px 4px var(--shadow);
-      transition: all 0.2s ease;
-      padding: 0;
-    }
-    .language-selector .dropbtn img {
-      width: 24px;
-      height: 16px;
-      object-fit: cover;
-      border-radius: 2px;
-    }
-    .language-selector .dropbtn:hover {
-      transform: scale(1.05);
-      background-color: var(--primary);
-      border-color: var(--primary);
-    }
-    .language-selector:hover .dropdown-content {
-      display: block;
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      right: 0;
-      background-color: var(--card-bg);
-      min-width: 120px;
-      box-shadow: 0 8px 20px var(--shadow);
-      border-radius: 8px;
+      box-shadow: 0 2px 8px var(--shadow);
+      z-index: 9999;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(8px);
+      background-color: rgba(255, 255, 255, 0.85);
       overflow: hidden;
-      border: 1px solid var(--search-border);
-      z-index: 1001;
     }
-    .dropdown-content a {
-      color: var(--text);
-      padding: 10px 12px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: background 0.2s;
-      font-weight: 500;
-      font-size: 0.9em;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .dropdown-content a:hover {
+    .dark .lang-float { background-color: rgba(30, 41, 59, 0.85); }
+    .lang-float:hover {
+      transform: scale(1.08);
       background-color: var(--primary);
-      color: white;
+      border-color: var(--primary);
     }
-    .flag-icon {
-      width: 22px;
-      height: 16px;
-      object-fit: cover;
-      border-radius: 2px;
+    .lang-float img {
+      width: 26px;
+      height: auto;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
+    .lang-float.active img { transform: rotate(360deg) scale(1.1); }
 
-    /* Tombol Mode Terang/Gelap - di samping bahasa */
-    #themeToggle {
+    /* ✅ TOMBOL MODE: DI SAMPING BAHASA */
+    .theme-float {
+      position: fixed;
+      top: 20px;
+      right: 75px;
+      width: 45px;
+      height: 45px;
+      border-radius: 10px;
       background-color: var(--card-bg);
       border: 1px solid var(--search-border);
       color: var(--text);
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 2px 8px var(--shadow);
+      z-index: 9999;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
+      background-color: rgba(255, 255, 255, 0.85);
       font-size: 18px;
-      box-shadow: 0 2px 4px var(--shadow);
-      transition: all 0.2s ease;
-      z-index: 1001;
     }
-    #themeToggle:hover {
-      transform: scale(1.05);
+    .dark .theme-float { background-color: rgba(30, 41, 59, 0.85); }
+    .theme-float:hover {
+      transform: scale(1.08);
       background-color: var(--primary);
       border-color: var(--primary);
       color: white;
     }
 
-    /* Logo WhatsApp di Pojok Kanan Bawah */
+    /* ✅ TOMBOL WA: DI BAWAH KANAN */
     .wa-float {
       position: fixed;
       bottom: 20px;
@@ -269,7 +252,10 @@
       overflow-x: auto;
       gap: 4px;
       flex-wrap: nowrap;
+      backdrop-filter: blur(8px);
+      background-color: rgba(255, 255, 255, 0.85);
     }
+    .dark .tab-container { background-color: rgba(30, 41, 59, 0.85); }
     .tab-btn {
       flex: 0 0 auto;
       min-width: 120px;
@@ -288,10 +274,10 @@
     .tab-btn.active {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      box-shadow: 0 3px 8px rgba(211, 47, 47, 0.25);
+      box-shadow: 0 3px 8px rgba(21, 101, 192, 0.25);
     }
     .tab-btn:hover:not(.active) {
-      background-color: rgba(211, 47, 47, 0.08);
+      background-color: rgba(21, 101, 192, 0.08);
       color: var(--primary);
     }
 
@@ -300,13 +286,16 @@
       border-radius: 16px;
       padding: 0;
       box-shadow: 0 4px 12px var(--shadow);
-      border: 1px solid rgba(0,0,0,0.03);
+      border: 1px solid rgba(21, 101, 192, 0.03);
       width: 100%;
       overflow: visible;
-      min-height: calc(100vh - 250px); /* Agar tinggi sampai bawah */
+      min-height: calc(100vh - 250px);
+      backdrop-filter: blur(8px);
+      background-color: rgba(255, 255, 255, 0.85);
     }
     .dark .content-box {
-      border: 1px solid rgba(255,255,255,0.05);
+      border: 1px solid rgba(66, 165, 245, 0.05);
+      background-color: rgba(30, 41, 59, 0.85);
     }
 
     .tab-content {
@@ -315,9 +304,7 @@
       width: 100%;
       padding: 20px;
     }
-    .tab-content.active {
-      display: block;
-    }
+    .tab-content.active { display: block; }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
@@ -326,22 +313,11 @@
     .alamat-item {
       margin-bottom: 20px;
       padding-bottom: 15px;
-      border-bottom: 1px dashed #ddd;
+      border-bottom: 1px dashed #b0c4de;
     }
-    .alamat-item:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-    .alamat-item p {
-      font-size: 0.95em;
-      line-height: 1.5;
-      margin: 2px 0;
-    }
-    .alamat-item a {
-      color: var(--primary);
-      text-decoration: none;
-    }
+    .alamat-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .alamat-item p { font-size: 0.95em; line-height: 1.5; margin: 2px 0; }
+    .alamat-item a { color: var(--primary); text-decoration: none; }
 
     .item-link {
       display: flex;
@@ -349,45 +325,41 @@
       width: 100%;
       padding: 14px 18px;
       margin: 8px 0;
-      background: linear-gradient(135deg, #c62828, #e53935);
+      background: linear-gradient(135deg, #1565C0, #1976D2);
       color: white;
       border-radius: 12px;
       text-decoration: none;
       font-weight: 500;
-      box-shadow: 0 3px 8px rgba(183, 28, 28, 0.2);
+      box-shadow: 0 3px 8px rgba(13, 71, 161, 0.2);
       transition: all 0.3s ease;
       font-size: clamp(0.85em, 2vw, 1em);
       white-space: nowrap;
     }
     .item-link:hover {
-      background: linear-gradient(135deg, #b71c1c, #c62828);
+      background: linear-gradient(135deg, #0D47A1, #1565C0);
       transform: translateX(4px);
-      box-shadow: 0 4px 12px rgba(183, 28, 28, 0.3);
+      box-shadow: 0 4px 12px rgba(13, 71, 161, 0.3);
       color: white;
     }
 
-    .sub-list {
-      padding: 15px;
-      display: none;
-    }
-    .sub-list.show {
-      display: block;
-    }
+    .sub-list { padding: 15px; display: none; }
+    .sub-list.show { display: block; }
 
-    /* Tampilan penuh sampai bawah, tanpa scroll */
     .iframe-container {
       width: 100%;
-      height: calc(100vh - 300px); /* Tinggi pas sampai bawah layar */
+      height: calc(100vh - 300px);
       min-height: 600px;
       border: none;
       background-color: white;
       overflow: visible;
+      border-radius: 0 0 16px 16px;
     }
     .iframe-container iframe {
       width: 100%;
       height: 100%;
       border: none;
       display: block;
+      border-radius: 0 0 16px 16px;
     }
 
     .search-container {
@@ -399,7 +371,10 @@
       border-radius: 14px;
       box-shadow: 0 4px 12px var(--shadow);
       width: 100%;
+      backdrop-filter: blur(8px);
+      background-color: rgba(255, 255, 255, 0.85);
     }
+    .dark .search-container { background-color: rgba(30, 41, 59, 0.85); }
     #searchInput {
       width: 100%;
       padding: 16px 16px 16px 50px;
@@ -413,11 +388,9 @@
     }
     #searchInput:focus {
       border-color: var(--primary-light);
-      box-shadow: 0 0 0 4px rgba(239, 83, 80, 0.1);
+      box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.1);
     }
-    #searchInput::placeholder {
-      color: var(--text-light);
-    }
+    #searchInput::placeholder { color: var(--text-light); }
     .search-icon {
       position: absolute;
       left: 18px;
@@ -438,36 +411,26 @@
       display: none;
       font-weight: 500;
       font-size: clamp(0.9em, 2vw, 1em);
+      backdrop-filter: blur(8px);
+      background-color: rgba(255, 255, 255, 0.85);
     }
+    .dark .no-result { background-color: rgba(30, 41, 59, 0.85); }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="top-bar">
-    <!-- Ganti Bahasa: Cuma Bendera/Gambar -->
-    <div class="language-selector">
-      <button class="dropbtn">
-        <img src="https://flagcdn.com/w20/id.png" id="current-lang-flag" alt="Bahasa" />
-      </button>
-      <div class="dropdown-content">
-        <a onclick="ubahBahasa('id')">
-          <img src="https://flagcdn.com/w20/id.png" class="flag-icon" alt="Indonesia">
-          Indonesia
-        </a>
-        <a onclick="ubahBahasa('zh')">
-          <img src="https://flagcdn.com/w20/cn.png" class="flag-icon" alt="China">
-          中文
-        </a>
-      </div>
-    </div>
 
-    <!-- Tombol Mode Terang/Gelap di samping bahasa -->
-    <button id="themeToggle">🌙</button>
+  <!-- ✅ TOMBOL BAHASA: KLIK LANGSUNG GANTI, ADA ANIMASI -->
+  <div class="lang-float" onclick="ubahBahasaOtomatis()">
+    <img src="https://flagcdn.com/w20/id.png" id="icon-bahasa" alt="Bahasa" />
   </div>
 
-  <!-- Logo WhatsApp Tetap di Kanan Bawah -->
+  <!-- ✅ TOMBOL MODE GELAP / TERANG -->
+  <div class="theme-float" id="tombolMode">🌙</div>
+
+  <!-- ✅ TOMBOL WHATSAPP -->
   <a href="https://wa.me/6281398495855" target="_blank" class="wa-float">
     <i class="fa fa-whatsapp"></i>
   </a>
@@ -493,16 +456,22 @@
   </div>
   <div class="no-result" id="noResult">😔 Maaf, data yang Anda cari tidak ditemukan</div>
 
+  <!-- ✅ URUTAN MENU SESUAI PERMINTAAN: Laporan - Cek - Panduan - Info Mitra - Pengiriman -->
   <div class="tab-container">
-    <button class="tab-btn active" onclick="bukaTab(event, 'panduan', 'https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link')" id="btn-panduan">📺 Panduan Mesin</button>
-    <button class="tab-btn" onclick="bukaTab(event, 'formulir', 'https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg')" id="btn-laporan">📄 Laporan Kendala</button>
-    <button class="tab-btn" onclick="bukaTab(event, 'status', 'https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe')" id="btn-status">✅ Cek Status</button>
+    <button class="tab-btn active" onclick="bukaTab(event, 'formulir', 'https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg')" id="btn-laporan">📄 Laporan Kendala</button>
+    <button class="tab-btn" onclick="bukaTab(event, 'status', 'https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe')" id="btn-status">✅ Cek Laporan</button>
+    <button class="tab-btn" onclick="bukaTab(event, 'panduan', 'https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link')" id="btn-panduan">📺 Panduan Mesin</button>
     <button class="tab-btn" onclick="bukaTab(event, 'mitra', 'https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge')" id="btn-mitra">💰 Info Mitra</button>
     <button class="tab-btn" onclick="bukaTab(event, 'pengiriman', null)" id="btn-pengiriman">📦 Pengiriman Balik</button>
   </div>
 
   <div class="content-box">
-    <div id="panduan" class="tab-content active">
+    <div id="formulir" class="tab-content active"></div>
+
+    <div id="status" class="tab-content"></div>
+
+    <!-- ✅ PANDUAN MESIN: SUDAH DIPERBAIKI LINKNYA -->
+    <div id="panduan" class="tab-content">
       <div class="sub-list show">
         <a href="https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link" class="item-link" target="kontenFrame">🍦 Mesin Pembuat Es Krim</a>
         <a href="https://drive.google.com/drive/folders/1mhdlSBADG1QJYoKxcHmuJJIa_2R2rbXR?usp=drive_link" class="item-link" target="kontenFrame">🧊 Mesin Pembuat Es Batu</a>
@@ -520,8 +489,6 @@
       </div>
     </div>
 
-    <div id="formulir" class="tab-content"></div>
-    <div id="status" class="tab-content"></div>
     <div id="mitra" class="tab-content"></div>
 
     <div id="pengiriman" class="tab-content">
@@ -533,12 +500,12 @@
       <div class="alamat-item">
         <p><strong>Penerima:</strong> Aftersales Momoyo</p>
         <p><strong>No. HP:</strong> <a href="https://wa.me/6281398495855" target="_blank">+62 813-9849-5855</a></p>
-        <p><strong>Alamat:</strong> Momoyo Training Center, Jl. HOS Cokroaminoto, RT.3/RW.9, Larangan Utara, Kec. Larangan, Kota Tangerang, Banten 15154</p>
+        <p><strong>Alamat:</strong> Momoyo Training Center, Jl. HOS Cokroaminoto, RT.3/RW.9, Larangan Utara, Kec. Larangan, Kota Tangerang, Banten 15135</p>
       </div>
     </div>
 
     <div class="iframe-container">
-      <iframe name="kontenFrame" src="https://drive.google.com/drive/folders/1FYr1dcT6i2oEP07DbIprpmhf1yMhEExT?usp=drive_link"></iframe>
+      <iframe name="kontenFrame" src="https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg"></iframe>
     </div>
   </div>
 
@@ -557,9 +524,9 @@
         cari: "Cari jenis mesin, layanan, atau formulir...",
         tidakAda: "😔 Maaf, data yang Anda cari tidak ditemukan",
         penutup: "Terima kasih telah mempercayakan kebutuhan usaha Anda kepada <strong>MOMOYO</strong>. Kami senantiasa berkomitmen memberikan pelayanan purna jual yang cepat, tanggap, dan berkualitas demi kelancaran operasional toko Anda setiap harinya. Apabila terdapat hal yang kurang jelas atau memerlukan bantuan langsung, tim dukungan teknis kami siap melayani Anda di nomor <strong>+62 813-9849-5855</strong>. Kesuksesan dan kelancaran usaha Anda adalah kebahagiaan terbesar bagi kami.",
-        panduan: "📺 Panduan Mesin",
         laporan: "📄 Laporan Kendala",
-        status: "✅ Cek Status",
+        status: "✅ Cek Laporan",
+        panduan: "📺 Panduan Mesin",
         mitra: "💰 Info Mitra",
         pengiriman: "📦 Pengiriman Balik"
       },
@@ -569,28 +536,34 @@
         cari: "搜索机器类型、服务或表格...",
         tidakAda: "😔 抱歉，未找到您搜索的数据",
         penutup: "感谢您选择<strong>MOMOYO</strong>，并信任我们的产品与服务。我们承诺始终为您提供快速、专业且优质的售后服务，确保您的日常业务顺畅无阻。如果您有任何疑问或需要直接协助，我们的技术支持团队随时为您服务，联系电话：<strong>+62 813-9849-5855</strong>。祝您生意兴隆，事业蒸蒸日上。",
-        panduan: "📺 设备指南",
         laporan: "📄 故障报告",
-        status: "✅ 状态查询",
+        status: "✅ 报告查询",
+        panduan: "📺 设备指南",
         mitra: "💰 合作信息",
         pengiriman: "📦 寄回地址"
       }
     };
 
-    function ubahBahasa(kode) {
-      bahasaSaatIni = kode;
-      const t = terjemahan[kode];
+    // ✅ FUNGSI GANTI BAHASA: KLIK SEKALI LANGSUNG GANTI ADA ANIMASI
+    function ubahBahasaOtomatis() {
+      const tombol = document.querySelector('.lang-float');
+      tombol.classList.add('active');
+      setTimeout(() => tombol.classList.remove('active'), 400);
+
+      bahasaSaatIni = bahasaSaatIni === 'id' ? 'zh' : 'id';
+      const t = terjemahan[bahasaSaatIni];
+      
       document.getElementById('title').textContent = t.judul;
       document.getElementById('welcome-text').innerHTML = t.selamat;
       document.getElementById('searchInput').placeholder = t.cari;
       document.getElementById('noResult').textContent = t.tidakAda;
       document.getElementById('closing-text').innerHTML = t.penutup;
-      document.getElementById('btn-panduan').textContent = t.panduan;
       document.getElementById('btn-laporan').textContent = t.laporan;
       document.getElementById('btn-status').textContent = t.status;
+      document.getElementById('btn-panduan').textContent = t.panduan;
       document.getElementById('btn-mitra').textContent = t.mitra;
       document.getElementById('btn-pengiriman').textContent = t.pengiriman;
-      document.getElementById('current-lang-flag').src = kode === 'id' ? 'https://flagcdn.com/w20/id.png' : 'https://flagcdn.com/w20/cn.png';
+      document.getElementById('icon-bahasa').src = bahasaSaatIni === 'id' ? 'https://flagcdn.com/w20/id.png' : 'https://flagcdn.com/w20/cn.png';
     }
 
     function bukaTab(evt, tabName, linkUrl) {
@@ -600,12 +573,11 @@
       for (let i = 0; i < tablinks.length; i++) tablinks[i].classList.remove("active");
       document.getElementById(tabName).classList.add("active");
       evt.currentTarget.classList.add("active");
-      if (linkUrl !== null) {
-        document.querySelector('iframe[name="kontenFrame"]').src = linkUrl;
-      }
+      if (linkUrl !== null) document.querySelector('iframe[name="kontenFrame"]').src = linkUrl;
     }
 
-    const toggleButton = document.getElementById("themeToggle");
+    // ✅ FUNGSI MODE GELAP / TERANG
+    const toggleButton = document.getElementById("tombolMode");
     let isDark = false;
     toggleButton.addEventListener("click", () => {
       isDark = !isDark;
