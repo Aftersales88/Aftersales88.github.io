@@ -29,22 +29,30 @@
       --btn-text: #ffffff;
       --search-bg: #ffffff;
       --search-border: #e0e7ee;
-      --shadow: rgba(21, 101, 192, 0.08);
+      --shadow: rgba(21, 101, 192, 0.12);
+      --item-bg: #e3f2fd;
+      --item-text: #0D47A1;
+      --alamat-bg: #f5f7fa;
+      --alamat-border: #bbdefb;
     }
 
     .dark {
       --primary: #42A5F5;
       --primary-light: #64B5F6;
-      --primary-dark: #1976D2;
+      --primary-dark: #90caf9;
       --secondary: #eceff1;
       --text: #f5f5f5;
       --text-light: #b0bec5;
-      --bg: #121a29;
+      --bg: #0f172a;
       --card-bg: #1e293b;
       --btn-text: #ffffff;
-      --search-bg: #273449;
-      --search-border: #334155;
-      --shadow: rgba(66, 165, 245, 0.12);
+      --search-bg: #334155;
+      --search-border: #475569;
+      --shadow: rgba(66, 165, 245, 0.15);
+      --item-bg: #1e3a5f;
+      --item-text: #90caf9;
+      --alamat-bg: #273449;
+      --alamat-border: #475569;
     }
 
     * {
@@ -59,7 +67,7 @@
       min-width: 320px;
       margin: auto;
       padding: 24px 20px;
-      background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 50%, #dceeff 100%);
+      background: var(--bg);
       background-attachment: fixed;
       color: var(--text);
       transition: background-color 0.4s ease, color 0.4s ease;
@@ -76,7 +84,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      opacity: 0.4;
+      opacity: 0.6;
       z-index: -1;
       background-image: 
         radial-gradient(circle at 20% 20%, rgba(21, 101, 192, 0.08) 0%, transparent 50%),
@@ -84,9 +92,6 @@
         radial-gradient(circle at 50% 50%, rgba(25, 118, 210, 0.05) 0%, transparent 60%);
     }
 
-    .dark body {
-      background: linear-gradient(135deg, #121a29 0%, #1a2436 50%, #141e30 100%);
-    }
     .dark body::before {
       background-image: 
         radial-gradient(circle at 20% 20%, rgba(66, 165, 245, 0.12) 0%, transparent 50%),
@@ -95,7 +100,7 @@
     }
 
     h1 {
-      background: linear-gradient(135deg, #0D47A1 0%, #1976D2 50%, #42A5F5 100%);
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 50%, var(--primary) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -114,26 +119,34 @@
       filter: brightness(1.1);
     }
 
+    /* ✅ DIPERBAIKI: Tulisan utama 1 baris, jelas di semua mode */
+    .judul-utama {
+      text-align: center;
+      font-weight: 700;
+      font-size: clamp(0.85rem, 3.5vw, 1.2rem);
+      color: var(--primary-dark);
+      margin: 8px 0 16px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      letter-spacing: 0.2px;
+    }
+
     .tagline {
       text-align: center;
       font-size: clamp(0.95em, 2vw, 1.05em);
       margin-top: 0;
       margin-bottom: 2rem;
       line-height: 1.75;
-      color: var(--text-light);
+      color: var(--text);
       background-color: var(--card-bg);
       padding: 20px;
       border-radius: 16px;
       box-shadow: 0 4px 12px var(--shadow);
-      border: 1px solid rgba(21, 101, 192, 0.05);
+      border: 1px solid var(--search-border);
       transition: transform 0.3s ease;
       width: 100%;
       backdrop-filter: blur(8px);
-      background-color: rgba(255, 255, 255, 0.85);
-    }
-    .dark .tagline {
-      border: 1px solid rgba(66, 165, 245, 0.08);
-      background-color: rgba(30, 41, 59, 0.85);
     }
     .tagline:hover { transform: translateY(-2px); }
 
@@ -149,9 +162,8 @@
       width: 100%;
       flex-wrap: nowrap;
       backdrop-filter: blur(8px);
-      background-color: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--search-border);
     }
-    .dark .header-container { background-color: rgba(30, 41, 59, 0.85); }
     .header-container img {
       width: clamp(60px, 12vw, 90px);
       height: auto;
@@ -163,26 +175,22 @@
       position: fixed; top: 20px;
       width: 45px; height: 45px;
       border-radius: 10px;
-      background-color: rgba(255, 255, 255, 0.45) !important;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      background-color: var(--card-bg) !important;
+      border: 1px solid var(--search-border);
       color: var(--text);
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 8px var(--shadow);
       z-index: 9999; cursor: pointer;
       transition: all 0.4s ease;
       backdrop-filter: blur(6px); overflow: hidden;
-    }
-    .dark .lang-float, .dark .theme-float {
-      background-color: rgba(30, 41, 59, 0.45) !important;
-      border: 1px solid rgba(66, 165, 245, 0.2);
     }
     .lang-float { right: 20px; }
     .theme-float { right: 75px; }
 
     .lang-float:hover, .theme-float:hover {
       transform: scale(1.08);
-      background-color: rgba(21, 101, 192, 0.7) !important;
-      border-color: rgba(21, 101, 192, 0.4);
+      background-color: var(--primary) !important;
+      border-color: var(--primary);
       color: white;
     }
     .lang-float img {
@@ -195,21 +203,22 @@
       position: fixed; bottom: 20px; right: 20px;
       width: 55px; height: 55px;
       border-radius: 50%;
-      background-color: rgba(37, 211, 102, 0.75);
+      background-color: rgba(37, 211, 102, 0.85);
       color: white; font-size: 28px;
       display: flex; align-items: center; justify-content: center;
       text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       z-index: 9999;
       transition: all 0.3s ease;
       backdrop-filter: blur(4px);
     }
     .wa-float:hover {
       transform: scale(1.1);
-      background-color: rgba(18, 140, 126, 0.9);
+      background-color: rgba(18, 140, 126, 1);
       color: white;
     }
 
+    /* ✅ TOMBOL MENU: JELAS DI MODE GELAP & TERANG */
     .tab-container {
       display: flex;
       background-color: var(--card-bg);
@@ -221,13 +230,10 @@
       width: 100%;
       gap: 4px; flex-wrap: nowrap;
       backdrop-filter: blur(8px);
-      background-color: rgba(255, 255, 255, 0.85);
       transition: all 0.3s ease;
     }
-    .tab-container.hilang-saat-cari {
-      display: none;
-    }
-    .dark .tab-container { background-color: rgba(30, 41, 59, 0.85); }
+    .tab-container.hilang-saat-cari { display: none; }
+    
     .tab-btn {
       flex: 1 1 0; min-width: unset;
       padding: 12px 6px;
@@ -241,11 +247,11 @@
     .tab-btn.active {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      box-shadow: 0 3px 8px rgba(21, 101, 192, 0.25);
+      box-shadow: 0 3px 8px rgba(21, 101, 192, 0.3);
     }
     .tab-btn:hover:not(.active) {
-      background-color: rgba(21, 101, 192, 0.08);
-      color: var(--primary);
+      background-color: var(--item-bg);
+      color: var(--item-text);
     }
 
     .content-box {
@@ -253,18 +259,12 @@
       border-radius: 0 0 16px 16px;
       padding: 0;
       box-shadow: 0 4px 12px var(--shadow);
-      border: 1px solid rgba(21, 101, 192, 0.03);
+      border: 1px solid var(--search-border);
       border-top: none;
       width: 100%;
       overflow: visible; min-height: auto;
       backdrop-filter: blur(8px);
-      background-color: rgba(255, 255, 255, 0.85);
       margin-top: 0;
-    }
-    .dark .content-box {
-      border: 1px solid rgba(66, 165, 245, 0.05);
-      border-top: none;
-      background-color: rgba(30, 41, 59, 0.85);
     }
 
     .tab-content {
@@ -278,15 +278,16 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* ✅ KOTAK ALAMAT: WARNA JELAS & KONTRAS */
     .alamat-item {
-      margin-bottom: 12px; padding: 12px;
-      border: 1px solid #b0c4de; border-radius: 12px;
-      background-color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 12px; padding: 14px;
+      border: 1px solid var(--alamat-border); border-radius: 12px;
+      background-color: var(--alamat-bg);
+      color: var(--text);
     }
     .alamat-item:last-child { margin-bottom: 0; }
-    .alamat-item p { font-size: 0.95em; line-height: 1.6; margin: 4px 0; }
+    .alamat-item p { font-size: 0.95em; line-height: 1.6; margin: 4px 0; font-weight: 500; }
 
-    /* --- PERUBAHAN: TAMPILAN ITEM & ISI PAS DI BAWAH --- */
     .sub-list { 
       display: flex;
       flex-direction: column;
@@ -298,10 +299,10 @@
       display: flex; align-items: center;
       width: 100%; 
       padding: 16px 18px;
-      background: linear-gradient(90deg, #1565C0, #0D47A1);
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
       color: white; border-radius: 8px;
       text-decoration: none; font-weight: 500;
-      box-shadow: 0 2px 6px rgba(13, 71, 161, 0.15);
+      box-shadow: 0 2px 6px var(--shadow);
       transition: all 0.3s ease;
       font-size: clamp(0.85em, 2vw, 1em);
       white-space: nowrap;
@@ -310,7 +311,7 @@
       text-align: left;
     }
     .item-link:hover {
-      background: linear-gradient(90deg, #0D47A1, #002171);
+      background: linear-gradient(90deg, var(--primary-dark), #002171);
       transform: translateX(4px);
       color: white;
     }
@@ -319,15 +320,14 @@
       width: 100%;
       border-radius: 8px;
       overflow: hidden;
-      background: #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      background: var(--card-bg);
+      box-shadow: 0 4px 12px var(--shadow);
       margin-top: 4px;
       margin-bottom: 8px;
       display: none;
+      border: 1px solid var(--search-border);
     }
-    .iframe-wrapper.active {
-      display: block;
-    }
+    .iframe-wrapper.active { display: block; }
 
     .info-drive {
       background-color: #fff8e1;
@@ -353,18 +353,18 @@
       font-weight: bold;
       font-size: 0.85em;
     }
-    .buka-langsung:hover {
-      background: #218838;
-      color: white;
-    }
+    .buka-langsung:hover { background: #218838; color: white; }
 
     iframe {
       width: 100%;
       height: 700px;
       border: none;
       display: block;
+      background: white;
     }
+    .dark iframe { background: #fff; }
 
+    /* ✅ KOLOM PENCARIAN: JELAS DI SEMUA MODE */
     .search-container {
       max-width: 100%; margin: 0 auto 12px;
       position: relative;
@@ -373,59 +373,59 @@
       box-shadow: 0 4px 12px var(--shadow);
       width: 100%;
       backdrop-filter: blur(8px);
-      background-color: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--search-border);
     }
-    .dark .search-container { background-color: rgba(30, 41, 59, 0.85); }
     #searchInput {
       width: 100%; padding: 16px 16px 16px 50px;
       font-size: clamp(0.9em, 2vw, 1.05em);
       border: 2px solid var(--search-border);
       border-radius: 12px;
-      background-color: rgba(255, 255, 255, 0.85);
+      background-color: var(--search-bg);
       color: var(--text);
       transition: all 0.3s ease; outline: none;
+      font-weight: 500;
     }
     #searchInput:focus {
       border-color: var(--primary-light);
-      box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.1);
+      box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.15);
     }
-    #searchInput::placeholder { color: var(--text-light); }
+    #searchInput::placeholder { color: var(--text-light); opacity: 0.8; }
     .search-icon {
       position: absolute; left: 18px; top: 50%;
       transform: translateY(-50%);
       font-size: 1.3em; color: var(--primary);
-      opacity: 0.7;
+      opacity: 0.8;
     }
     .no-result {
-      text-align: center; color: var(--text-light);
+      text-align: center; color: var(--text);
       padding: 20px;
       background-color: var(--card-bg);
       border-radius: 12px;
       margin-top: 0;
       box-shadow: 0 4px 12px var(--shadow);
-      display: none; font-weight: 500;
+      display: none; font-weight: 600;
       font-size: clamp(0.9em, 2vw, 1em);
       backdrop-filter: blur(8px);
-      background-color: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--search-border);
     }
-    .dark .no-result { background-color: rgba(30, 41, 59, 0.85); }
 
     .modal-wa {
       position: fixed; top: 0; left: 0;
       width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.5);
+      background-color: rgba(0,0,0,0.6);
       display: none; align-items: center; justify-content: center;
       z-index: 10000; backdrop-filter: blur(4px);
     }
     .modal-wa.show { display: flex; }
     .modal-kotak {
-      background: white; border-radius: 16px;
+      background: var(--card-bg); border-radius: 16px;
       padding: 24px; width: 85%;
       max-width: 320px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
       text-align: center;
+      border: 1px solid var(--search-border);
+      color: var(--text);
     }
-    .dark .modal-kotak { background: var(--card-bg); color: var(--text); }
     .modal-kotak h3 { margin-bottom: 16px; font-weight: 700; font-size: 1.1em; }
     .wa-pilihan {
       padding: 12px; margin: 8px 0;
@@ -438,10 +438,10 @@
     .wa-batal {
       margin-top: 12px; padding: 10px;
       border-radius: 8px;
-      background: #e5e7eb; color: #374151;
+      background: var(--search-bg); color: var(--text);
       cursor: pointer;
+      border: 1px solid var(--search-border);
     }
-    .dark .wa-batal { background: #374151; color: #e5e7eb; }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -450,7 +450,6 @@
 <body>
 
   <div class="lang-float" onclick="ubahBahasaOtomatis()">
-    <!-- ✅ BENDERA DIPERBAIKI SESUAI FILE DI FOLDER -->
     <img src="indonesia-flag.webp" id="icon-bahasa" alt="Bahasa Indonesia" />
   </div>
 
@@ -469,7 +468,6 @@
     </div>
   </div>
 
-  <!-- ✅ LOGO DI ATAS DIPERBAIKI - MENGGUNAKAN FILE LOKAL -->
   <div class="header-container">
     <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
     <h1 id="title">Momoyo Aftersales</h1>
@@ -477,13 +475,16 @@
   </div>
 
   <div class="flex items-center justify-center">
-    <!-- ✅ IKON PENCARIAN DIPERBAIKI - MENGGUNAKAN FILE LOKAL -->
     <p class="text-center mb-2"><img src="MomoMagnifier.png" class="logo-momo" alt="Ikon Pencarian"></p>
   </div>
+
+  <div class="judul-utama" id="judulUtama">
+    🌟 Selamat Datang di Pusat Bantuan Momoyo Aftersales! 🌟
+  </div>
+
   <p class="tagline" id="welcome-text">
-    🌟 <strong>Selamat datang di pusat bantuan Momoyo Aftersales!</strong> 🌟<br />
     Kami hadir sebagai mitra terpercaya Anda dalam perawatan dan penanganan segala jenis mesin penunjang usaha. Di sini tersedia panduan lengkap, video tutorial, serta solusi praktis untuk mengatasi setiap kendala teknis yang mungkin Anda temui.<br />
-    Seluruh informasi telah kami susun agar mudah dipahami dan siap diterapkan. Kepuasan Anda serta kelancaran operasional toko adalah prioritas utama kami. Bersama <strong>MOMOYO</strong>, urusan teknis menjadi lebih sederhana dan terjamin! 💼🛠️
+    Seluruh informasi telah kami susun agar mudah dipahami dan siap diterapkan. Kepuasan Anda serta kelancaran operasional toko adalah prioritas utama kami. Bersama <strong>MOMOYO</strong>, urusan teknis jadi lebih sederhana dan terjamin! 💼🛠️
   </p>
 
   <div class="search-container">
@@ -506,142 +507,51 @@
 
     <div id="panduan" class="tab-content">
       <div class="sub-list" id="daftarPanduan">
-        <!-- ITEM 1 -->
         <button class="item-link" onclick="bukaIsi(this, 'https://h07pxwx74k7.feishu.cn/drive/folder/HqthfhmzglIEYhdmY1GcR1tVnpc')">🍦 Mesin Pembuat Es Krim</button>
-        <div class="iframe-wrapper">
-          <div class="info-drive">
-            ⚠️ Tautan ini mungkin tidak bisa ditampilkan di sini karena keamanan, 
-            <a href="#" class="buka-langsung" target="_blank">Klik di sini untuk buka</a>
-          </div>
-          <iframe src=""></iframe>
-        </div>
+        <div class="iframe-wrapper"><div class="info-drive">⚠️ Tidak bisa ditampilkan, <a href="#" class="buka-langsung" target="_blank">Buka di sini</a></div><iframe src=""></iframe></div>
 
-        <!-- ITEM 2 -->
         <button class="item-link" onclick="bukaIsi(this, 'https://drive.google.com/drive/folders/1mhdlSBADG1QJYoKxcHmuJJIa_2R2rbXR?usp=drive_link')">🧊 Mesin Pembuat Es Batu</button>
-        <div class="iframe-wrapper">
-          <div class="info-drive">
-            ⚠️ Tautan ini mungkin tidak bisa ditampilkan di sini karena keamanan, 
-            <a href="#" class="buka-langsung" target="_blank">Klik di sini untuk buka</a>
-          </div>
-          <iframe src=""></iframe>
-        </div>
+        <div class="iframe-wrapper"><div class="info-drive">⚠️ Tidak bisa ditampilkan, <a href="#" class="buka-langsung" target="_blank">Buka di sini</a></div><iframe src=""></iframe></div>
 
-        <!-- ITEM 3 -->
         <button class="item-link" onclick="bukaIsi(this, 'https://drive.google.com/drive/folders/1zZTlVi8E4bx6xNZRYI3UuISGcvlv-AKZ?usp=drive_link')">💧 Mesin Penyaring Air</button>
-        <div class="iframe-wrapper">
-          <div class="info-drive">
-            ⚠️ Tautan ini mungkin tidak bisa ditampilkan di sini karena keamanan, 
-            <a href="#" class="buka-langsung" target="_blank">Klik di sini untuk buka</a>
-          </div>
-          <iframe src=""></iframe>
-        </div>
+        <div class="iframe-wrapper"><div class="info-drive">⚠️ Tidak bisa ditampilkan, <a href="#" class="buka-langsung" target="_blank">Buka di sini</a></div><iframe src=""></iframe></div>
 
-        <!-- ITEM 4 -->
         <button class="item-link" onclick="bukaIsi(this, 'https://drive.google.com/drive/folders/1lkFbW6__WGske43U_M_gJhdsjlI-h8FJ?usp=drive_link')">❄️ Mesin Pendingin Air (Chiller)</button>
-        <div class="iframe-wrapper">
-          <div class="info-drive">
-            ⚠️ Tautan ini mungkin tidak bisa ditampilkan di sini karena keamanan, 
-            <a href="#" class="buka-langsung" target="_blank">Klik di sini untuk buka</a>
-          </div>
-          <iframe src=""></iframe>
-        </div>
+        <div class="iframe-wrapper"><div class="info-drive">⚠️ Tidak bisa ditampilkan, <a href="#" class="buka-langsung" target="_blank">Buka di sini</a></div><iframe src=""></iframe></div>
 
-        <!-- ITEM 5 -->
         <button class="item-link" onclick="bukaIsi(this, 'https://drive.google.com/drive/folders/1py4B_g4zKiYKay0dEbJKv7bIYwHlLJC-?usp=drive_link')">🥶 Lemari Pendingin & Kulkas</button>
-        <div class="iframe-wrapper">
-          <div class="info-drive">
-            ⚠️ Tautan ini mungkin tidak bisa ditampilkan di sini because keamanan, 
-            <a href="#" class="buka-langsung" target="_blank">Klik di sini untuk buka</a>
-          </div>
-          <iframe src=""></iframe>
-        </div>
+        <div class="iframe-wrapper"><div class="info-drive">⚠️ Tidak bisa ditampilkan, <a href="#" class="buka-langsung" target="_blank">Buka di sini</a></div><iframe src=""></iframe></div>
 
-        <!-- ITEM 6 -->
         <button class="item-link" onclick="bukaIsi(this, 'https://drive.google.com/drive/folders/1SbSW5Y6gDGm-9rWnr2IBk4z0KtfkI-d_?usp=drive_link')">🍬 Mesin Pengaduk Fruktosa</button>
-        <div class="iframe-wrapper">
-          <div class="info-drive">
-            ⚠️ Tautan ini mungkin tidak bisa ditampilkan di sini karena keamanan, 
-            <a href="#" class="buka-langsung" target="_blank">Klik di sini untuk buka</a>
-          </div>
-          <iframe src=""></iframe>
-        </div>
+        <div class="iframe-wrapper"><div class="info-drive">⚠️ Tidak bisa ditampilkan, <a href="#" class="buka-langsung" target="_blank">Buka di sini</a></div><iframe src=""></iframe></div>
 
-        <!-- ITEM 7 -->
         <button class="item-link" onclick="bukaIsi(this, 'https://drive.google.com/drive/folders/1jOTClsuzAt0qKmuQlSfcBm-Rf2ZfflDx?usp=drive_link')">🥤 Mesin Penutup Gelas (Sealer)</button>
-        <div class="iframe-wrapper">
-          <div class="info-drive">
-            ⚠️ Tautan ini mungkin tidak bisa ditampilkan di sini karena keamanan, 
-            <a href="#" class="buka-langsung" target="_blank">Klik di sini untuk buka</a>
-          </div>
-          <iframe src=""></iframe>
-        </div>
+        <div class="iframe-wrapper"><div class="info-drive">⚠️ Tidak bisa ditampilkan, <a href="#" class="buka-langsung" target="_blank">Buka di sini</a></div><iframe src=""></iframe></div>
 
-        <!-- ITEM 8 -->
         <button class="item-link" onclick="bukaIsi(this, 'https://drive.google.com/drive/folders/19w9CR1hvprLaGusrG02OyS5vyp_23Djn?usp=drive_link')">🔥 Mesin Pemanas Air</button>
-        <div class="iframe-wrapper">
-          <div class="info-drive">
-            ⚠️ Tautan ini mungkin tidak bisa ditampilkan di sini karena keamanan, 
-            <a href="#" class="buka-langsung" target="_blank">Klik di sini untuk buka</a>
-          </div>
-          <iframe src=""></iframe>
-        </div>
+        <div class="iframe-wrapper"><div class="info-drive">⚠️ Tidak bisa ditampilkan, <a href="#" class="buka-langsung" target="_blank">Buka di sini</a></div><iframe src=""></iframe></div>
 
-        <!-- ITEM 9 -->
         <button class="item-link" onclick="bukaIsi(this, 'https://drive.google.com/drive/folders/1GaSGz1s4mHddk0EgY-9LhleXwlLeRTX0?usp=drive_link')">☕ Mesin Pembuat Kopi</button>
-        <div class="iframe-wrapper">
-          <div class="info-drive">
-            ⚠️ Tautan ini mungkin tidak bisa ditampilkan di sini karena keamanan, 
-            <a href="#" class="buka-langsung" target="_blank">Klik di sini untuk buka</a>
-          </div>
-          <iframe src=""></iframe>
-        </div>
+        <div class="iframe-wrapper"><div class="info-drive">⚠️ Tidak bisa ditampilkan, <a href="#" class="buka-langsung" target="_blank">Buka di sini</a></div><iframe src=""></iframe></div>
 
-        <!-- ITEM 10 -->
         <button class="item-link" onclick="bukaIsi(this, 'https://drive.google.com/drive/folders/1ZjKakVLsYUDiiKfAsZXS-_bwc8PEX2Qv?usp=drive_link')">🧃 Mesin Pencampur Minuman (Blender)</button>
-        <div class="iframe-wrapper">
-          <div class="info-drive">
-            ⚠️ Tautan ini mungkin tidak bisa ditampilkan di sini karena keamanan, 
-            <a href="#" class="buka-langsung" target="_blank">Klik di sini untuk buka</a>
-          </div>
-          <iframe src=""></iframe>
-        </div>
+        <div class="iframe-wrapper"><div class="info-drive">⚠️ Tidak bisa ditampilkan, <a href="#" class="buka-langsung" target="_blank">Buka di sini</a></div><iframe src=""></iframe></div>
 
-        <!-- ITEM 11 -->
         <button class="item-link" onclick="bukaIsi(this, 'https://drive.google.com/drive/folders/1KbUxS2R8thbpfrCieyVTD_qmJk3QGi5n?usp=drive_link')">⚡ Panduan Kelistrikan (2 & 3 Fase)</button>
-        <div class="iframe-wrapper">
-          <div class="info-drive">
-            ⚠️ Tautan ini mungkin tidak bisa ditampilkan di sini karena keamanan, 
-            <a href="#" class="buka-langsung" target="_blank">Klik di sini untuk buka</a>
-          </div>
-          <iframe src=""></iframe>
-        </div>
+        <div class="iframe-wrapper"><div class="info-drive">⚠️ Tidak bisa ditampilkan, <a href="#" class="buka-langsung" target="_blank">Buka di sini</a></div><iframe src=""></iframe></div>
 
-        <!-- ITEM 12 -->
         <button class="item-link" onclick="bukaIsi(this, 'https://drive.google.com/drive/folders/15GC6Z8rbPGTAU0q6B2HrU_RELTNoWfkR?usp=drive_link')">🥐 Peralatan Memanggang & Oven</button>
-        <div class="iframe-wrapper">
-          <div class="info-drive">
-            ⚠️ Tautan ini mungkin tidak bisa ditampilkan di sini karena keamanan, 
-            <a href="#" class="buka-langsung" target="_blank">Klik di sini untuk buka</a>
-          </div>
-          <iframe src=""></iframe>
-        </div>
+        <div class="iframe-wrapper"><div class="info-drive">⚠️ Tidak bisa ditampilkan, <a href="#" class="buka-langsung" target="_blank">Buka di sini</a></div><iframe src=""></iframe></div>
 
-        <!-- ITEM 13 -->
         <button class="item-link" onclick="bukaIsi(this, 'https://drive.google.com/drive/folders/1TVfKyofIdZux2eAvwvdtJMbXswAp-REY?usp=drive_link')">🧰 Peralatan & Panduan Lainnya</button>
-        <div class="iframe-wrapper">
-          <div class="info-drive">
-            ⚠️ Tautan ini mungkin tidak bisa ditampilkan di sini karena keamanan, 
-            <a href="#" class="buka-langsung" target="_blank">Klik di sini untuk buka</a>
-          </div>
-          <iframe src=""></iframe>
-        </div>
+        <div class="iframe-wrapper"><div class="info-drive">⚠️ Tidak bisa ditampilkan, <a href="#" class="buka-langsung" target="_blank">Buka di sini</a></div><iframe src=""></iframe></div>
       </div>
     </div>
 
     <div id="mitra" class="tab-content"></div>
 
+    <!-- ✅ ALAMAT SUDAH LENGKAP DAN WARNA JELAS -->
     <div id="pengiriman" class="tab-content">
-      <!-- ✅ SUDAH DITAMBAHKAN NOMOR HP DI SINI -->
       <div class="alamat-item">
         <p><strong>Penerima:</strong> Dian</p>
         <p><strong>Nomor HP:</strong> 0813-9849-5855</p>
@@ -653,193 +563,109 @@
         <p><strong>Alamat:</strong> Momoyo Training Center, Jl. HOS Cokroaminoto, RT.3/RW.9, Larangan Utara, Kec. Larangan, Kota Tangerang, Banten 15135</p>
       </div>
     </div>
-
-    <div class="iframe-container" id="kontenWeb">
-      <iframe name="kontenFrame" src="https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg"></iframe>
-    </div>
   </div>
 
   <p class="tagline" id="closing-text" style="margin-top:12px;">
-    Terima kasih telah mempercayakan kebutuhan usaha Anda kepada <strong>MOMOYO</strong>. Kami senantiasa berkomitmen memberikan pelayanan purna jual yang cepat, tanggap, dan berkualitas demi kelancaran operasional toko Anda setiap harinya. Apabila terdapat hal yang kurang jelas atau memerlukan bantuan langsung, tim dukungan teknis kami siap melayani Anda di nomor <strong>+62 813-9849-5855</strong>. Kesuksesan dan kelancaran usaha Anda adalah kebahagiaan terbesar bagi kami.
+    Terima kasih telah mempercayakan kebutuhan usaha Anda kepada <strong>MOMOYO</strong>. Kami senantiasa berkomitmen memberikan pelayanan terbaik, cepat, dan terpercaya demi kelancaran operasional Anda. Jika ada kendala, tim teknis kami siap membantu di nomor <strong>+62 813-9849-5855</strong>. Kesuksesan Anda adalah kebanggaan kami! 🚀
   </p>
 
   <script>
-    let bahasaSaatIni;
-    let modeOtomatis = true;
-    tailwind.config = { darkMode: 'class' };
+    let bahasaSaatIni = 'id';
+    let modeGelap = false;
 
-    const terjemahan = {
-      id: {
-        judul: "Momoyo Aftersales",
-        selamat: "🌟 <strong>Selamat Datang di Pusat Bantuan Momoyo Aftersales!</strong> 🌟<br />Kami hadir sebagai mitra terpercaya Anda dalam perawatan dan penanganan segala jenis mesin penunjang usaha. Di sini tersedia panduan lengkap, video tutorial, serta solusi praktis untuk mengatasi setiap kendala teknis yang mungkin Anda temui.<br />Seluruh informasi telah kami susun agar mudah dipahami dan siap diterapkan. Kepuasan Anda serta kelancaran operasional toko adalah prioritas utama kami. Bersama <strong>MOMOYO</strong>, urusan teknis menjadi lebih sederhana dan terjamin! 💼🛠️",
-        cari: "Ketik untuk cari panduan...",
-        tidakAda: "😔 Maaf, panduan yang Anda cari tidak ditemukan",
-        penutup: "Terima kasih telah mempercayakan kebutuhan usaha Anda kepada <strong>MOMOYO</strong>. Kami senantiasa berkomitmen memberikan pelayanan purna jual yang cepat, tanggap, dan berkualitas demi kelancaran operasional toko Anda setiap harinya. Apabila terdapat hal yang kurang jelas atau memerlukan bantuan langsung, tim dukungan teknis kami siap melayani Anda di nomor <strong>+62 813-9849-5855</strong>. Kesuksesan dan kelancaran usaha Anda adalah kebahagiaan terbesar bagi kami."
-      },
-      zh: {
-        judul: "Momoyo 售后服务中心",
-        selamat: "🌟 <strong>欢迎来到 Momoyo 售后服务支持中心！</strong> 🌟<br />我们是您最信赖的合作伙伴，致力于为您提供各类商用设备的维护与技术支持。在这里，您可以找到完整的操作指南、教学视频以及解决各种技术问题的实用方案。<br />所有资料均经过精心整理，确保内容通俗易懂、便于应用。您的满意与门店的顺利运营，始终是我们的首要目标。选择<strong>MOMOYO</strong>，让技术服务更简单、更有保障！ 💼🛠️",
-        cari: "输入搜索指南...",
-        tidakAda: "😔 抱歉，未找到您搜索的指南",
-        penutup: "感谢您选择<strong>MOMOYO</strong>，并信任我们的产品与服务。我们承诺始终为您提供快速、专业且优质的售后服务，确保您的日常业务顺畅无阻。如果您有任何疑问或需要直接协助，我们的技术支持团队随时为您服务，联系电话：<strong>+62 813-9849-5855</strong>。祝您生意兴隆，事业蒸蒸日上。"
-      }
-    };
-
-    // ✅ DETEKSI BAHASA OTOMATIS
-    function deteksiBahasaOtomatis() {
-      const bahasaPerangkat = navigator.language || navigator.userLanguage;
-      bahasaSaatIni = bahasaPerangkat.startsWith('zh') ? 'zh' : 'id';
-      terapkanBahasa();
+    if (localStorage.getItem('mode') === 'dark') {
+      document.documentElement.classList.add('dark');
+      modeGelap = true;
+      document.getElementById('tombolMode').textContent = '☀️';
     }
+
+    document.getElementById('tombolMode').addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      modeGelap = !modeGelap;
+      document.getElementById('tombolMode').textContent = modeGelap ? '☀️' : '🌙';
+      localStorage.setItem('mode', modeGelap ? 'dark' : 'light');
+    });
 
     function ubahBahasaOtomatis() {
       const tombol = document.querySelector('.lang-float');
       tombol.classList.add('active');
       setTimeout(() => tombol.classList.remove('active'), 400);
+
       bahasaSaatIni = bahasaSaatIni === 'id' ? 'zh' : 'id';
-      terapkanBahasa();
-    }
+      localStorage.setItem('bahasa', bahasaSaatIni);
 
-    function terapkanBahasa() {
-      const t = terjemahan[bahasaSaatIni];
-      document.getElementById('title').textContent = t.judul;
-      document.getElementById('welcome-text').innerHTML = t.selamat;
-      document.getElementById('searchInput').placeholder = t.cari;
-      document.getElementById('noResult').textContent = t.tidakAda;
-      document.getElementById('closing-text').innerHTML = t.penutup;
-      // ✅ BENDERA CHINA DIPERBAIKI SESUAI FILE DI FOLDER
-      document.getElementById('icon-bahasa').src = bahasaSaatIni === 'id' ? 'indonesia-flag.webp' : 'china-flag.jpg';
-    }
+      document.querySelectorAll('.id-text').forEach(el => el.style.display = bahasaSaatIni === 'id' ? 'inline' : 'none');
+      document.querySelectorAll('.zh-text').forEach(el => el.style.display = bahasaSaatIni === 'zh' ? 'inline' : 'none');
 
-    // ✅ DETEKSI MODE GELAP/TERANG
-    const toggleButton = document.getElementById("tombolMode");
-    let isDark;
-
-    function deteksiModeAwal() {
-      isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      terapkanMode();
-    }
-
-    toggleButton.addEventListener("click", () => {
-      isDark = !isDark;
-      terapkanMode();
-    })
-
-    function terapkanMode() {
-      document.documentElement.classList.toggle("dark", isDark);
-      toggleButton.textContent = isDark ? "☀️" : "🌙";
-    }
-
-    function bukaTab(evt, tabName, linkUrl) {
-      let tabcontent = document.getElementsByClassName("tab-content");
-      for (let i = 0; i < tabcontent.length; i++) tabcontent[i].classList.remove("active");
-      let tablinks = document.getElementsByClassName("tab-btn");
-      for (let i = 0; i < tablinks.length; i++) tablinks[i].classList.remove("active");
-      document.getElementById(tabName).classList.add("active");
-      evt.currentTarget.classList.add("active");
-      
-      const wadahWeb = document.getElementById('kontenWeb');
-      if (linkUrl !== null) {
-        wadahWeb.classList.remove('hide');
-        document.querySelector('iframe[name="kontenFrame"]').src = linkUrl;
-      } else {
-        wadahWeb.classList.add('hide');
-        document.querySelector('iframe[name="kontenFrame"]').src = "https://blank.org/";
-      }
-    }
-
-    // ✅ FUNGSI UTAMA: KLIK TOMBOL -> ISI MUNCUL LANGSUNG DI BAWAHNYA
-    function bukaIsi(elemen, link) {
-      const semuaWrapper = document.querySelectorAll('.iframe-wrapper');
-      const semuaLink = document.querySelectorAll('.item-link');
-
-      // Tutup semua yang lain
-      semuaWrapper.forEach(w => w.classList.remove('active'));
-      semuaLink.forEach(l => l.style.opacity = '0.95');
-
-      // Buka yang dipilih
-      const wrapper = elemen.nextElementSibling;
-      const iframe = wrapper.querySelector('iframe');
-      const tautan = wrapper.querySelector('.buka-langsung');
-
-      wrapper.classList.add('active');
-      elemen.style.opacity = '1';
-
-      // Masukkan link ke iframe & tombol
-      iframe.src = link;
-      tautan.href = link;
-
-      // Gulung sedikit ke bawah supaya pas terlihat
-      wrapper.scrollIntoView({behavior: 'smooth', block: 'nearest'});
-    }
-
-    // ✅ FITUR PENCARIAN
-    function cariDanUbahTampilan() {
-      let input = document.getElementById('searchInput');
-      let filter = input.value.toUpperCase().trim();
-      let wadahTab = document.getElementById('wadahTab');
-      let daftarItem = document.querySelectorAll('.item-link');
-      let daftarWrapper = document.querySelectorAll('.iframe-wrapper');
-      let noResult = document.getElementById('noResult');
-      let adaYangDitemukan = false;
-      let semuaTabKonten = document.querySelectorAll('.tab-content');
-
-      // Kalau kolom pencarian dikosongkan: Kembali ke tampilan awal
-      if (filter === "") {
-        wadahTab.classList.remove('hilang-saat-cari');
-        semuaTabKonten.forEach(el => el.classList.remove('active'));
-        document.getElementById('formulir').classList.add('active');
-        document.querySelector('.tab-btn').classList.add('active');
-        daftarItem.forEach((el, idx) => {
-          el.style.display = 'flex';
-          daftarWrapper[idx].classList.remove('active');
-        });
-        noResult.style.display = "none";
-        return;
-      }
-
-      // Kalau sedang mencari: SEMUA TAB DI ATAS HILANG
-      wadahTab.classList.add('hilang-saat-cari');
-
-      // TAMPILKAN HANYA BAGIAN PANDUAN
-      semuaTabKonten.forEach(el => el.classList.remove('active'));
-      document.getElementById('panduan').classList.add('active');
-
-      // Saring hasil
-      daftarItem.forEach((el, idx) => {
-        let txt = el.textContent || el.innerText;
-        if (txt.toUpperCase().includes(filter)) {
-          el.style.display = 'flex';
-          adaYangDitemukan = true;
-        } else {
-          el.style.display = 'none';
-          daftarWrapper[idx].classList.remove('active');
+      const teks = {
+        id: {
+          judul: "Momoyo Aftersales",
+          selamat: "🌟 Selamat Datang di Pusat Bantuan Momoyo Aftersales! 🌟",
+          selamat_isi: "Kami hadir sebagai mitra terpercaya Anda dalam perawatan dan penanganan segala jenis mesin penunjang usaha. Di sini tersedia panduan lengkap, video tutorial, serta solusi praktis untuk mengatasi setiap kendala teknis yang mungkin Anda temui.<br>Seluruh informasi telah kami susun agar mudah dipahami dan siap diterapkan. Kepuasan Anda serta kelancaran operasional toko adalah prioritas utama kami. Bersama <strong>MOMOYO</strong>, urusan teknis jadi lebih sederhana dan terjamin! 💼🛠️",
+          cari: "Ketik untuk cari panduan...",
+          tidak_ada: "😔 Maaf, panduan yang Anda cari tidak ditemukan",
+          penutup: "Terima kasih telah mempercayakan kebutuhan usaha Anda kepada <strong>MOMOYO</strong>. Kami senantiasa berkomitmen memberikan pelayanan terbaik, cepat, dan terpercaya demi kelancaran operasional Anda. Jika ada kendala, tim teknis kami siap membantu di nomor <strong>+62 813-9849-5855</strong>. Kesuksesan Anda adalah kebanggaan kami! 🚀"
+        },
+        zh: {
+          judul: "Momoyo 售后服务",
+          selamat: "🌟 欢迎来到 Momoyo 售后服务中心！🌟",
+          selamat_isi: "我们是您值得信赖的合作伙伴，致力于为您提供各类商用设备的维护与技术支持。在这里，您可以找到完整的操作指南、教学视频以及解决各种技术问题的实用方案。<br>所有资料均经过精心整理，确保内容通俗易懂、便于应用。您的满意与门店的顺利运营，始终是我们的首要目标。选择<strong>MOMOYO</strong>，让技术服务更简单、更有保障！ 💼🛠️",
+          cari: "输入搜索指南...",
+          tidak_ada: "😔 抱歉，未找到您搜索的指南",
+          penutup: "感谢您选择<strong>MOMOYO</strong>并信任我们的产品与服务。我们承诺始终为您提供快速、专业且优质的售后服务，确保您的日常业务顺畅无阻。如果您有任何疑问或需要直接协助，我们的技术支持团队随时为您服务，联系电话：<strong>+62 813-9849-5855</strong>。祝您生意兴隆，事业蒸蒸日上！ 🚀"
         }
+      };
+
+      const t = teks[bahasaSaatIni];
+      document.getElementById('title').textContent = t.judul;
+      document.getElementById('judulUtama').textContent = t.selamat;
+      document.getElementById('welcome-text').innerHTML = t.selamat_isi;
+      document.getElementById('searchInput').placeholder = t.cari;
+      document.getElementById('noResult').textContent = t.tidak_ada;
+      document.getElementById('closing-text').innerHTML = t.penutup;
+      document.getElementById('icon-bahasa').src = bahasaSaatIni === 'id' ? 'indonesia-flag.webp' : 'china-flag.webp';
+    }
+
+    if (localStorage.getItem('bahasa') === 'zh') ubahBahasaOtomatis();
+
+    function bukaTab(e, nama, link) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      document.getElementById(nama).classList.add('active');
+      if (link) document.getElementById(nama).innerHTML = `<iframe src="${link}" style="width:100%;height:700px;border:none"></iframe>`;
+    }
+
+    function bukaIsi(elemen, link) {
+      const wrapper = elemen.nextElementSibling;
+      const semuaWrapper = document.querySelectorAll('.iframe-wrapper');
+      semuaWrapper.forEach(w => { if(w !== wrapper) w.classList.remove('active') });
+      wrapper.classList.toggle('active');
+      wrapper.querySelector('iframe').src = wrapper.classList.contains('active') ? link : '';
+      wrapper.querySelector('.buka-langsung').href = link;
+    }
+
+    function cariDanUbahTampilan() {
+      const kata = document.getElementById('searchInput').value.toUpperCase().trim();
+      const daftar = document.getElementById('daftarPanduan');
+      const item = daftar.querySelectorAll('.item-link');
+      let ada = false;
+
+      item.forEach(btn => {
+        const teks = btn.textContent || btn.innerText;
+        const tampil = teks.toUpperCase().includes(kata);
+        btn.style.display = tampil ? 'flex' : 'none';
+        btn.nextElementSibling.classList.remove('active');
+        if(tampil) ada = true;
       });
 
-      noResult.style.display = adaYangDitemukan ? "none" : "block";
+      document.getElementById('noResult').style.display = ada ? 'none' : 'block';
+      document.getElementById('wadahTab').style.display = kata !== '' ? 'none' : 'flex';
     }
 
-    // ✅ FUNGSI WA
-    function bukaPilihanWA() {
-      const adaWA = navigator.userAgent.includes('Android') || navigator.userAgent.includes('iPhone');
-      if (adaWA) {
-        document.getElementById('modalWA').classList.add('show');
-      } else {
-        window.open('https://wa.me/6281398495855', '_blank');
-      }
-    }
-    function tutupPilihanWA() {
-      document.getElementById('modalWA').classList.remove('show');
-    }
-    function bukaWA(link) {
-      tutupPilihanWA();
-      window.open(link, '_system');
-    }
-
-    // ✅ JALANKAN SEMUA SETTINGAN
-    deteksiBahasaOtomatis();
-    deteksiModeAwal();
+    function bukaPilihanWA() { document.getElementById('modalWA').classList.add('show'); }
+    function tutupPilihanWA() { document.getElementById('modalWA').classList.remove('show'); }
+    function bukaWA(link) { window.open(link, '_blank'); tutupPilihanWA(); }
   </script>
 </body>
 </html>
