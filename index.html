@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
   <title>Momoyo Aftersales | Pusat Layanan & Panduan Teknis</title>
-  <!-- ✅ BAGIAN INI DITAMBAH UNTUK UBAH LOGO DI TAB BROWSER -->
-  <link rel="icon" type="image/png" href="https://momoyo.co.id/wp-content/uploads/2023/09/logo-momoyo.png">
-  <link rel="shortcut icon" type="image/png" href="https://momoyo.co.id/wp-content/uploads/2023/09/logo-momoyo.png">
+  <!-- ✅ LOGO TAB DIPERBAIKI - AMBIL DARI FILE LOKAL -->
+  <link rel="icon" type="image/jpeg" href="Logo Momoyo.jpg">
+  <link rel="shortcut icon" type="image/jpeg" href="Logo Momoyo.jpg">
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -450,7 +450,8 @@
 <body>
 
   <div class="lang-float" onclick="ubahBahasaOtomatis()">
-    <img src="https://flagcdn.com/w20/id.png" id="icon-bahasa" alt="Bahasa" />
+    <!-- ✅ BENDERA DIPERBAIKI SESUAI FILE DI FOLDER -->
+    <img src="indonesia-flag.webp" id="icon-bahasa" alt="Bahasa Indonesia" />
   </div>
 
   <div class="theme-float" id="tombolMode">🌙</div>
@@ -468,15 +469,16 @@
     </div>
   </div>
 
-  <!-- ✅ LOGO SUDAH DIUBAH SESUAI PERMINTAAN -->
+  <!-- ✅ LOGO DI ATAS DIPERBAIKI - MENGGUNAKAN FILE LOKAL -->
   <div class="header-container">
-    <img src="https://momoyo.co.id/wp-content/uploads/2023/09/logo-momoyo.png" alt="Logo Momoyo" />
+    <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
     <h1 id="title">Momoyo Aftersales</h1>
-    <img src="https://momoyo.co.id/wp-content/uploads/2023/09/logo-momoyo.png" alt="Logo Momoyo" />
+    <img src="Logo Momoyo.jpg" alt="Logo Momoyo" />
   </div>
 
   <div class="flex items-center justify-center">
-    <p class="text-center mb-2"><img src="https://momoyo.co.id/wp-content/uploads/2023/09/logo-momoyo.png" class="logo-momo" alt="Ikon Pencarian"></p>
+    <!-- ✅ IKON PENCARIAN DIPERBAIKI - MENGGUNAKAN FILE LOKAL -->
+    <p class="text-center mb-2"><img src="MomoMagnifier.png" class="logo-momo" alt="Ikon Pencarian"></p>
   </div>
   <p class="tagline" id="welcome-text">
     🌟 <strong>Selamat datang di pusat bantuan Momoyo Aftersales!</strong> 🌟<br />
@@ -702,7 +704,8 @@
       document.getElementById('searchInput').placeholder = t.cari;
       document.getElementById('noResult').textContent = t.tidakAda;
       document.getElementById('closing-text').innerHTML = t.penutup;
-      document.getElementById('icon-bahasa').src = bahasaSaatIni === 'id' ? 'https://flagcdn.com/w20/id.png' : 'https://flagcdn.com/w20/cn.png';
+      // ✅ BENDERA CHINA DIPERBAIKI SESUAI FILE DI FOLDER
+      document.getElementById('icon-bahasa').src = bahasaSaatIni === 'id' ? 'indonesia-flag.webp' : 'china-flag.jpg';
     }
 
     // ✅ DETEKSI MODE GELAP/TERANG
