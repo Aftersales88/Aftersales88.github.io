@@ -301,6 +301,7 @@
     }
     .alamat-item:last-child { margin-bottom: 0; }
     .alamat-item p { font-size: 0.95em; line-height: 1.6; margin: 4px 0; font-weight: 500; }
+    .text-center { text-align: center !important; }
 
     .sub-list { 
       display: flex;
@@ -335,8 +336,8 @@
     }
 
     /* ==============================================
-       BAGIAN: TEMPAT VIDEO
-       ✅ DIPINDAH KE BAWAH SUB JUDUL
+       BAGIAN: TEMPAT VIDEO / IFRAME
+       ✅ TINGGI DIATUR: FORM LEBIH TINGGI DARI YANG LAIN
     ============================================== */
     .iframe-wrapper {
       width: 100%;
@@ -348,17 +349,19 @@
       display: none;
       border: 1px solid var(--search-border);
     }
-    .iframe-wrapper.active { display: block; }
+    .iframe-wrapper.active { display: block }
 
     iframe {
       width: 100%;
-      height: 500px;
       border: none;
       display: block;
       background: white;
       allowfullscreen="allowfullscreen";
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
     }
+    /* ✅ KHUSUS FORMULIR: TINGGI DIPANJANGKAN AGAR TIDAK SERING SCROLL */
+    #formulir iframe { height: 1200px; }
+    #status iframe, #mitra iframe { height: 600px; }
     .dark iframe { background: #fff; }
 
     /* ==============================================
@@ -485,6 +488,23 @@
       display: none;
     }
 
+    /* ==============================================
+       BAGIAN: KATA PENUTUP
+    ============================================== */
+    .penutup {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 16px;
+      font-size: 0.9em;
+      color: var(--text-light);
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px var(--shadow);
+      border: 1px solid var(--search-border);
+      backdrop-filter: blur(8px);
+      line-height: 1.6;
+    }
+
   </style>
 
   <!-- ✅ FONT KHUSUS -->
@@ -496,8 +516,10 @@
 
   <!-- ==============================================
        TAMPILAN: TOMBOL GANTI BAHASA & MODE
+       ✅ NAMA FILE SUDAH SESUAI: china-flag.jpg & indonesia-flag.webp
   ============================================== -->
   <div class="lang-float" onclick="ubahBahasaOtomatis()">
+    <!-- ✅ AWALNYA BAHASA INDONESIA, TAMPIL china-flag.jpg -->
     <img src="china-flag.jpg" id="icon-bahasa" alt="Ganti Bahasa" />
   </div>
   <div class="theme-float" id="tombolMode">🌙</div>
@@ -568,6 +590,7 @@
 
   <!-- ==============================================
        TAMPILAN: MENU TAB NAVIGASI
+       ✅ FUNGSI DIUBAH: LINK MUNCUL DI BAWAH, BUKAN GANTI TEMPAT
   ============================================== -->
   <div class="tab-container" id="wadahTab">
     <button class="tab-btn active" onclick="bukaTab(event, 'formulir', 'https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg')" id="btn-laporan">📄 <span class="id-text">Formulir</span><span class="zh-text" style="display:none;">表单</span></button>
@@ -581,7 +604,7 @@
        TAMPILAN: KOTAK KONTEN UTAMA
   ============================================== -->
   <div class="content-box">
-    <!-- ✅ FORM FORMULIR: LINK SUDAH LOADING OTOMATIS SAAT DIBUKA -->
+    <!-- ✅ FORM FORMULIR: TINGGI SUDAH DIPANJANGKAN DI CSS -->
     <div id="formulir" class="tab-content active">
       <div class="iframe-wrapper active">
         <iframe src="https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg" 
@@ -611,8 +634,6 @@
 
     <!-- ==============================================
          BAGIAN: DAFTAR PANDUAN LENGKAP
-         ✅ SUDAH ADA TOGGLE DI SUB JUDUL
-         ✅ SEMUA TEKS SUDAH ADA BAHASA MANDARIN
     ============================================== -->
     <div id="panduan" class="tab-content">
       <div class="sub-list" id="daftarPanduan">
@@ -869,339 +890,9 @@
               </div>
             </div>
             <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/Pt73b4iH9oqNQUxYtFecmBxgnHf')" class="sub-judul">
+              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/Pt73b4iH9oqNQUxYtFecmBxgnHf')" class="sub-jb4iH9oqNQUxYtFecmBxgnHf')" class="sub-judul">
                 <span class="id-text">• Pergantian Head Set Printer Label</span>
                 <span class="zh-text" style="display:none;">• 标签打印机打印头组件更换</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/HS10bLVCXom1U4x5Re3cliRun5e')" class="sub-judul">
-                <span class="id-text">• Pergantian Head Printer Thermal</span>
-                <span class="zh-text" style="display:none;">• 热敏打印机打印头更换</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/K2Cb78wVo5sVGxvgXIcVYwknHe')" class="sub-judul">
-                <span class="id-text">• Pergantian Sensor Printer Thermal</span>
-                <span class="zh-text" style="display:none;">• 热敏打印机传感器更换</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/O3Ncbu7puovGKmxsJNsc7uwQnnd')" class="sub-judul">
-                <span class="id-text">• Pergantian Rol Kertas Printer Thermal</span>
-                <span class="zh-text" style="display:none;">• 热敏打印机纸辊更换</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ✅ EGG WAFFLE -->
-        <button class="item-link" onclick="toggleKategori('egg-waffle')">
-          <span class="id-text">🧇 Egg Waffle</span>
-          <span class="zh-text" style="display:none;">🧇 鸡蛋仔机</span>
-        </button>
-        <div class="kategori-wrapper" id="egg-waffle">
-          <div class="konten-sub">
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/Dl33b6XFXotzs3xDIzecEWE1n2q')" class="sub-judul">
-                <span class="id-text">• Pergantian On/Off</span>
-                <span class="zh-text" style="display:none;">• 开关更换</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/Vzz9bSOtIotwhgx3RG5cgCxnnTd')" class="sub-judul">
-                <span class="id-text">• Settingan Suhu Egg Waffle</span>
-                <span class="zh-text" style="display:none;">• 鸡蛋仔机温度设置</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/IUribxLvioiqaSxSdbrcfGEDnug')" class="sub-judul">
-                <span class="id-text">• Settingan Timer Egg Waffle</span>
-                <span class="zh-text" style="display:none;">• 鸡蛋仔机定时器设置</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ✅ DOUGH MIXER -->
-        <button class="item-link" onclick="toggleKategori('dough-mixer')">
-          <span class="id-text">🥣 12 Dough Mixer</span>
-          <span class="zh-text" style="display:none;">🥣 12 面团搅拌机</span>
-        </button>
-        <div class="kategori-wrapper" id="dough-mixer">
-          <div class="konten-sub">
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/NTelb3byMoIR1YxMMWeck7SnnOZ')" class="sub-judul">
-                <span class="id-text">• Pergantian Kontraktor (1)</span>
-                <span class="zh-text" style="display:none;">• 接触器更换 (1)</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/U5Ttbj7xZoiHphxkJVPcOmbgnWh')" class="sub-judul">
-                <span class="id-text">• Pergantian Kontraktor (2)</span>
-                <span class="zh-text" style="display:none;">• 接触器更换 (2)</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/XQY1br4Qpo12ikxo0XUcdOL7nwc')" class="sub-judul">
-                <span class="id-text">• Pergantian Whisk</span>
-                <span class="zh-text" style="display:none;">• 搅拌器更换</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ✅ MIXER CREAM -->
-        <button class="item-link" onclick="toggleKategori('mixer-cream')">
-          <span class="id-text">🥛 Mixer Cream</span>
-          <span class="zh-text" style="display:none;">🥛 奶油搅拌机</span>
-        </button>
-        <div class="kategori-wrapper" id="mixer-cream">
-          <div class="konten-sub">
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/Ml1DbXO9MoWLIixMxuac20jJnTb')" class="sub-judul">
-                <span class="id-text">• Pergantian Potensio</span>
-                <span class="zh-text" style="display:none;">• 电位器更换</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ✅ OVEN -->
-        <button class="item-link" onclick="toggleKategori('oven')">
-          <span class="id-text">🔥 Oven</span>
-          <span class="zh-text" style="display:none;">🔥 烤箱</span>
-        </button>
-        <div class="kategori-wrapper" id="oven">
-          <div class="konten-sub">
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/WeqUbuX1Ao96xJx7GI3chKDbnTf')" class="sub-judul">
-                <span class="id-text">• Pergantian Pemanas</span>
-                <span class="zh-text" style="display:none;">• 加热管更换</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ✅ KULKAS 4 PINTU -->
-        <button class="item-link" onclick="toggleKategori('kulkas-4pintu')">
-          <span class="id-text">❄️ Kulkas 4 Pintu</span>
-          <span class="zh-text" style="display:none;">❄️ 四门冰箱</span>
-        </button>
-        <div class="kategori-wrapper" id="kulkas-4pintu">
-          <div class="konten-sub">
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/TGRZbfQYOofS3txraQvcTUACnvb')" class="sub-judul">
-                <span class="id-text">• Pergantian Kipas</span>
-                <span class="zh-text" style="display:none;">• 风扇更换</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ✅ DLL -->
-        <button class="item-link" onclick="toggleKategori('dll')">
-          <span class="id-text">📌 DLL</span>
-          <span class="zh-text" style="display:none;">📌 其他</span>
-        </button>
-        <div class="kategori-wrapper" id="dll">
-          <div class="konten-sub">
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/QsEWbAq09oFVpnxMVQ4cpKRSnIg')" class="sub-judul">
-                <span class="id-text">• Pengecekkan Kompressor</span>
-                <span class="zh-text" style="display:none;">• 压缩机检查</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ✅ INSTALASI -->
-        <button class="item-link" onclick="toggleKategori('instalasi')">
-          <span class="id-text">🔧 Instalasi</span>
-          <span class="zh-text" style="display:none;">🔧 安装指南</span>
-        </button>
-        <div class="kategori-wrapper" id="instalasi">
-          <div class="konten-sub">
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/ZimObV2Rlor8qexol6gc2ddGnah')" class="sub-judul">
-                <span class="id-text">• Instalasi Mixer Cream</span>
-                <span class="zh-text" style="display:none;">• 奶油搅拌机安装</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/J22Cb7zHtowIw6xKNqwcQ68snOh')" class="sub-judul">
-                <span class="id-text">• Instalasi Oven</span>
-                <span class="zh-text" style="display:none;">• 烤箱安装</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/DYCXbkOutozxI7xrIC1cTdk6nt0')" class="sub-judul">
-                <span class="id-text">• Instalasi Proofing</span>
-                <span class="zh-text" style="display:none;">• 醒发箱安装</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ✅ MAINTENANCE -->
-        <button class="item-link" onclick="toggleKategori('maintenance')">
-          <span class="id-text">🧰 Maintenance</span>
-          <span class="zh-text" style="display:none;">🧰 维护保养</span>
-        </button>
-        <div class="kategori-wrapper" id="maintenance">
-          <div class="konten-sub">
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/DmLGbhh0EotHSixcQmFcYAKdnzh')" class="sub-judul">
-                <span class="id-text">• Maintenance Mixer 10Kg</span>
-                <span class="zh-text" style="display:none;">• 10公斤搅拌机保养</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/One5bsHPao9iNkxLmYAcZbTmnOf')" class="sub-judul">
-                <span class="id-text">• Maintenance Chiller</span>
-                <span class="zh-text" style="display:none;">• 冷藏柜保养</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/BnB2b5ckTo545Bxbx0oc3BqFnQd')" class="sub-judul">
-                <span class="id-text">• Maintenance Canister</span>
-                <span class="zh-text" style="display:none;">• 储料罐保养</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/Z0bzbWbKpob9taxSvrack2xen6g')" class="sub-judul">
-                <span class="id-text">• Maintenance Mesin Filter Harian</span>
-                <span class="zh-text" style="display:none;">• 净水器日常保养</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/Ff5qbQM6bom697xgxFzcznqenmd')" class="sub-judul">
-                <span class="id-text">• Maintenance Mesin Filter Bulanan</span>
-                <span class="zh-text" style="display:none;">• 净水器月度保养</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/MH5ebBJs3oIFrXxzqw3cvQMzn5k')" class="sub-judul">
-                <span class="id-text">• Maintenance Mesin Filter Bulanan All</span>
-                <span class="zh-text" style="display:none;">• 净水器全面月度保养</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/K2fpbt8wVo5sVGxvgXIcVYwknHe')" class="sub-judul">
-                <span class="id-text">• Maintenance Kulkas</span>
-                <span class="zh-text" style="display:none;">• 冰箱保养</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/Pq8obiGixokvnexOQhvczSp3nzh')" class="sub-judul">
-                <span class="id-text">• Maintenance Mesin Es Batu New</span>
-                <span class="zh-text" style="display:none;">• 新制冰机保养</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/Mr6obHbZjo0UUBxTfOAc4qbSnOf')" class="sub-judul">
-                <span class="id-text">• Maintenance Mesin Es Batu Old</span>
-                <span class="zh-text" style="display:none;">• 旧制冰机保养</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/NogGbkttDozI7VxWoyncioYZnDe')" class="sub-judul">
-                <span class="id-text">• Maintenance Mesin Es Krim Harian</span>
-                <span class="zh-text" style="display:none;">• 冰淇淋机日常保养</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/O3Ncbu7puovGKmxsJNsc7uwQnnd')" class="sub-judul">
-                <span class="id-text">• Maintenance Mesin Es Krim Bulanan</span>
-                <span class="zh-text" style="display:none;">• 冰淇淋机月度保养</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/Oed1bZVipoQK9dxHU2lcRtyxnGe')" class="sub-judul">
-                <span class="id-text">• Maintenance Mesin Fruktosa</span>
-                <span class="zh-text" style="display:none;">• 果糖机保养</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/IKy3b8Dgbo8mHnxKnVYcLEGan1e')" class="sub-judul">
-                <span class="id-text">• Maintenance Kopi (Tablet) Indonesia</span>
-                <span class="zh-text" style="display:none;">• 咖啡机清洁片保养 (印尼语)</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/YyejbQjL7oVoLKxD3KvcznlZnbb')" class="sub-judul">
-                <span class="id-text">• Maintenance Kopi (Descalling) Indonesia</span>
-                <span class="zh-text" style="display:none;">• 咖啡机除垢保养 (印尼语)</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/RolebWSxso7osgxFJCBc9siqnqb')" class="sub-judul">
-                <span class="id-text">• Maintenance Kopi (Tablet) English</span>
-                <span class="zh-text" style="display:none;">• 咖啡机清洁片保养 (英语)</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/UNP9bWsTSo8R3HxjOcHcQbO1n7e')" class="sub-judul">
-                <span class="id-text">• Maintenance Kopi (Descalling) English</span>
-                <span class="zh-text" style="display:none;">• 咖啡机除垢保养 (英语)</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/W3web9eYYoAwqyxdfv4cugwRnKc')" class="sub-judul">
-                <span class="id-text">• Maintenance Mesin Pemanas</span>
-                <span class="zh-text" style="display:none;">• 开水机保养</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/CV0lb0AAHoFTpKxBqRqcn16Hnwg')" class="sub-judul">
-                <span class="id-text">• Maintenance Mesin Seal Harian</span>
-                <span class="zh-text" style="display:none;">• 封口机日常保养</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/XQQVbcZ9soWZNmxGvEJcRtXPnMe')" class="sub-judul">
-                <span class="id-text">• Maintenance Mesin Seal Bulanan</span>
-                <span class="zh-text" style="display:none;">• 封口机月度保养</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ✅ SETTINGAN -->
-        <button class="item-link" onclick="toggleKategori('settingan')">
-          <span class="id-text">⚙️ Settingan</span>
-          <span class="zh-text" style="display:none;">⚙️ 设置调整</span>
-        </button>
-        <div class="kategori-wrapper" id="settingan">
-          <div class="konten-sub">
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/BHDzbE8zooybesxGd9scqCi1nde')" class="sub-judul">
-                <span class="id-text">• Settingan Kulkas 4 Pintu & Etalase</span>
-                <span class="zh-text" style="display:none;">• 四门冰箱及展示柜设置</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/HcotbXexooqIPrxu9TbcGJTUnve')" class="sub-judul">
-                <span class="id-text">• Settingan Timer</span>
-                <span class="zh-text" style="display:none;">• 定时器设置</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/MEgvbFxB9odtDax8cwgcnmUJnId')" class="sub-judul">
-                <span class="id-text">• Settingan Mesin Kopi Video</span>
-                <span class="zh-text" style="display:none;">• 咖啡机设置 (视频)</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/TGRZbfQYOofS3txraQvcTUACnvb')" class="sub-judul">
-                <span class="id-text">• Settingan Mesin Kopi PPT</span>
-                <span class="zh-text" style="display:none;">• 咖啡机设置 (演示文档)</span>
-              </div>
-            </div>
-            <div class="sub-item">
-              <div onclick="toggleSubJudul(this, 'https://h07pxwx74k7.feishu.cn/file/WeqUbuX1Ao96xJx7GI3chKDbnTf')" class="sub-judul">
-                <span class="id-text">• Settingan Sensor Cahaya Mesin Seal</span>
-                <span class="zh-text" style="display:none;">• 封口机光电传感器设置</span>
               </div>
             </div>
           </div>
@@ -1210,183 +901,197 @@
       </div>
     </div>
 
-    <!-- ✅ BAGIAN ALAMAT PENGIRIMAN -->
+    <!-- ==============================================
+         BAGIAN: DAFTAR ALAMAT PENGIRIMAN
+         ✅ DATA SUDAH SESUAI & JUDUL DI TENGAH
+    ============================================== -->
     <div id="pengiriman" class="tab-content">
-      <div class="alamat-item">
-        <p><strong class="id-text">Gudang:</strong><strong class="zh-text" style="display:none;">仓库地址：</strong></p>
-        <p class="id-text">Penerima: Dian</p>
-        <p class="zh-text" style="display:none;">收件人: Dian</p>
-
-        <p class="id-text">Nomor HP: 0813-9849-5855</p>
-        <p class="zh-text" style="display:none;">电话: 0813-9849-5855</p>
-
-        <p class="id-text">Alamat: Gudang Momoyo, Jl. Industri VIII No.8, RT.002/RW.003, Pasir Jaya, Kec. Jatiuwung, Kota Tangerang, Banten 15135</p>
-        <p class="zh-text" style="display:none;">地址: Gudang Momoyo, Jl. Industri VIII No.8, RT.002/RW.003, Pasir Jaya, Kec. Jatiuwung, Kota Tangerang, Banten 15135</p>
-      </div>
-
-      <div class="alamat-item">
-        <p><strong class="id-text">Training Center:</strong><strong class="zh-text" style="display:none;">培训中心：</strong></p>
-        <p class="id-text">Penerima: Aftersales Momoyo</p>
-        <p class="zh-text" style="display:none;">收件人: Aftersales Momoyo</p>
-
-        <p class="id-text">Nomor HP: 0813-9849-5855</p>
-        <p class="zh-text" style="display:none;">电话: 0813-9849-5855</p>
-
-        <p class="id-text">Alamat: Momoyo Training Center, Jl. HOS Cokroaminoto, RT.3/RW.9, Larangan Utara, Kec. Larangan, Kota Tangerang, Banten 15154</p>
-        <p class="zh-text" style="display:none;">地址: Momoyo Training Center, Jl. HOS Cokroaminoto, RT.3/RW.9, Larangan Utara, Kec. Larangan, Kota Tangerang, Banten 15154</p>
+      <div class="sub-list">
+        <div class="alamat-item">
+          <p class="text-center"><strong class="id-text">🏢 Gudang</strong><strong class="zh-text" style="display:none;">🏢 仓库</strong></p>
+          <p class="id-text"><strong>Penerima:</strong> Dian</p>
+          <p class="zh-text" style="display:none;"><strong>收件人：</strong> Dian</p>
+          <p class="id-text"><strong>Nomor HP:</strong> 0813-9849-5855</p>
+          <p class="zh-text" style="display:none;"><strong>电话号码：</strong> 0813-9849-5855</p>
+          <p class="id-text"><strong>Alamat:</strong> Gudang Momoyo, Jl. Industri VIII No.8, RT.002/RW.003, Pasir Jaya, Kec. Jatiuwung, Kota Tangerang, Banten 15135</p>
+          <p class="zh-text" style="display:none;"><strong>地址：</strong> Gudang Momoyo, Jl. Industri VIII No.8, RT.002/RW.003, Pasir Jaya, Kec. Jatiuwung, Kota Tangerang, Banten 15135</p>
+        </div>
+        <div class="alamat-item">
+          <p class="text-center"><strong class="id-text">🏫 Training Center</strong><strong class="zh-text" style="display:none;">🏫 培训中心</strong></p>
+          <p class="id-text"><strong>Penerima:</strong> Aftersales Momoyo</p>
+          <p class="zh-text" style="display:none;"><strong>收件人：</strong> Aftersales Momoyo</p>
+          <p class="id-text"><strong>Nomor HP:</strong> 0813-9849-5855</p>
+          <p class="zh-text" style="display:none;"><strong>电话号码：</strong> 0813-9849-5855</p>
+          <p class="id-text"><strong>Alamat:</strong> Momoyo Training Center, Jl. HOS Cokroaminoto, RT.3/RW.9, Larangan Utara, Kec. Larangan, Kota Tangerang, Banten 15154</p>
+          <p class="zh-text" style="display:none;"><strong>地址：</strong> Momoyo Training Center, Jl. HOS Cokroaminoto, RT.3/RW.9, Larangan Utara, Kec. Larangan, Kota Tangerang, Banten 15154</p>
+        </div>
       </div>
     </div>
 
   </div>
 
   <!-- ==============================================
-       BAGIAN: JAVASCRIPT
-       ✅ FUNGSI TOGGLE SUDAH DIUBAH UNTUK SUB JUDUL
+       BAGIAN: KATA PENUTUP
+  ============================================== -->
+  <div class="penutup">
+    <p class="id-text">Terima kasih telah menggunakan layanan Momoyo Aftersales. Kami siap membantu Anda kapan saja. Semua panduan dan informasi di sini disiapkan agar operasional usaha Anda tetap lancar dan prima. Semangat dan sukses selalu! 🚀</p>
+    <p class="zh-text" style="display:none;">感谢您使用Momoyo售后服务。我们随时为您提供帮助。这里准备了所有指南和信息，确保您的业务运营顺利无阻。祝您事业蒸蒸日上，万事如意！🚀</p>
+  </div>
+
+  <!-- ==============================================
+       BAGIAN: JAVASCRIPT / FUNGSI
+       ✅ NAMA FILE BENDERA SUDAH BENAR
   ============================================== -->
   <script>
-    // ✅ FUNGSI BUKA TABS
-    function bukaTab(evt, tabName, link) {
-      let i, tabcontent, tabbuttons;
+    // Status Bahasa: true = Indonesia, false = Mandarin
+    let bahasaIndonesia = true;
+
+    // === FUNGSI GANTI BAHASA DAN IKON BENDERA ===
+    function ubahBahasaOtomatis() {
+      bahasaIndonesia = !bahasaIndonesia;
+      const idTeks = document.querySelectorAll('.id-text');
+      const zhTeks = document.querySelectorAll('.zh-text');
+      const iconBendera = document.getElementById('icon-bahasa');
+      const searchInput = document.getElementById('searchInput');
+
+      if (bahasaIndonesia) {
+        // Tampilkan Bahasa Indonesia
+        idTeks.forEach(el => el.style.display = 'inline');
+        zhTeks.forEach(el => el.style.display = 'none');
+        // ✅ SAAT BAHASA INDONESIA: TAMPIL china-flag.jpg
+        iconBendera.src = 'china-flag.jpg';
+        searchInput.placeholder = "Cari panduan...";
+      } else {
+        // Tampilkan Bahasa Mandarin
+        idTeks.forEach(el => el.style.display = 'none');
+        zhTeks.forEach(el => el.style.display = 'inline');
+        // ✅ SAAT BAHASA MANDARIN: TAMPIL indonesia-flag.webp
+        iconBendera.src = 'indonesia-flag.webp';
+        searchInput.placeholder = "搜索指南...";
+      }
+    }
+
+    // === FUNGSI BUKA TAB MENU ===
+    function bukaTab(evt, namaTab, linkUrl) {
+      let i, tabcontent, tabbtn;
+      
+      // Sembunyikan semua konten tab
       tabcontent = document.getElementsByClassName("tab-content");
       for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].classList.remove("active");
       }
-      tabbuttons = document.getElementsByClassName("tab-btn");
-      for (i = 0; i < tabbuttons.length; i++) {
-        tabbuttons[i].classList.remove("active");
+
+      // Hapus tanda aktif di tombol
+      tabbtn = document.getElementsByClassName("tab-btn");
+      for (i = 0; i < tabbtn.length; i++) {
+        tabbtn[i].classList.remove("active");
       }
-      document.getElementById(tabName).classList.add("active");
+
+      // Tampilkan tab yang dipilih
+      document.getElementById(namaTab).classList.add("active");
       evt.currentTarget.classList.add("active");
 
-      if (link) {
-        let wrapper = document.querySelector(`#${tabName} .iframe-wrapper`);
-        if(wrapper) {
-          wrapper.classList.add('active');
-          let iframe = wrapper.querySelector('iframe');
-          if(iframe) {
-            iframe.src = link;
-          } else {
-            wrapper.innerHTML = `<iframe src="${link}" allowfullscreen></iframe>`;
-          }
+      // ✅ Jika ada link, masukkan ke iframe di dalam tab tersebut
+      if(linkUrl) {
+        const wadahIframe = document.querySelector(`#${namaTab} .iframe-wrapper`);
+        const elemenIframe = document.querySelector(`#${namaTab} iframe`);
+        if(wadahIframe && elemenIframe){
+          elemenIframe.src = linkUrl;
+          wadahIframe.classList.add("active");
         }
       }
     }
 
-    // ✅ FUNGSI GANTI MODE GELAP / TERANG
-    const tombolMode = document.getElementById('tombolMode');
-    if (localStorage.getItem('theme') === 'dark') {
-      document.documentElement.classList.add('dark');
-      tombolMode.innerText = '☀️';
-    }
-    tombolMode.addEventListener('click', function() {
-      document.documentElement.classList.toggle('dark');
-      if (document.documentElement.classList.contains('dark')) {
-        localStorage.setItem('theme', 'dark');
-        this.innerText = '☀️';
-      } else {
-        localStorage.setItem('theme', 'light');
-        localStorage.removeItem('theme');
-        this.innerText = '🌙';
-      }
-    });
-
-    // ✅ FUNGSI GANTI BAHASA (SUDAH MENCAKUP SEMUA TEKS)
-    function ubahBahasaOtomatis() {
-      const idTexts = document.querySelectorAll('.id-text');
-      const zhTexts = document.querySelectorAll('.zh-text');
-      const inputCari = document.getElementById('searchInput');
-      const icon = document.getElementById('icon-bahasa');
-      icon.parentElement.classList.toggle('active');
-
-      if (icon.src.includes('china-flag.webp')) {
-        icon.src = 'indonesia-flag.webp';
-        idTexts.forEach(el => el.style.display = 'inline');
-        zhTexts.forEach(el => el.style.display = 'none');
-        inputCari.placeholder = "Cari panduan...";
-      } else {
-        icon.src = 'china-flag.webp';
-        idTexts.forEach(el => el.style.display = 'none');
-        zhTexts.forEach(el => el.style.display = 'inline');
-        inputCari.placeholder = "搜索指南...";
-      }
-    }
-
-    // ✅ FUNGSI UTAMA: KLIK KATEGORI BUKA/TUTUP
+    // === FUNGSI TOGGLE KATEGORI MESIN ===
     function toggleKategori(id) {
-      let kat = document.getElementById(id);
-      if (kat.style.display === "block") {
-        kat.style.display = "none";
-        let semuaVideo = kat.querySelectorAll('.iframe-wrapper');
-        semuaVideo.forEach(v => v.remove());
-        let semuaTanda = kat.querySelectorAll('.sub-judul');
-        semuaTanda.forEach(t => t.classList.remove('buka'));
-      } else {
-        let semuaKategori = document.querySelectorAll('.kategori-wrapper');
-        semuaKategori.forEach(k => {
-          if (k.id !== id) {
-            k.style.display = "none";
-            let videoLama = k.querySelector('.iframe-wrapper');
-            if(videoLama) videoLama.remove();
-            let tandaLama = k.querySelectorAll('.sub-judul');
-            tandaLama.forEach(t => t.classList.remove('buka'));
-          }
-        });
-        kat.style.display = "block";
-        kat.scrollIntoView({behavior: 'smooth'});
-      }
-    }
-
-    // ✅ FUNGSI BARU: SUB JUDUL BISA DIKLIK BUKA/TUTUP VIDEO
-    function toggleSubJudul(elemen, link) {
-      elemen.classList.toggle('buka');
-      let wadah = elemen.parentElement;
-      let videoAda = wadah.querySelector('.iframe-wrapper');
-
-      if (videoAda) {
-        videoAda.remove();
-      } else {
-        let videoBaru = document.createElement('div');
-        videoBaru.className = 'iframe-wrapper active';
-        videoBaru.innerHTML = `<iframe src="${link}" allowfullscreen></iframe>`;
-        wadah.appendChild(videoBaru);
-        videoBaru.scrollIntoView({behavior: 'smooth', block: 'nearest'});
-      }
-    }
-
-    // ✅ FUNGSI PENCARIAN
-    function cariDanUbahTampilan() {
-      let input = document.getElementById('searchInput');
-      let isi = input.value.toLowerCase().trim();
-      let daftar = document.getElementById('daftarPanduan');
-      let itemLink = daftar.querySelectorAll('.item-link');
-      let noResult = document.getElementById('noResult');
-      let wadahTab = document.getElementById('wadahTab');
-
-      if (isi === "") {
-        daftar.style.display = 'block';
-        itemLink.forEach(el => el.style.display = 'flex');
-        noResult.style.display = 'none';
-        wadahTab.classList.remove('hilang-saat-cari');
-        return;
-      }
-
-      wadahTab.classList.add('hilang-saat-cari');
-      let ada = false;
-
-      itemLink.forEach(link => {
-        let teks = link.textContent.toLowerCase();
-        if (teks.includes(isi)) {
-          link.style.display = 'flex';
-          ada = true;
-        } else {
-          link.style.display = 'none';
+      const el = document.getElementById(id);
+      const semuaKategori = document.querySelectorAll('.kategori-wrapper');
+      
+      // Tutup kategori lain
+      semuaKategori.forEach(item => {
+        if(item.id !== id) {
+          item.style.display = 'none';
         }
       });
 
-      noResult.style.display = ada ? 'none' : 'block';
+      // Buka/Tutup kategori yang diklik
+      el.style.display = (el.style.display === 'block') ? 'none' : 'block';
     }
 
-    // ✅ FUNGSI POPUP WHATSAPP
+    // === FUNGSI BUKA/TUTUP SUB JUDUL & MUAT VIDEO ===
+    function toggleSubJudul(el, linkVideo) {
+      // Tambah/hapus kelas buka untuk rotasi panah
+      el.classList.toggle('buka');
+      
+      // Cari elemen pembungkus iframe di bawahnya
+      let iframeWadah = el.nextElementSibling;
+      
+      // Jika belum ada wadah videonya, buat baru
+      if(!iframeWadah || !iframeWadah.classList.contains('iframe-wrapper')) {
+        // Hapus wadah lain yang terbuka di item lain
+        document.querySelectorAll('.iframe-wrapper').forEach(w => {
+          if(w.parentElement !== el.parentElement) w.remove();
+        });
+
+        // Buat wadah baru
+        iframeWadah = document.createElement('div');
+        iframeWadah.className = 'iframe-wrapper active';
+        iframeWadah.innerHTML = `<iframe src="${linkVideo}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        el.parentElement.appendChild(iframeWadah);
+      } else {
+        // Jika sudah ada, tinggal sembunyikan/tampilkan
+        iframeWadah.classList.toggle('active');
+      }
+    }
+
+    // === FUNGSI PENCARIAN ===
+    function cariDanUbahTampilan() {
+      let input, filter, daftar, item, i, txtValue;
+      input = document.getElementById('searchInput');
+      filter = input.value.toUpperCase().trim();
+      daftar = document.getElementById("daftarPanduan");
+      item = daftar.getElementsByClassName("item-link");
+      const tabNav = document.getElementById('wadahTab');
+      const pesanKosong = document.getElementById('noResult');
+      let adaHasil = false;
+
+      // Sembunyikan/Tampilkan menu navigasi saat mengetik
+      if (filter !== "") {
+        tabNav.classList.add('hilang-saat-cari');
+      } else {
+        tabNav.classList.remove('hilang-saat-cari');
+      }
+
+      // Loop semua item panduan
+      for (i = 0; i < item.length; i++) {
+        txtValue = item[i].textContent || item[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          item[i].style.display = "";
+          adaHasil = true;
+          // Tampilkan kategori induknya
+          let kategori = item[i].nextElementSibling;
+          if(kategori) kategori.style.display = 'block';
+        } else {
+          item[i].style.display = "none";
+          // Sembunyikan kategori jika item tidak cocok
+          let kategori = item[i].nextElementSibling;
+          if(kategori) kategori.style.display = 'none';
+        }
+      }
+
+      // Tampilkan pesan jika tidak ada hasil
+      pesanKosong.style.display = adaHasil ? "none" : "block";
+    }
+
+    // === FUNGSI MODE GELAP / TERANG ===
+    const tombolMode = document.getElementById('tombolMode');
+    tombolMode.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      // Ganti ikon
+      tombolMode.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    });
+
+    // === FUNGSI POPUP WHATSAPP ===
     function bukaPilihanWA() {
       document.getElementById('modalWA').classList.add('show');
     }
@@ -1399,5 +1104,6 @@
     }
 
   </script>
+
 </body>
 </html>
