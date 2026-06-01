@@ -12,8 +12,7 @@
 
   <style>
     img.logo-momo {
-      width: 150px;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+      width: 120px;
     }
 
     :root {
@@ -65,265 +64,230 @@
       width: 100%;
       min-width: 320px;
       margin: auto;
-      padding: 24px 20px;
+      padding: 12px 8px;
       background: var(--bg);
-      background-attachment: fixed;
       color: var(--text);
-      transition: background-color 0.4s ease, color 0.4s ease;
-      line-height: 1.6;
+      line-height: 1.5;
       overflow-x: auto;
-      padding-bottom: 80px;
+      padding-bottom: 70px;
       position: relative;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.6;
-      z-index: -1;
-      background-image: 
-        radial-gradient(circle at 20% 20%, rgba(21, 101, 192, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(13, 71, 161, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(25, 118, 210, 0.05) 0%, transparent 60%);
-    }
-
-    .dark body::before {
-      background-image: 
-        radial-gradient(circle at 20% 20%, rgba(66, 165, 245, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(25, 118, 210, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(41, 121, 255, 0.08) 0%, transparent 60%);
-    }
-
     h1 {
-      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 50%, var(--primary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--primary-dark);
       font-weight: 800;
       text-align: center;
       margin-bottom: 0.3em;
-      font-family: 'Baloo', cursive;
-      font-size: clamp(2rem, 5vw, 2.6rem);
-      letter-spacing: 1px;
-      text-shadow: 0 3px 6px rgba(21, 101, 192, 0.15);
-      transform: translateY(-2px);
-      transition: all 0.3s ease;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
     }
-    h1:hover { transform: translateY(-4px); filter: brightness(1.1); }
 
     .judul-utama {
       text-align: center;
       font-weight: 700;
-      font-size: clamp(0.85rem, 3.5vw, 1.2rem);
+      font-size: clamp(0.8rem, 3vw, 1.1rem);
       color: var(--primary-dark);
-      margin: 8px 0 16px 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      letter-spacing: 0.2px;
+      margin: 8px 0 12px 0;
     }
 
     .tagline {
       text-align: center;
-      font-size: clamp(0.95em, 2vw, 1.05em);
+      font-size: clamp(0.9em, 2vw, 1em);
       margin-top: 0;
-      margin-bottom: 2rem;
-      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
       color: var(--text);
       background-color: var(--card-bg);
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px var(--shadow);
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px var(--shadow);
       border: 1px solid var(--search-border);
-      transition: transform 0.3s ease;
-      width: 100%;
-      backdrop-filter: blur(8px);
     }
-    .tagline:hover { transform: translateY(-2px); }
 
     .header-container {
       display: flex;
-      align-items: center; justify-content: center;
-      gap: 16px;
-      margin-bottom: 1.5rem;
-      padding: 12px;
+      align-items: center; 
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+      padding: 10px;
       background-color: var(--card-bg);
-      border-radius: 20px;
-      box-shadow: 0 6px 16px var(--shadow);
+      border-radius: 16px;
+      box-shadow: 0 2px 8px var(--shadow);
       width: 100%;
       flex-wrap: nowrap;
-      backdrop-filter: blur(8px);
       border: 1px solid var(--search-border);
     }
     .header-container img {
-      width: clamp(60px, 12vw, 90px);
+      width: clamp(50px, 10vw, 80px);
       height: auto;
-      transition: transform 0.3s ease;
     }
-    .header-container img:hover { transform: scale(1.05); }
 
     .lang-float, .theme-float {
-      position: fixed; top: 20px;
-      width: 45px; height: 45px;
-      border-radius: 10px;
+      position: fixed; 
+      top: 10px;
+      width: 38px; 
+      height: 38px;
+      border-radius: 8px;
       background-color: var(--card-bg) !important;
       border: 1px solid var(--search-border);
       color: var(--text);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 2px 8px var(--shadow);
-      z-index: 9999; cursor: pointer;
-      transition: all 0.4s ease;
-      backdrop-filter: blur(6px); overflow: hidden;
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      box-shadow: 0 2px 6px var(--shadow);
+      z-index: 9999; 
+      cursor: pointer;
     }
-    .lang-float { right: 20px; }
-    .theme-float { right: 75px; }
+    .lang-float { right: 10px; }
+    .theme-float { right: 55px; }
 
-    .lang-float:hover, .theme-float:hover {
-      transform: scale(1.08);
-      background-color: var(--primary) !important;
-      border-color: var(--primary);
-      color: white;
-    }
     .lang-float img {
-      width: 26px; height: auto;
-      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      width: 22px; 
+      height: auto;
     }
-    .lang-float.active img { transform: rotate(360deg) scale(1.1); }
 
     .wa-float {
-      position: fixed; bottom: 20px; right: 20px;
-      width: 55px; height: 55px;
+      position: fixed; 
+      bottom: 15px; 
+      right: 15px;
+      width: 48px; 
+      height: 48px;
       border-radius: 50%;
-      background-color: rgba(37, 211, 102, 0.85);
-      color: white; font-size: 28px;
-      display: flex; align-items: center; justify-content: center;
+      background-color: #25d366;
+      color: white; 
+      font-size: 22px;
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
       text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
       z-index: 9999;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(4px);
-    }
-    .wa-float:hover {
-      transform: scale(1.1);
-      background-color: rgba(18, 140, 126, 1);
-      color: white;
     }
 
     .tab-container {
       display: flex;
       background-color: var(--card-bg);
-      border-radius: 14px;
+      border-radius: 12px;
       padding: 4px;
       margin-bottom: 4px;
-      box-shadow: 0 4px 12px var(--shadow);
+      box-shadow: 0 2px 8px var(--shadow);
       border: 1px solid var(--search-border);
       width: 100%;
-      gap: 4px; flex-wrap: nowrap;
-      backdrop-filter: blur(8px);
-      transition: all 0.3s ease;
+      gap: 2px; 
+      flex-wrap: nowrap;
+      overflow-x: auto;
     }
     .tab-container.hilang-saat-cari { display: none; }
     
     .tab-btn {
-      flex: 1 1 0; min-width: unset;
-      padding: 12px 6px;
-      border: none; background: transparent;
+      flex: 1 1 0; 
+      min-width: 70px;
+      padding: 10px 4px;
+      border: none; 
+      background: transparent;
       color: var(--text-light);
-      font-weight: 600; border-radius: 10px;
-      cursor: pointer; transition: all 0.3s ease;
-      font-size: clamp(0.78em, 1.6vw, 0.88em);
-      text-align: center; white-space: nowrap;
+      font-weight: 600; 
+      border-radius: 8px;
+      cursor: pointer; 
+      font-size: clamp(0.7em, 1.5vw, 0.8em);
+      text-align: center; 
+      white-space: nowrap;
     }
     .tab-btn.active {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: var(--primary);
       color: white;
-      box-shadow: 0 3px 8px rgba(21, 101, 192, 0.3);
-    }
-    .tab-btn:hover:not(.active) {
-      background-color: var(--item-bg);
-      color: var(--item-text);
+      box-shadow: 0 2px 6px rgba(21, 101, 192, 0.3);
     }
 
     .content-box {
       background-color: var(--card-bg);
-      border-radius: 0 0 16px 16px;
+      border-radius: 0 0 12px 12px;
       padding: 0;
-      box-shadow: 0 4px 12px var(--shadow);
+      box-shadow: 0 2px 8px var(--shadow);
       border: 1px solid var(--search-border);
       border-top: none;
       width: 100%;
-      overflow: visible; min-height: auto;
-      backdrop-filter: blur(8px);
+      overflow: visible; 
+      min-height: auto;
       margin-top: 0;
     }
 
     .tab-content {
       display: none;
-      animation: fadeIn 0.4s ease;
-      width: 100%; padding: 12px;
+      width: 100%; 
+      padding: 10px;
     }
     .tab-content.active { display: block; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
 
     .alamat-item {
-      margin-bottom: 12px; padding: 14px;
-      border: 1px solid var(--alamat-border); border-radius: 12px;
+      margin-bottom: 12px; 
+      padding: 12px;
+      border: 1px solid var(--alamat-border); 
+      border-radius: 10px;
       background-color: var(--alamat-bg);
       color: var(--text);
+      position: relative;
+      white-space: pre-line;
     }
     .alamat-item:last-child { margin-bottom: 0; }
-    .alamat-item p { font-size: 0.95em; line-height: 1.6; margin: 4px 0; font-weight: 500; }
-    .text-center { text-align: center !important; }
+    .alamat-item p { 
+      font-size: 0.9em; 
+      line-height: 1.6; 
+      margin: 2px 0; 
+      font-weight: 500; 
+    }
+    .btn-copy {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.75em;
+      cursor: pointer;
+    }
 
     .sub-list { 
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      padding: 8px; 
+      gap: 3px;
+      padding: 6px; 
     }
 
     .item-link {
-      display: flex; align-items: center;
+      display: flex; 
+      align-items: center;
       width: 100%; 
-      padding: 16px 18px;
-      background: linear-gradient(90deg, var(--primary, #1565C0), var(--primary-dark, #0D47A1));
-      color: white; border-radius: 8px;
-      text-decoration: none; font-weight: 500;
-      box-shadow: 0 2px 6px var(--shadow);
-      transition: all 0.3s ease;
-      font-size: clamp(0.85em, 2vw, 1em);
+      padding: 12px 14px;
+      background: var(--primary);
+      color: white; 
+      border-radius: 6px;
+      text-decoration: none; 
+      font-weight: 500;
+      box-shadow: 0 1px 4px var(--shadow);
+      font-size: clamp(0.82em, 1.8vw, 0.95em);
       white-space: nowrap;
       cursor: pointer;
       border: none;
       text-align: left;
       justify-content: space-between;
-    }
-    .item-link:hover {
-      background: linear-gradient(90deg, var(--primary-dark), #002171);
-      transform: translateX(4px);
-      color: white;
+      margin-bottom: 2px;
     }
     .item-link::after {
       content: '▼';
-      font-size: 0.8em;
-      transition: transform 0.3s ease;
+      font-size: 0.75em;
     }
     .item-link.buka::after { transform: rotate(180deg); }
 
     .iframe-wrapper {
       width: 100%;
-      border-radius: 8px;
+      border-radius: 6px;
       overflow: hidden;
       background: var(--card-bg);
-      box-shadow: 0 4px 12px var(--shadow);
-      margin: 8px 0;
+      box-shadow: 0 2px 6px var(--shadow);
+      margin: 6px 0 6px 12px;
       display: none;
       border: 1px solid var(--search-border);
     }
@@ -336,152 +300,161 @@
       background: white;
       allowfullscreen="allowfullscreen";
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-      min-height: 450px;
+      min-height: 750px; 
     }
-    /* ✅ Ukuran Formulir Lebih Besar */
     #formulir iframe { height: 1400px; }
-    #status iframe, #mitra iframe { height: 650px; }
+    #status iframe, #mitra iframe { height: 600px; }
     .dark iframe { background: #fff; }
 
     .search-container {
-      max-width: 100%; margin: 0 auto 12px;
+      max-width: 100%; 
+      margin: 0 auto 10px;
       position: relative;
       background-color: var(--card-bg);
-      padding: 4px; border-radius: 14px;
-      box-shadow: 0 4px 12px var(--shadow);
+      padding: 4px; 
+      border-radius: 12px;
+      box-shadow: 0 2px 8px var(--shadow);
       width: 100%;
-      backdrop-filter: blur(8px);
       border: 1px solid var(--search-border);
     }
     #searchInput {
-      width: 100%; padding: 16px 16px 16px 50px;
-      font-size: clamp(0.9em, 2vw, 1.05em);
-      border: 2px solid var(--search-border);
-      border-radius: 12px;
+      width: 100%; 
+      padding: 12px 12px 12px 42px;
+      font-size: clamp(0.85em, 1.8vw, 1em);
+      border: 1px solid var(--search-border);
+      border-radius: 10px;
       background-color: var(--search-bg);
       color: var(--text);
-      transition: all 0.3s ease; outline: none;
+      outline: none;
       font-weight: 500;
     }
-    #searchInput:focus {
-      border-color: var(--primary-light);
-      box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.15);
-    }
-    #searchInput::placeholder { color: var(--text-light); opacity: 0.8; }
     .search-icon {
-      position: absolute; left: 18px; top: 50%;
+      position: absolute; 
+      left: 14px; 
+      top: 50%;
       transform: translateY(-50%);
-      font-size: 1.3em; color: var(--primary);
-      opacity: 0.8;
+      font-size: 1.1em; 
+      color: var(--primary);
     }
     .no-result {
-      text-align: center; color: var(--text);
-      padding: 20px;
+      text-align: center; 
+      color: var(--text);
+      padding: 16px;
       background-color: var(--card-bg);
-      border-radius: 12px;
+      border-radius: 10px;
       margin-top: 0;
-      box-shadow: 0 4px 12px var(--shadow);
-      display: none; font-weight: 600;
-      font-size: clamp(0.9em, 2vw, 1em);
-      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 8px var(--shadow);
+      display: none; 
+      font-weight: 600;
+      font-size: 0.9em;
       border: 1px solid var(--search-border);
     }
 
     .modal-wa {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
+      position: fixed; 
+      top: 0; 
+      left: 0;
+      width: 100%; 
+      height: 100%;
       background-color: rgba(0,0,0,0.6);
-      display: none; align-items: center; justify-content: center;
-      z-index: 10000; backdrop-filter: blur(4px);
+      display: none; 
+      align-items: center; 
+      justify-content: center;
+      z-index: 10000; 
     }
     .modal-wa.show { display: flex; }
     .modal-kotak {
-      background: var(--card-bg); border-radius: 16px;
-      padding: 24px; width: 85%;
-      max-width: 320px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      background: var(--card-bg); 
+      border-radius: 12px;
+      padding: 20px; 
+      width: 85%;
+      max-width: 300px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
       text-align: center;
       border: 1px solid var(--search-border);
       color: var(--text);
     }
-    .modal-kotak h3 { margin-bottom: 16px; font-weight: 700; font-size: 1.1em; }
+    .modal-kotak h3 { margin-bottom: 14px; font-weight: 700; font-size: 1em; }
     .wa-pilihan {
-      padding: 12px; margin: 8px 0;
-      border-radius: 10px;
-      background: #25d366; color: white;
-      font-weight: 500; cursor: pointer;
-      transition: all 0.2s;
-    }
-    .wa-pilihan:hover { background: #128c7e; }
-    .wa-batal {
-      margin-top: 12px; padding: 10px;
+      padding: 10px; 
+      margin: 6px 0;
       border-radius: 8px;
-      background: var(--search-bg); color: var(--text);
-      cursor: pointer; border: 1px solid var(--search-border);
+      background: #25d366; 
+      color: white;
+      font-weight: 500; 
+      cursor: pointer;
+    }
+    .wa-batal {
+      margin-top: 10px; 
+      padding: 8px;
+      border-radius: 6px;
+      background: var(--search-bg); 
+      color: var(--text);
+      cursor: pointer; 
+      border: 1px solid var(--search-border);
     }
 
     .sub-item {
       display: flex;
       flex-direction: column;
-      margin: 4px 0 4px 12px;
+      margin: 3px 0 3px 10px;
     }
     .sub-judul {
       background: var(--item-bg);
       color: var(--item-text);
-      padding: 10px 16px;
-      border-radius: 6px;
+      padding: 8px 12px;
+      border-radius: 4px;
       font-weight: 500;
-      font-size: 0.9em;
+      font-size: 0.85em;
       border-left: 3px solid var(--primary);
-      transition: all 0.2s ease;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-    .sub-judul:hover {
-      background: var(--primary);
-      color: white;
-      transform: translateX(4px);
+      margin-bottom: 2px;
     }
     .sub-judul::after {
       content: '▼';
-      font-size: 0.75em;
-      transition: transform 0.3s ease;
+      font-size: 0.7em;
     }
     .sub-judul.buka::after { transform: rotate(180deg); }
 
     .kategori-wrapper {
-      padding: 0 8px;
-      margin: 4px 0;
-      overflow: hidden;
-      transition: all 0.3s ease;
+      padding: 0 6px;
+      margin: 3px 0;
       display: none;
     }
 
     .penutup {
       text-align: center;
-      margin-top: 2rem;
-      padding: 16px;
-      font-size: 0.9em;
+      margin-top: 1.5rem;
+      padding: 14px;
+      font-size: 0.85em;
       color: var(--text-light);
       background-color: var(--card-bg);
-      border-radius: 12px;
-      box-shadow: 0 2px 8px var(--shadow);
+      border-radius: 10px;
+      box-shadow: 0 2px 6px var(--shadow);
       border: 1px solid var(--search-border);
-      backdrop-filter: blur(8px);
-      line-height: 1.8;
+      line-height: 1.7;
     }
 
-    .isi-link-wrapper {
-      width: 100%;
-      margin: 6px 0 8px 12px;
-      display: none;
-      border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid var(--search-border);
+    @media (max-width: 768px) {
+      body { padding: 10px 6px; }
+      .tab-btn { font-size: 0.7em; padding: 8px 2px; min-width: 65px; }
+      .item-link { font-size: 0.8em; padding: 10px 12px; }
+      iframe { min-height: 600px; }
+      #formulir iframe { height: 1200px; }
+      #status iframe, #mitra iframe { height: 500px; }
+      .wa-float { width: 45px; height: 45px; font-size: 20px; }
+      .lang-float, .theme-float { width: 35px; height: 35px; }
+      .lang-float { right: 8px; }
+      .theme-float { right: 50px; }
     }
-    .isi-link-wrapper.active { display: block; }
+    @media (orientation: landscape) {
+      body { padding: 12px 16px; }
+      .tab-container { max-width: 800px; margin-left: auto; margin-right: auto; }
+      .content-box { max-width: 800px; margin-left: auto; margin-right: auto; }
+    }
   </style>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -495,7 +468,6 @@
   </div>
   <div class="theme-float" id="tombolMode">🌙</div>
 
-  <!-- ✅ WA LOGIC: Cek Platform & Tanya Jika Ada Lebih Dari 1 WA -->
   <div class="wa-float" onclick="cekDanBukaWA()">
     <i class="fa fa-whatsapp"></i>
   </div>
@@ -562,7 +534,7 @@
   </div>
 
   <div class="content-box">
-    <div id="formulir" class="tab-content active">
+    <div class="tab-content active" id="formulir">
       <div class="iframe-wrapper active">
         <iframe src="https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -571,7 +543,7 @@
       </div>
     </div>
 
-    <div id="status" class="tab-content">
+    <div class="tab-content" id="status">
       <div class="iframe-wrapper active">
         <iframe src="https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -580,7 +552,7 @@
       </div>
     </div>
 
-    <div id="mitra" class="tab-content">
+    <div class="tab-content" id="mitra">
       <div class="iframe-wrapper active">
         <iframe src="https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -589,10 +561,8 @@
       </div>
     </div>
 
-    <div id="panduan" class="tab-content">
+    <div class="tab-content" id="panduan">
       <div class="sub-list" id="daftarPanduan">
-
-        <!-- ✅ DAFTAR PANDUAN LENGKAP SESUAI PERMINTAAN -->
 
         <!-- ✅ MESIN ES KRIM / 冰淇淋机 -->
         <button class="item-link" onclick="toggleKategori('mesin-es-krim', this)">
@@ -606,7 +576,7 @@
                 <span class="id-text">• Melepas Vanbelt</span>
                 <span class="zh-text" style="display:none;">• 拆卸皮带</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -615,7 +585,7 @@
                 <span class="id-text">• Perbaikan Evaporator</span>
                 <span class="zh-text" style="display:none;">• 蒸发器维修</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -624,7 +594,7 @@
                 <span class="id-text">• Pemasangan Per</span>
                 <span class="zh-text" style="display:none;">• 安装弹簧</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -633,7 +603,7 @@
                 <span class="id-text">• Pemasangan Vanbelt</span>
                 <span class="zh-text" style="display:none;">• 安装皮带</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -642,7 +612,7 @@
                 <span class="id-text">• Membuka Roda Gear Box</span>
                 <span class="zh-text" style="display:none;">• 拆卸齿轮箱齿轮</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -661,7 +631,7 @@
                 <span class="id-text">• Pemasangan Sensor Suhu Video</span>
                 <span class="zh-text" style="display:none;">• 温度传感器安装（视频）</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -670,7 +640,7 @@
                 <span class="id-text">• Pemasangan Sensor Suhu PDF</span>
                 <span class="zh-text" style="display:none;">• 温度传感器安装（PDF）</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -679,7 +649,7 @@
                 <span class="id-text">• Pergantian Kondensor</span>
                 <span class="zh-text" style="display:none;">• 更换冷凝器</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -698,7 +668,7 @@
                 <span class="id-text">• Membongkar Sensor Pembuangan</span>
                 <span class="zh-text" style="display:none;">• 拆卸排水传感器</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -707,7 +677,7 @@
                 <span class="id-text">• Pengecekkan Filter Tersumbat</span>
                 <span class="zh-text" style="display:none;">• 检查过滤器堵塞</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -716,7 +686,7 @@
                 <span class="id-text">• Pergantian Water Pump</span>
                 <span class="zh-text" style="display:none;">• 更换水泵</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -735,7 +705,7 @@
                 <span class="id-text">• Cara Ubah Bahasa</span>
                 <span class="zh-text" style="display:none;">• 更改语言方法</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -744,7 +714,7 @@
                 <span class="id-text">• Grinder Kopi</span>
                 <span class="zh-text" style="display:none;">• 咖啡研磨器</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -753,7 +723,7 @@
                 <span class="id-text">• Brewer Kopi</span>
                 <span class="zh-text" style="display:none;">• 咖啡冲泡器</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -762,7 +732,7 @@
                 <span class="id-text">• Flow Meter</span>
                 <span class="zh-text" style="display:none;">• 流量计</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -781,17 +751,16 @@
                 <span class="id-text">• Pergantian Pemanas</span>
                 <span class="zh-text" style="display:none;">• 更换加热器</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
-
             </div>
             <div class="sub-item">
               <div class="sub-judul" onclick="toggleIsiLink(this, 'https://h07pxwx74k7.feishu.cn/file/H1yCb53GEoI1bXx5BUlcfnSInYe')">
                 <span class="id-text">• Pergantian Sensor Cahaya</span>
                 <span class="zh-text" style="display:none;">• 更换光电传感器</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -803,40 +772,28 @@
           <span class="id-text">♨️ Mesin Pemanas</span>
           <span class="zh-text" style="display:none;">♨️ 开水机</span>
         </button>
-        <div class="kategori-wrapper" id="mesin-pemanas">
-          <div class="konten-sub">
-          </div>
-        </div>
+        <div class="kategori-wrapper" id="mesin-pemanas"></div>
 
         <!-- ✅ MESIN FRUKTOSA / 果糖机 -->
         <button class="item-link" onclick="toggleKategori('mesin-fruktosa', this)">
           <span class="id-text">🍯 Mesin Fruktosa</span>
           <span class="zh-text" style="display:none;">🍯 果糖机</span>
         </button>
-        <div class="kategori-wrapper" id="mesin-fruktosa">
-          <div class="konten-sub">
-          </div>
-        </div>
+        <div class="kategori-wrapper" id="mesin-fruktosa"></div>
 
         <!-- ✅ KULKAS / 立式冷柜 -->
         <button class="item-link" onclick="toggleKategori('kulkas', this)">
           <span class="id-text">❄️ Kulkas</span>
           <span class="zh-text" style="display:none;">❄️ 立式冷柜</span>
         </button>
-        <div class="kategori-wrapper" id="kulkas">
-          <div class="konten-sub">
-          </div>
-        </div>
+        <div class="kategori-wrapper" id="kulkas"></div>
 
         <!-- ✅ CHILLER / 平式冷柜 -->
         <button class="item-link" onclick="toggleKategori('chiller', this)">
           <span class="id-text">❄️ Chiller</span>
           <span class="zh-text" style="display:none;">❄️ 平式冷柜</span>
         </button>
-        <div class="kategori-wrapper" id="chiller">
-          <div class="konten-sub">
-          </div>
-        </div>
+        <div class="kategori-wrapper" id="chiller"></div>
 
         <!-- ✅ SMOOTHIES / 冰沙机 -->
         <button class="item-link" onclick="toggleKategori('smoothies', this)">
@@ -850,7 +807,7 @@
                 <span class="id-text">• Pergantian Base</span>
                 <span class="zh-text" style="display:none;">• 更换底座</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -859,7 +816,7 @@
                 <span class="id-text">• Pergantian Blade dan Cup Base</span>
                 <span class="zh-text" style="display:none;">• 更换刀片及杯座</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -878,7 +835,7 @@
                 <span class="id-text">• Perbaikan Potensio</span>
                 <span class="zh-text" style="display:none;">• 电位器维修</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -887,7 +844,7 @@
                 <span class="id-text">• Pergantian PCB</span>
                 <span class="zh-text" style="display:none;">• 更换PCB电路板</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -906,7 +863,7 @@
                 <span class="id-text">• Pergantian Cutter Printer Thermal</span>
                 <span class="zh-text" style="display:none;">• 更换热敏打印机切刀</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -915,7 +872,8 @@
                 <span class="id-text">• Pergantian Head Printer Label</span>
                 <span class="zh-text" style="display:none;">• 更换标签打印机打印头</span>
               </div>
-              <div class="isi-link-wrapper">                <iframe src=""></iframe>
+              <div class="iframe-wrapper isi-link-wrapper">
+                <iframe src=""></iframe>
               </div>
             </div>
             <div class="sub-item">
@@ -923,7 +881,7 @@
                 <span class="id-text">• Pergantian Head Set Printer Label</span>
                 <span class="zh-text" style="display:none;">• 更换标签打印机打印头组件</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -932,7 +890,7 @@
                 <span class="id-text">• Pergantian Head Printer Thermal</span>
                 <span class="zh-text" style="display:none;">• 更换热敏打印机打印头</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -941,7 +899,7 @@
                 <span class="id-text">• Reset Printer Label</span>
                 <span class="zh-text" style="display:none;">• 标签打印机重置</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -960,7 +918,7 @@
                 <span class="id-text">• Pemasangan Heater</span>
                 <span class="zh-text" style="display:none;">• 安装加热器</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -969,7 +927,7 @@
                 <span class="id-text">• Pemasangan Teflon</span>
                 <span class="zh-text" style="display:none;">• 安装特氟龙板</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -978,16 +936,16 @@
                 <span class="id-text">• Pergantian On/Off</span>
                 <span class="zh-text" style="display:none;">• 更换开关</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
             <div class="sub-item">
               <div class="sub-judul" onclick="toggleIsiLink(this, 'https://h07pxwx74k7.feishu.cn/file/PI9cbz6wboYySDxiijbcibbIncg')">
-                <span class="id-text">• Pergantian Sensor Suhu</span>
+                <span class="id-text">• Perg                antian Sensor Suhu</span>
                 <span class="zh-text" style="display:none;">• 更换温度传感器</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -996,7 +954,7 @@
                 <span class="id-text">• Settingan Suhu Egg Waffle</span>
                 <span class="zh-text" style="display:none;">• 鸡蛋仔温度设置</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1005,7 +963,7 @@
                 <span class="id-text">• Settingan Timer Egg Waffle</span>
                 <span class="zh-text" style="display:none;">• 鸡蛋仔定时器设置</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1014,8 +972,8 @@
 
         <!-- ✅ 12 DOUGH MIXER / 12面团搅拌机 -->
         <button class="item-link" onclick="toggleKategori('dough-mixer', this)">
-          <span class="id-text">🍞 12 Dough Mixer</span>
-          <span class="zh-text" style="display:none;">🍞 12面团搅拌机</span>
+          <span class="id-text">🥣 12 Dough Mixer</span>
+          <span class="zh-text" style="display:none;">🥣 12面团搅拌机</span>
         </button>
         <div class="kategori-wrapper" id="dough-mixer">
           <div class="konten-sub">
@@ -1024,7 +982,7 @@
                 <span class="id-text">• Karnibal Kontraktor</span>
                 <span class="zh-text" style="display:none;">• 接触器维修</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1033,7 +991,7 @@
                 <span class="id-text">• Pergantian Kontraktor</span>
                 <span class="zh-text" style="display:none;">• 更换接触器</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1042,7 +1000,7 @@
                 <span class="id-text">• Pergantian Whisk</span>
                 <span class="zh-text" style="display:none;">• 更换打蛋器</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1051,8 +1009,8 @@
 
         <!-- ✅ MIXER CREAM / 奶油搅拌机 -->
         <button class="item-link" onclick="toggleKategori('mixer-cream', this)">
-          <span class="id-text">🧁 Mixer Cream</span>
-          <span class="zh-text" style="display:none;">🧁 奶油搅拌机</span>
+          <span class="id-text">🍦 Mixer Cream</span>
+          <span class="zh-text" style="display:none;">🍦 奶油搅拌机</span>
         </button>
         <div class="kategori-wrapper" id="mixer-cream">
           <div class="konten-sub">
@@ -1061,7 +1019,7 @@
                 <span class="id-text">• Pergantian Potensio</span>
                 <span class="zh-text" style="display:none;">• 更换电位器</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1080,7 +1038,7 @@
                 <span class="id-text">• Pergantian Pemanas</span>
                 <span class="zh-text" style="display:none;">• 更换加热器</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1099,7 +1057,7 @@
                 <span class="id-text">• Pergantian Kipas</span>
                 <span class="zh-text" style="display:none;">• 更换风扇</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1118,7 +1076,7 @@
                 <span class="id-text">• Pengecekkan Kompressor</span>
                 <span class="zh-text" style="display:none;">• 压缩机检查</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1137,7 +1095,7 @@
                 <span class="id-text">• Instalasi Mixer Cream</span>
                 <span class="zh-text" style="display:none;">• 奶油搅拌机安装</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1146,7 +1104,7 @@
                 <span class="id-text">• Instalasi Oven</span>
                 <span class="zh-text" style="display:none;">• 烤箱安装</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1155,7 +1113,7 @@
                 <span class="id-text">• Instalasi Proofing</span>
                 <span class="zh-text" style="display:none;">• 醒发箱安装</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1164,8 +1122,8 @@
 
         <!-- ✅ MAINTENANCE / 保养 -->
         <button class="item-link" onclick="toggleKategori('maintenance', this)">
-          <span class="id-text">🧰 Maintenance</span>
-          <span class="zh-text" style="display:none;">🧰 保养</span>
+          <span class="id-text">🧹 Maintenance</span>
+          <span class="zh-text" style="display:none;">🧹 保养</span>
         </button>
         <div class="kategori-wrapper" id="maintenance">
           <div class="konten-sub">
@@ -1174,7 +1132,7 @@
                 <span class="id-text">• Maintenance Mixer 10Kg</span>
                 <span class="zh-text" style="display:none;">• 10公斤搅拌机保养</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1183,7 +1141,7 @@
                 <span class="id-text">• Maintenance Chiller</span>
                 <span class="zh-text" style="display:none;">• 冷水机保养</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1192,7 +1150,7 @@
                 <span class="id-text">• Maintenance Canister</span>
                 <span class="zh-text" style="display:none;">• 储料罐保养</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1201,7 +1159,7 @@
                 <span class="id-text">• Maintenance Mesin Filter Harian</span>
                 <span class="zh-text" style="display:none;">• 过滤机日常保养</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1210,7 +1168,7 @@
                 <span class="id-text">• Maintenance Mesin Filter Bulanan</span>
                 <span class="zh-text" style="display:none;">• 过滤机月度保养</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1219,7 +1177,7 @@
                 <span class="id-text">• Maintenance Mesin Filter Bulanan All</span>
                 <span class="zh-text" style="display:none;">• 全面过滤机月度保养</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1228,7 +1186,7 @@
                 <span class="id-text">• Maintenance Kulkas</span>
                 <span class="zh-text" style="display:none;">• 冰箱保养</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1237,7 +1195,7 @@
                 <span class="id-text">• Maintenance Mesin Es Batu New</span>
                 <span class="zh-text" style="display:none;">• 新制冰机保养</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1246,7 +1204,7 @@
                 <span class="id-text">• Maintenance Mesin Es Batu Old</span>
                 <span class="zh-text" style="display:none;">• 旧制冰机保养</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1255,7 +1213,7 @@
                 <span class="id-text">• Maintenance Mesin Es Krim Harian</span>
                 <span class="zh-text" style="display:none;">• 冰淇淋机日常保养</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1264,7 +1222,7 @@
                 <span class="id-text">• Maintenance Mesin Es Krim Bulanan</span>
                 <span class="zh-text" style="display:none;">• 冰淇淋机月度保养</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1273,7 +1231,7 @@
                 <span class="id-text">• Maintenance Mesin Fruktosa</span>
                 <span class="zh-text" style="display:none;">• 果糖机保养</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1282,7 +1240,7 @@
                 <span class="id-text">• Maintennce Kopi (Tablet) Indonesia</span>
                 <span class="zh-text" style="display:none;">• 咖啡机清洁片保养（印尼语）</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1291,7 +1249,7 @@
                 <span class="id-text">• Maintenace Kopi (Descalling) Indonesia</span>
                 <span class="zh-text" style="display:none;">• 咖啡机除垢保养（印尼语）</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1300,7 +1258,7 @@
                 <span class="id-text">• Maintennce Kopi (Tablet) English</span>
                 <span class="zh-text" style="display:none;">• 咖啡机清洁片保养（英语）</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1309,7 +1267,7 @@
                 <span class="id-text">• Maintenace Kopi (Descalling) English</span>
                 <span class="zh-text" style="display:none;">• 咖啡机除垢保养（英语）</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1318,7 +1276,7 @@
                 <span class="id-text">• Maintenance Mesin Pemanas</span>
                 <span class="zh-text" style="display:none;">• 加热机保养</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1327,7 +1285,7 @@
                 <span class="id-text">• Maintenance Mesin Seal Harian</span>
                 <span class="zh-text" style="display:none;">• 封口机日常保养</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1336,7 +1294,7 @@
                 <span class="id-text">• Maintenance Mesin Seal Bulanan</span>
                 <span class="zh-text" style="display:none;">• 封口机月度保养</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1355,7 +1313,7 @@
                 <span class="id-text">• Settingan Kulkas 4 Pintu & Etalase</span>
                 <span class="zh-text" style="display:none;">• 四门冰箱及展示柜设置</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1364,7 +1322,7 @@
                 <span class="id-text">• Settingan Timer</span>
                 <span class="zh-text" style="display:none;">• 定时器设置</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1373,7 +1331,7 @@
                 <span class="id-text">• Settingan Mesin Kopi Video</span>
                 <span class="zh-text" style="display:none;">• 咖啡机设置（视频）</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1382,7 +1340,7 @@
                 <span class="id-text">• Settingan Mesin Kopi PPT</span>
                 <span class="zh-text" style="display:none;">• 咖啡机设置（PPT）</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1391,7 +1349,7 @@
                 <span class="id-text">• Settingan Sensor Cahaya Mesin Seal</span>
                 <span class="zh-text" style="display:none;">• 封口机光电传感器设置</span>
               </div>
-              <div class="isi-link-wrapper">
+              <div class="iframe-wrapper isi-link-wrapper">
                 <iframe src=""></iframe>
               </div>
             </div>
@@ -1401,254 +1359,210 @@
       </div>
     </div>
 
-    <div id="pengiriman" class="tab-content">
-      <!-- ✅ ALAMAT DIUBAH SESUAI PERMINTAAN -->
-      <div class="alamat-item">
-        <p class="id-text font-bold text-lg mb-2">🏢 Gudang</p>
-        <p class="zh-text font-bold text-lg mb-2" style="display:none;">🏢 仓库</p>
-        
-        <p class="id-text">Penerima: Dian</p>
-        <p class="zh-text" style="display:none;">收件人: Dian</p>
-
-        <p class="id-text">Nomor HP: 0813-9849-5855</p>
-        <p class="zh-text" style="display:none;">电话: 0813-9849-5855</p>
-
-        <p class="id-text">Alamat: Gudang Momoyo, Jl. Industri VIII No.8, RT.002/RW.003, Pasir Jaya, Kec. Jatiuwung, Kota Tangerang, Banten 15135</p>
-        <p class="zh-text" style="display:none;">地址: Gudang Momoyo, Jl. Industri VIII No.8, RT.002/RW.003, Pasir Jaya, Kec. Jatiuwung, Kota Tangerang, Banten 15135</p>
+    <div class="tab-content" id="pengiriman">
+      <!-- ✅ ALAMAT SESUAI PERMINTAAN -->
+      <div class="alamat-item" id="alamat-gudang">
+        <p>🏢 Gudang
+Penerima: Dian
+Nomor HP: 0813-9849-5855
+Alamat: Gudang Momoyo, Jl. Industri VIII No.8, RT.002/RW.003, Pasir Jaya, Kec. Jatiuwung, Kota Tangerang, Banten 15135</p>
+        <button class="btn-copy" onclick="salinTeks('alamat-gudang')">📋 <span class="id-text">Salin</span><span class="zh-text" style="display:none;">复制</span></button>
       </div>
 
-      <div class="alamat-item">
-        <p class="id-text font-bold text-lg mb-2">🏫 Training Center</p>
-        <p class="zh-text font-bold text-lg mb-2" style="display:none;">🏫 培训中心</p>
-        
-        <p class="id-text">Penerima: Aftersales Momoyo</p>
-        <p class="zh-text" style="display:none;">收件人: Aftersales Momoyo</p>
-
-        <p class="id-text">Nomor HP: 0813-9849-5855</p>
-        <p class="zh-text" style="display:none;">电话: 0813-9849-5855</p>
-
-        <p class="id-text">Alamat: Momoyo Training Center, Jl. HOS Cokroaminoto, RT.3/RW.9, Larangan Utara, Kec. Larangan, Kota Tangerang, Banten 15154</p>
-        <p class="zh-text" style="display:none;">地址: Momoyo Training Center, Jl. HOS Cokroaminoto, RT.3/RW.9, Larangan Utara, Kec. Larangan, Kota Tangerang, Banten 15154</p>
+      <div class="alamat-item" id="alamat-training">
+        <p>🏫 Training Center
+Penerima: Aftersales Momoyo
+Nomor HP: 0813-9849-5855
+Alamat: Momoyo Training Center, Jl. HOS Cokroaminoto, RT.3/RW.9, Larangan Utara, Kec. Larangan, Kota Tangerang, Banten 15154</p>
+        <button class="btn-copy" onclick="salinTeks('alamat-training')">📋 <span class="id-text">Salin</span><span class="zh-text" style="display:none;">复制</span></button>
       </div>
     </div>
-
   </div>
 
-  <!-- ✅ KATA PENUTUP DIUBAH SESUAI PERMINTAAN -->
+  <!-- ✅ KATA PENUTUP SESUAI PERMINTAAN -->
   <div class="penutup">
-    <p class="id-text">Terima kasih telah mempercayakan kebutuhan usaha Anda kepada <strong>MOMOYO</strong>. Kami senantiasa berkomitmen memberikan pelayanan purna jual yang cepat, tanggap, dan berkualitas demi kelancaran operasional toko Anda setiap harinya. Apabila terdapat hal yang kurang jelas atau memerlukan bantuan langsung, tim dukungan teknis kami siap melayani Anda di nomor <strong>+62 813-9849-5855</strong>. Kesuksesan dan kelancaran usaha Anda adalah kebahagiaan terbesar bagi kami.</p>
-    <p class="zh-text" style="display:none;">感谢您将业务需求托付给<strong>MOMOYO</strong>。我们始终致力于提供快速、响应迅速且优质的售后服务，确保您门店日常运营的顺畅。如有任何不清楚之处或需要直接协助，我们的技术支持团队随时为您服务，联系电话：<strong>+62 813-9849-5855</strong>。您业务的成功与顺利，是我们最大的荣幸。</p>
+    <span class="id-text">Terima kasih telah mempercayakan kebutuhan usaha Anda kepada <strong>MOMOYO</strong>. Kami senantiasa berkomitmen memberikan pelayanan purna jual yang cepat, tanggap, dan berkualitas demi kelancaran operasional toko Anda setiap harinya. Apabila terdapat hal yang kurang jelas atau memerlukan bantuan langsung, tim dukungan teknis kami siap melayani Anda di nomor <strong>+62 813-9849-5855</strong>. Kesuksesan dan kelancaran usaha Anda adalah kebahagiaan terbesar bagi kami.</span>
+    <span class="zh-text" style="display:none;">感谢您将业务需求托付给<strong>MOMOYO</strong>。我们始终致力于提供快速、响应及时且高质量的售后服务，保障您门店日常运营的顺利进行。如有任何疑问或需要直接协助，我们的技术支持团队随时为您服务，联系电话：<strong>+62 813-9849-5855</strong>。您业务的成功与顺利运营，是我们最大的荣幸。</span>
   </div>
 
   <script>
-    // === FUNGSI DASAR & BAHASA ===
-    let bahasaSekarang = 'id'; // id = Indonesia, zh = Mandarin
-
-    function ubahBahasaOtomatis() {
-      const semuaID = document.querySelectorAll('.id-text');
-      const semuaZH = document.querySelectorAll('.zh-text');
-      const ikon = document.getElementById('icon-bahasa');
-      const inputCari = document.getElementById('searchInput');
-
-      if (bahasaSekarang === 'id') {
-        // GANTI KE MANDARIN: Logo jadi Indonesia
-        bahasaSekarang = 'zh';
-        semuaID.forEach(el => el.style.display = 'none');
-        semuaZH.forEach(el => el.style.display = 'inline');
-        ikon.src = 'indonesia-flag.webp'; 
-        inputCari.placeholder = inputCari.getAttribute('placeholder-zh') || '搜索指南...';
-      } else {
-        // GANTI KE INDONESIA: Logo jadi China
-        bahasaSekarang = 'id';
-        semuaZH.forEach(el => el.style.display = 'none');
-        semuaID.forEach(el => el.style.display = 'inline');
-        ikon.src = 'china-flag.jpg'; 
-        inputCari.placeholder = 'Cari panduan...';
-      }
-
-      // Ubah tampilan hasil pencarian jika sedang aktif
-      cariDanUbahTampilan();
-    }
-
-    // === MODE GELAP / TERANG ===
+    // ✅ MODE GELAP / TERANG
     const tombolMode = document.getElementById('tombolMode');
     if (localStorage.getItem('mode') === 'gelap') {
-      document.body.classList.add('dark');
+      document.documentElement.classList.add('dark');
       tombolMode.textContent = '☀️';
     }
-    tombolMode.onclick = function() {
-      document.body.classList.toggle('dark');
-      if (document.body.classList.contains('dark')) {
-        localStorage.setItem('mode', 'gelap');
-        tombolMode.textContent = '☀️';
+    tombolMode.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('mode', isDark ? 'gelap' : 'terang');
+      tombolMode.textContent = isDark ? '☀️' : '🌙';
+    });
+
+    // ✅ BAHASA: Indonesia <-> Mandarin (Bendera terbalik sesuai permintaan)
+    let bahasaSekarang = 'id';
+    const ikonBahasa = document.getElementById('icon-bahasa');
+    function ubahBahasaOtomatis() {
+      const idElements = document.querySelectorAll('.id-text');
+      const zhElements = document.querySelectorAll('.zh-text');
+      if (bahasaSekarang === 'id') {
+        bahasaSekarang = 'zh';
+        ikonBahasa.src = 'indonesia-flag.webp'; // Saat Mandarin, logo Indonesia
+        idElements.forEach(el => el.style.display = 'none');
+        zhElements.forEach(el => el.style.display = 'inline');
       } else {
-        localStorage.setItem('mode', 'terang');
-        tombolMode.textContent = '🌙';
+        bahasaSekarang = 'id';
+        ikonBahasa.src = 'china-flag.jpg'; // Saat Indonesia, logo China
+        idElements.forEach(el => el.style.display = 'inline');
+        zhElements.forEach(el => el.style.display = 'none');
       }
-    };
-
-    // === FUNGSI TAB ===
-    function bukaTab(evt, namaTab, linkIframe) {
-      let i, tabcontent, tabbtn;
-      tabcontent = document.getElementsByClassName('tab-content');
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].classList.remove('active');
-      }
-      tabbtn = document.getElementsByClassName('tab-btn');
-      for (i = 0; i < tabbtn.length; i++) {
-        tabbtn[i].classList.remove('active');
-      }
-      document.getElementById(namaTab).classList.add('active');
-      evt.currentTarget.classList.add('active');
-
-      // Set link iframe jika ada (Langsung terbuka, tidak loading ulang)
-      if (linkIframe) {
-        const wadahIframe = document.querySelector('#' + namaTab + ' .iframe-wrapper iframe');
-        if (wadahIframe && wadahIframe.src !== linkIframe) {
-          wadahIframe.src = linkIframe;
-        }
-      }
+      // Ubah placeholder pencarian
+      const cariInput = document.getElementById('searchInput');
+      cariInput.placeholder = bahasaSekarang === 'id' ? 'Cari panduan...' : '搜索指南...';
     }
 
-    // === FUNGSI BUKA TUTUP KATEGORI (KLIK SEKALI BUKA, KLIK LAGI TUTUP) ===
+    // ✅ LOGIKA TAB: Langsung buka, tidak reload
+    function bukaTab(e, tabId, linkIframe) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      const tabAktif = document.getElementById(tabId);
+      tabAktif.classList.add('active');
+      // Masukkan link jika ada (agar tidak loading ulang)
+      if (linkIframe) {
+        const wadahIframe = tabAktif.querySelector('iframe');
+        if (wadahIframe && !wadahIframe.src) wadahIframe.src = linkIframe;
+      }
+      // Tampilkan/sembunyikan tab saat cari
+      const wadahTab = document.getElementById('wadahTab');
+      wadahTab.classList.remove('hilang-saat-cari');
+    }
+
+    // ✅ LOGIKA KATEGORI: Klik judul -> muncul/hilang subjudul
+    let kategoriTerbuka = null;
     function toggleKategori(id, elemen) {
       const wadah = document.getElementById(id);
       const semuaKategori = document.querySelectorAll('.kategori-wrapper');
-      const semuaTombol = document.querySelectorAll('.item-link');
+      const semuaJudul = document.querySelectorAll('.item-link');
 
-      // Tutup kategori lain
-      semuaKategori.forEach(kat => { if (kat.id !== id) kat.style.display = 'none'; });
-      semuaTombol.forEach(btn => { if (btn !== elemen) btn.classList.remove('buka'); });
+      // Tutup kategori lain jika diklik kategori berbeda
+      if (kategoriTerbuka && kategoriTerbuka !== id) {
+        document.getElementById(kategoriTerbuka).style.display = 'none';
+        semuaJudul.forEach(j => j.classList.remove('buka'));
+      }
 
-      // Buka/Tutup kategori yang diklik
-      const sedangBuka = wadah.style.display === 'block';
-      wadah.style.display = sedangBuka ? 'none' : 'block';
-      elemen.classList.toggle('buka', !sedangBuka);
-    }
-
-    // === FUNGSI BUKA TUTUP ISI LINK (LANGSUNG TERBUKA DI BAWAH, UKURAN BESAR) ===
-    function toggleIsiLink(elemen, link) {
-      const wadah = elemen.parentElement.nextElementSibling;
-      const iframe = wadah.querySelector('iframe');
-
-      // Tutup elemen lain
-      document.querySelectorAll('.isi-link-wrapper').forEach(w => {
-        if (w !== wadah) {
-          w.classList.remove('active');
-          w.previousElementSibling.classList.remove('buka');
-          w.querySelector('iframe').src = '';
-        }
-      });
-
-      // Buka/Tutup elemen ini
-      const aktif = wadah.classList.contains('active');
-      if (!aktif) {
-        iframe.src = link; 
-        wadah.classList.add('active');
-        elemen.classList.add('buka');
-        // ✅ Ukuran iframe diperbesar agar tidak banyak scroll
-        iframe.style.height = "600px"; 
-      } else {
-        wadah.classList.remove('active');
+      if (wadah.style.display === 'block') {
+        wadah.style.display = 'none';
         elemen.classList.remove('buka');
-        iframe.src = ''; 
+        kategoriTerbuka = null;
+      } else {
+        wadah.style.display = 'block';
+        elemen.classList.add('buka');
+        kategoriTerbuka = id;
       }
     }
 
-    // === FUNGSI PENCARIAN (CARI JUDUL & SUBJUDUL, KOSONG KEMBALI NORMAL) ===
+    // ✅ LOGIKA SUBJUDUL: Klik -> buka link di bawah, tutup subjudul lain
+    let subTerbuka = null;
+    let wadahTerbuka = null;
+    function toggleIsiLink(elemen, link) {
+      const wadah = elemen.nextElementSibling;
+      const iframe = wadah.querySelector('iframe');
+
+      // Tutup sub lain yang terbuka
+      if (subTerbuka && subTerbuka !== elemen) {
+        wadahTerbuka.style.display = 'none';
+        subTerbuka.classList.remove('buka');
+      }
+
+      if (wadah.style.display === 'block') {
+        wadah.style.display = 'none';
+        elemen.classList.remove('buka');
+        subTerbuka = null;
+        wadahTerbuka = null;
+      } else {
+        wadah.style.display = 'block';
+        elemen.classList.add('buka');
+        iframe.src = link; // Masukkan link agar terbuka
+        subTerbuka = elemen;
+        wadahTerbuka = wadah;
+      }
+    }
+
+    // ✅ FITUR PENCARIAN: Cari di Judul & Subjudul
     function cariDanUbahTampilan() {
       const kataKunci = document.getElementById('searchInput').value.trim().toLowerCase();
       const daftarPanduan = document.getElementById('daftarPanduan');
-      const semuaKategori = daftarPanduan.querySelectorAll('.kategori-wrapper');
-      const semuaTombolUtama = daftarPanduan.querySelectorAll('.item-link');
-      const semuaSubItem = daftarPanduan.querySelectorAll('.sub-item');
+      const semuaItem = daftarPanduan.querySelectorAll('.item-link, .sub-judul');
       const wadahTab = document.getElementById('wadahTab');
       const noResult = document.getElementById('noResult');
-
-      // === KONDISI: KATA KUNCI DIHAPUS / KOSONG ===
-      if (kataKunci === '') {
-        wadahTab.classList.remove('hilang-saat-cari');
-        noResult.style.display = 'none';
-
-        semuaTombolUtama.forEach(btn => {
-          btn.style.display = 'flex';
-          btn.classList.remove('buka'); 
-        });
-        semuaKategori.forEach(kat => {
-          kat.style.display = 'none'; 
-        });
-        semuaSubItem.forEach(sub => {
-          sub.style.display = 'flex'; 
-          const pembungkus = sub.querySelector('.isi-link-wrapper');
-          const judulSub = sub.querySelector('.sub-judul');
-          if (pembungkus) pembungkus.classList.remove('active'); 
-          if (judulSub) judulSub.classList.remove('buka'); 
-          sub.querySelector('iframe').src = ''; 
-        });
-        return; 
-      }
-
-      // === KONDISI: ADA KATA KUNCI DICARI ===
-      wadahTab.classList.add('hilang-saat-cari');
       let adaHasil = false;
 
-      // Cek setiap item utama
-      semuaTombolUtama.forEach(btnUtama => {
-        const teksUtamaID = btnUtama.querySelector('.id-text')?.textContent.toLowerCase() || '';
-        const teksUtamaZH = btnUtama.querySelector('.zh-text')?.textContent.toLowerCase() || '';
-        const idKategori = btnUtama.getAttribute('onclick').match(/'([^']+)'/)[1];
-        const wadahKategori = document.getElementById(idKategori);
-        let adaCocokDiDalam = false;
-
-        // Cek setiap sub judul di dalam kategori
-        const subItems = wadahKategori.querySelectorAll('.sub-item');
-        subItems.forEach(sub => {
-          const teksSubID = sub.querySelector('.id-text')?.textContent.toLowerCase() || '';
-          const teksSubZH = sub.querySelector('.zh-text')?.textContent.toLowerCase() || '';
-
-          if (teksSubID.includes(kataKunci) || teksSubZH.includes(kataKunci)) {
-            sub.style.display = 'flex';
-            adaCocokDiDalam = true;
-            adaHasil = true;
-          } else {
-            sub.style.display = 'none';
-          }
-        });
-
-        // Tampilkan/Sembunyikan tombol utama
-        if (teksUtamaID.includes(kataKunci) || teksUtamaZH.includes(kataKunci) || adaCocokDiDalam) {
-          btnUtama.style.display = 'flex';
-          wadahKategori.style.display = 'block'; 
-          btnUtama.classList.add('buka');
-        } else {
-          btnUtama.style.display = 'none';
-          wadahKategori.style.display = 'none';
-        }
-      });
-
-      // Tampilkan pesan jika tidak ada hasil
-      noResult.style.display = adaHasil ? 'none' : 'block';
-    }
-
-    // === FUNGSI WHATSAPP (CEK JUMLAH WA & PLATFORM) ===
-    function cekDanBukaWA() {
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      
-      // Cek jika di PC / Komputer atau Hanya ada 1 WA -> Langsung Buka
-      if (!isMobile || (navigator.hardwareConcurrency <= 4)) {
-        window.open('https://wa.me/6281398495855', '_blank');
+      if (kataKunci === '') {
+        // Kembali ke tampilan semula
+        semuaItem.forEach(i => i.style.display = '');
+        daftarPanduan.style.display = '';
+        noResult.style.display = 'none';
+        wadahTab.classList.remove('hilang-saat-cari');
+        // Tutup semua yang terbuka
+        document.querySelectorAll('.kategori-wrapper, .iframe-wrapper').forEach(w => w.style.display = 'none');
+        document.querySelectorAll('.item-link, .sub-judul').forEach(j => j.classList.remove('buka'));
+        kategoriTerbuka = null;
+        subTerbuka = null;
         return;
       }
 
-      // Jika di HP dan ada kemungkinan lebih dari 1 WA -> Tampilkan Pilihan
-      document.getElementById('modalWA').classList.add('show');
+      // Saat mencari: sembunyikan tab & tampilkan hasil
+      wadahTab.classList.add('hilang-saat-cari');
+      semuaItem.forEach(item => {
+        const teks = item.textContent.toLowerCase();
+        if (teks.includes(kataKunci)) {
+          item.style.display = '';
+          adaHasil = true;
+          // Buka induknya jika subjudul
+          const indukKategori = item.closest('.kategori-wrapper');
+          if (indukKategori) {
+            indukKategori.style.display = 'block';
+            indukKategori.previousElementSibling.style.display = '';
+          }
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      noResult.style.display = adaHasil ? 'none' : 'block';
     }
-    function tutupPilihanWA() {
-      document.getElementById('modalWA').classList.remove('show');
+
+    // ✅ SALIN ALAMAT
+    function salinTeks(idWadah) {
+      const teks = document.getElementById(idWadah).querySelector('p').textContent;
+      navigator.clipboard.writeText(teks).then(() => {
+        const notif = document.createElement('div');
+        notif.style = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#28a745;color:white;padding:10px 16px;border-radius:8px;z-index:10000;';
+        notif.textContent = bahasaSekarang === 'id' ? 'Alamat berhasil disalin!' : '地址复制成功！';
+        document.body.appendChild(notif);
+        setTimeout(() => notif.remove(), 2000);
+      });
+    }
+
+    // ✅ WHATSAPP: Cek jika HP ada >1 WA -> tanya, PC langsung buka
+    const modalWA = document.getElementById('modalWA');
+    function cekDanBukaWA() {
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (isMobile) {
+        // Di HP: cek jika ada kemungkinan lebih dari 1 WA -> tampilkan pilihan
+        modalWA.classList.add('show');
+      } else {
+        // Di PC: langsung buka web WA
+        window.open('https://wa.me/6281398495855', '_blank');
+      }
     }
     function bukaWA(link) {
       window.open(link, '_blank');
       tutupPilihanWA();
+    }
+    function tutupPilihanWA() {
+      modalWA.classList.remove('show');
     }
 
   </script>
