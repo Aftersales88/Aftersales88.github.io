@@ -144,7 +144,7 @@
             display: block;
         }
 
-        /* ✅ IFRAME LANGSUNG TERBUKA & BISA DIBUKA */
+        /* ✅ IFRAME SEMUA SAMA: TIDAK MINTA LOGIN ULANG */
         iframe {
             width: 100%;
             height: 85vh;
@@ -154,6 +154,8 @@
             overflow: auto;
             -webkit-overflow-scrolling: touch;
             background-color: #ffffff;
+            allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals allow-top-navigation";
         }
 
         /* ==========================================
@@ -274,7 +276,7 @@
         }
 
         /* ==========================================
-           ✅ TOMBOL WA + TANYA JENIS WA
+           ✅ TOMBOL WA - HP YANG OTOMATIS TANYA
         ========================================== */
         .kontak-wa {
             position: fixed;
@@ -319,9 +321,6 @@
             .tombol-utama-wa:hover .teks-wa {
                 opacity: 1;
             }
-            .pilihan-wa {
-                bottom: 70px;
-            }
         }
 
         /* ✅ DI HP: Langsung tampil lengkap */
@@ -334,64 +333,6 @@
             .teks-wa {
                 opacity: 1;
             }
-            .pilihan-wa {
-                bottom: 80px;
-            }
-        }
-
-        /* ✅ MENU PILIHAN JENIS WA */
-        .pilihan-wa {
-            position: absolute;
-            right: 0;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
-            overflow: hidden;
-            width: 200px;
-            transform: translateY(20px);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        .kontak-wa.buka .pilihan-wa {
-            transform: translateY(0);
-            opacity: 1;
-            visibility: visible;
-        }
-        body.gelap .pilihan-wa {
-            background: #34495e;
-        }
-        .teks-pilihan {
-            padding: 10px 15px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: #666;
-            border-bottom: 1px solid #eee;
-        }
-        body.gelap .teks-pilihan {
-            color: #ccc;
-            border-bottom-color: #444;
-        }
-        .pilihan-wa a {
-            display: block;
-            padding: 10px 15px;
-            color: #333;
-            text-decoration: none;
-            font-size: 0.9rem;
-            border-bottom: 1px solid #eee;
-        }
-        body.gelap .pilihan-wa a {
-            color: #ecf0f1;
-            border-bottom-color: #444;
-        }
-        .pilihan-wa a:last-child {
-            border-bottom: none;
-        }
-        .pilihan-wa a:hover {
-            background: #f1f1f1;
-        }
-        body.gelap .pilihan-wa a:hover {
-            background: #444;
         }
 
         /* ✅ PERBAIKAN HP KECIL */
@@ -430,24 +371,24 @@
 
     <div class="wadah-konten">
 
-        <!-- ✅ FORMULIR - LANGSUNG TERBUKA DI BAWAH -->
+        <!-- ✅ FORMULIR - LANGSUNG TERBUKA, TIDAK LOGIN ULANG -->
         <div id="tab-form" class="isi-konten aktif">
             <iframe src="https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg" allow="fullscreen"></iframe>
         </div>
 
-        <!-- ✅ CEK LAPORAN - LANGSUNG TERBUKA DI BAWAH -->
+        <!-- ✅ CEK LAPORAN - SAMA PERSIS, TIDAK LOGIN ULANG -->
         <div id="tab-laporan" class="isi-konten">
             <iframe src="https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe" allow="fullscreen"></iframe>
         </div>
 
-        <!-- ✅ PANDUAN - SUDAH ADA JARAK, WARNA BEDA, LINK ASLI -->
+        <!-- ✅ PANDUAN - JARAK JELAS, WARNA BEDA, LINK ASLI -->
         <div id="tab-panduan" class="isi-konten">
             <div class="wadah-panduan">
                 <div class="judul-bagian" onclick="bukaTutupJudul(this)">
                     <span class="teks-indo">Mesin Es Krim</span><span class="teks-cina">冰淇淋機</span>
                     <span class="panah-judul">▼</span>
                 </div>
-                <div class="isi-bagian"> <!-- ✅ SUDAH DIBERI JARAK DI CSS -->
+                <div class="isi-bagian"> <!-- ✅ JARAK SUDAH ADA -->
                     <a href="https://h07pxwx74k7.feishu.cn/file/B2PJbAxfToiRHoxhwegcoONPnnc" target="_blank" class="subjudul-bagian">
                         <span class="teks-indo">Melepas Vanbelt</span><span class="teks-cina">拆卸皮帶</span>
                         <span class="panah-subjudul">↗</span>
@@ -456,7 +397,7 @@
             </div>
         </div>
 
-        <!-- ✅ REIMBURSEMENT - LANGSUNG TERBUKA DI BAWAH -->
+        <!-- ✅ REIMBURSEMENT - SAMA PERSIS, TIDAK LOGIN ULANG -->
         <div id="tab-reimbursement" class="isi-konten">
             <iframe src="https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge" allow="fullscreen"></iframe>
         </div>
@@ -491,19 +432,13 @@
 
     </div>
 
-    <!-- ✅ TOMBOL WA - TANYA JENIS WA DULU -->
-    <div class="kontak-wa" id="kontakWa">
-        <button class="tombol-utama-wa" onclick="bukaPilihanWa()">
+    <!-- ✅ TOMBOL WA - OTOMATIS DITANYA HP, TIDAK PILIH MANUAL -->
+    <div class="kontak-wa">
+        <a href="https://wa.me/6281398495855" target="_blank" class="tombol-utama-wa">
             <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WA" class="logo-wa">
             <span class="teks-wa teks-indo">Hubungi Kami</span>
             <span class="teks-wa teks-cina">聯繫我們</span>
-        </button>
-        <div class="pilihan-wa">
-            <div class="teks-pilihan teks-indo">Pilih Aplikasi WA:</div>
-            <div class="teks-pilihan teks-cina">選擇通訊方式：</div>
-            <a href="https://wa.me/6281398495855" target="_blank">💬 WhatsApp Biasa</a>
-            <a href="https://wa.me/6281398495855?app_absent=0" target="_blank">💼 WhatsApp Bisnis</a>
-        </div>
+        </a>
     </div>
 
 <script>
@@ -552,19 +487,6 @@ function bukaTutupJudul(elemen) {
         elemen.querySelector('.panah-judul').textContent = '▼';
     }
 }
-
-// --- BUKA TUTUP PILIHAN WA ---
-function bukaPilihanWa() {
-    document.getElementById('kontakWa').classList.toggle('buka');
-}
-
-// --- TUTUP PILIHAN WA KLIK DILUAR ---
-document.addEventListener('click', function(e) {
-    const kotak = document.getElementById('kontakWa');
-    if (!kotak.contains(e.target)) {
-        kotak.classList.remove('buka');
-    }
-});
 
 // ✅ SALIN ALAMAT
 function salinTeks(idElemen, tombol) {
