@@ -19,8 +19,8 @@
             --biru-tua: #2c3e50;
             --biru-gelap: #34495e;
             --putih: #f8f9fa;
-            --biru-utama: #165DFF;  /* Biru tua Judul */
-            --biru-sub: #4080ff;     /* Biru muda Subjudul */
+            --biru-utama: #165DFF;
+            --biru-sub: #4080ff;
             --hijau-wa: #25d366;
         }
 
@@ -37,7 +37,6 @@
             color: var(--putih);
         }
 
-        /* --- ATAS: MODE & BAHASA --- */
         .pengaturan-atas {
             text-align: right;
             margin-bottom: 10px;
@@ -58,7 +57,6 @@
             background: rgba(0,0,0,0.2);
         }
 
-        /* --- JUDUL UTAMA --- */
         .judul-utama {
             text-align: center;
             font-size: clamp(22px, 5vw, 28px);
@@ -69,7 +67,6 @@
         .bahasa-indo .teks-indo { display: block; }
         .bahasa-cina .teks-cina { display: block; }
 
-        /* --- DESKRIPSI --- */
         .kotak-deskripsi {
             background: rgba(255,255,255,0.6);
             border-radius: 12px;
@@ -83,7 +80,6 @@
             background: rgba(255,255,255,0.1);
         }
 
-        /* --- MENU NAVIGASI --- */
         .menu-nav {
             display: flex;
             justify-content: space-between;
@@ -123,7 +119,6 @@
             box-shadow: 0 2px 6px rgba(22, 93, 255, 0.25);
         }
 
-        /* --- KOTAK KONTEN UTAMA --- */
         .wadah-konten {
             width: 100%;
             max-width: 1000px;
@@ -145,24 +140,25 @@
             display: block;
         }
 
-        /* ✅ TAMPILAN ISI LANGSUNG - TANPA IFRAME */
-        .wadah-isi-langsung {
+        .wadah-isi {
             width: 100%;
             height: 100%;
             min-height: 500px;
-            padding: 20px;
+            padding: 0;
             overflow-y: auto;
             background-color: #ffffff;
-            color: #333;
         }
-        body.gelap .wadah-isi-langsung {
+        body.gelap .wadah-isi {
             background-color: #2c3e50;
-            color: #f8f9fa;
         }
 
-        /* ==========================================
-           ✅ BAGIAN PANDUAN - JARAK & WARNA
-        ========================================== */
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            display: block;
+        }
+
         .wadah-panduan {
             background-color: #f0f2f5;
             padding: 0;
@@ -171,12 +167,11 @@
             background-color: #2c3e50;
         }
 
-        /* ✅ JUDUL UTAMA: MESIN ES KRIM - BIRU TUA & TEBAL */
         .judul-bagian {
             background-color: var(--biru-utama);
             color: #ffffff;
             padding: 14px 18px;
-            font-weight: 700; /* TEBAL */
+            font-weight: 700;
             font-size: 1rem;
             display: flex;
             justify-content: space-between;
@@ -193,12 +188,11 @@
             transform: rotate(180deg);
         }
 
-        /* ✅ ISI DALAM BAGIAN - BERI JARAK AGAR TIDAK LENGKET */
         .isi-bagian {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
-            padding: 0 10px; /* JARAK KIRI KANAN */
+            padding: 0 10px;
             background-color: #f0f2f5;
         }
         body.gelap .isi-bagian {
@@ -206,23 +200,22 @@
         }
         .judul-bagian.buka + .isi-bagian {
             max-height: 200px;
-            padding-top: 15px;  /* ✅ JARAK ATAS AGAR TIDAK LENGKET */
-            padding-bottom: 10px; /* ✅ JARAK BAWAH */
+            padding-top: 15px;
+            padding-bottom: 10px;
         }
 
-        /* ✅ SUBJUDUL: MELEPAS VANBELT - BIRU MUDA & BIASA */
         .subjudul-bagian {
-            background-color: var(--biru-sub); /* BEDA WARNA JELAS */
+            background-color: var(--biru-sub);
             color: #ffffff;
             padding: 12px 18px;
-            font-weight: 400; /* TIDAK TEBAL */
+            font-weight: 400;
             font-size: 0.95rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
             margin: 0;
-            border-radius: 8px; /* SUDUT BULAT SEDIKIT AGAR RAPI */
+            border-radius: 8px;
             text-decoration: none;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
@@ -231,9 +224,6 @@
             color: #ffffff;
         }
 
-        /* ==========================================
-           ✅ BAGIAN ALAMAT + FITUR SALIN
-        ========================================== */
         .wadah-alamat {
             padding: 20px 15px;
         }
@@ -277,9 +267,6 @@
             color: #ecf0f1;
         }
 
-        /* ==========================================
-           ✅ TOMBOL WA - OTOMATIS DITANYA HP, TIDAK PILIH MANUAL
-        ========================================== */
         .kontak-wa {
             position: fixed;
             bottom: 20px;
@@ -314,7 +301,6 @@
             transition: opacity 0.3s ease;
         }
 
-        /* ✅ DI KOMPUTER: Muncul tulisan saat diarahkan */
         @media (min-width: 769px) {
             .tombol-utama-wa:hover {
                 max-width: 200px;
@@ -325,7 +311,6 @@
             }
         }
 
-        /* ✅ DI HP: Langsung tampil lengkap */
         @media (max-width: 768px) {
             .tombol-utama-wa {
                 max-width: 200px;
@@ -337,7 +322,6 @@
             }
         }
 
-        /* ✅ PERBAIKAN HP KECIL */
         @media (max-width: 400px) {
             .judul-utama { font-size: 22px; }
             .tombol-menu { min-width: 75px; font-size: 0.78rem; padding: 8px 4px; }
@@ -346,7 +330,6 @@
 </head>
 <body class="bahasa-indo">
 
-    <!-- ✅ PENGATURAN: DARK MODE & BAHASA -->
     <div class="pengaturan-atas">
         <button id="tombolMode" class="tombol-pengaturan">🌙</button>
         <button id="tombolBahasa" class="tombol-pengaturan">🇨🇳</button>
@@ -362,7 +345,6 @@
         <span class="teks-cina">可靠的設備維護服務。實用指南、精準解決方案，您的滿意與事業順利是我們的首要任務。 💼🛠️</span>
     </div>
 
-    <!-- ✅ MENU -->
     <div class="menu-nav">
         <button class="tombol-menu aktif" onclick="bukaTab('form')">📄 <span class="teks-indo">Formulir</span><span class="teks-cina">表格</span></button>
         <button class="tombol-menu" onclick="bukaTab('laporan')">✅ <span class="teks-indo">Cek Laporan</span><span class="teks-cina">查看報表</span></button>
@@ -373,43 +355,25 @@
 
     <div class="wadah-konten">
 
-        <!-- ✅ FORMULIR - ISI LANGSUNG DI SINI, TANPA IFRAME, TANPA LOGIN -->
         <div id="tab-form" class="isi-konten aktif">
-            <div class="wadah-isi-langsung">
-                <h3 style="text-align:center; margin-bottom:20px; color:#165DFF; font-weight:bold;">📄 <span class="teks-indo">Formulir Layanan</span><span class="teks-cina">服務表格</span></h3>
-                <p style="text-align:center; margin-bottom:15px;">
-                    <span class="teks-indo">Isi data dengan lengkap dan benar di bawah ini:</span>
-                    <span class="teks-cina">請在下方填寫完整且正確的資料：</span>
-                </p>
-                <div style="width:100%; max-width:700px; margin:0 auto;">
-                    <!-- Isi formulir akan tampil di sini langsung -->
-                    <iframe src="https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg" style="width:100%; height:600px; border:none; background:#fff;" sandbox="allow-same-origin allow-scripts allow-forms"></iframe>
-                </div>
+            <div class="wadah-isi">
+                <iframe src="https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg" sandbox="allow-same-origin allow-scripts allow-forms"></iframe>
             </div>
         </div>
 
-        <!-- ✅ CEK LAPORAN - SISTEM SAMA, TIDAK MINTA LOGIN -->
         <div id="tab-laporan" class="isi-konten">
-            <div class="wadah-isi-langsung">
-                <h3 style="text-align:center; margin-bottom:20px; color:#165DFF; font-weight:bold;">✅ <span class="teks-indo">Cek Status Laporan</span><span class="teks-cina">查看報表狀態</span></h3>
-                <p style="text-align:center; margin-bottom:15px;">
-                    <span class="teks-indo">Lihat perkembangan laporan yang sudah diajukan:</span>
-                    <span class="teks-cina">查看已提交報表的進度：</span>
-                </p>
-                <div style="width:100%; max-width:700px; margin:0 auto;">
-                    <iframe src="https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe" style="width:100%; height:600px; border:none; background:#fff;" sandbox="allow-same-origin allow-scripts allow-forms"></iframe>
-                </div>
+            <div class="wadah-isi">
+                <iframe src="https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe" sandbox="allow-same-origin allow-scripts allow-forms"></iframe>
             </div>
         </div>
 
-        <!-- ✅ PANDUAN - JARAK JELAS, WARNA BEDA, LINK ASLI -->
         <div id="tab-panduan" class="isi-konten">
             <div class="wadah-panduan">
                 <div class="judul-bagian" onclick="bukaTutupJudul(this)">
                     <span class="teks-indo">Mesin Es Krim</span><span class="teks-cina">冰淇淋機</span>
                     <span class="panah-judul">▼</span>
                 </div>
-                <div class="isi-bagian"> <!-- ✅ JARAK SUDAH ADA -->
+                <div class="isi-bagian">
                     <a href="https://h07pxwx74k7.feishu.cn/file/B2PJbAxfToiRHoxhwegcoONPnnc" target="_blank" class="subjudul-bagian">
                         <span class="teks-indo">Melepas Vanbelt</span><span class="teks-cina">拆卸皮帶</span>
                         <span class="panah-subjudul">↗</span>
@@ -418,21 +382,12 @@
             </div>
         </div>
 
-        <!-- ✅ REIMBURSEMENT - SISTEM SAMA, TIDAK MINTA LOGIN -->
         <div id="tab-reimbursement" class="isi-konten">
-            <div class="wadah-isi-langsung">
-                <h3 style="text-align:center; margin-bottom:20px; color:#165DFF; font-weight:bold;">💰 <span class="teks-indo">Pengajuan Reimbursement</span><span class="teks-cina">費用報銷申請</span></h3>
-                <p style="text-align:center; margin-bottom:15px;">
-                    <span class="teks-indo">Isi formulir penggantian biaya di bawah ini:</span>
-                    <span class="teks-cina">請在下方填寫費用報銷表格：</span>
-                </p>
-                <div style="width:100%; max-width:700px; margin:0 auto;">
-                    <iframe src="https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge" style="width:100%; height:600px; border:none; background:#fff;" sandbox="allow-same-origin allow-scripts allow-forms"></iframe>
-                </div>
+            <div class="wadah-isi">
+                <iframe src="https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge" sandbox="allow-same-origin allow-scripts allow-forms"></iframe>
             </div>
         </div>
 
-        <!-- ✅ ALAMAT -->
         <div id="tab-alamat" class="isi-konten">
             <div class="wadah-alamat">
                 <div class="kotak-alamat">
@@ -462,7 +417,6 @@
 
     </div>
 
-    <!-- ✅ TOMBOL WA - OTOMATIS DITANYA HP, TIDAK PILIH MANUAL -->
     <div class="kontak-wa">
         <a href="https://wa.me/6281398495855" target="_blank" class="tombol-utama-wa">
             <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WA" class="logo-wa">
@@ -474,14 +428,12 @@
 <script>
 let bahasaSekarang = 'indo';
 
-// --- DARK MODE ---
 const tombolMode = document.getElementById('tombolMode');
 tombolMode.addEventListener('click', () => {
     document.body.classList.toggle('gelap');
     tombolMode.textContent = document.body.classList.contains('gelap') ? '☀️' : '🌙';
 });
 
-// --- GANTI BAHASA ---
 const tombolBahasa = document.getElementById('tombolBahasa');
 tombolBahasa.addEventListener('click', () => {
     if(bahasaSekarang === 'indo') {
@@ -497,7 +449,6 @@ tombolBahasa.addEventListener('click', () => {
     }
 });
 
-// --- MENU ---
 function bukaTab(nama) {
     document.querySelectorAll('.tombol-menu').forEach(t => t.classList.remove('aktif'));
     event.currentTarget.classList.add('aktif');
@@ -505,7 +456,6 @@ function bukaTab(nama) {
     document.getElementById('tab-' + nama).classList.add('aktif');
 }
 
-// --- BUKA TUTUP JUDUL UTAMA ---
 function bukaTutupJudul(elemen) {
     elemen.classList.toggle('buka');
     let isi = elemen.nextElementSibling;
@@ -518,7 +468,6 @@ function bukaTutupJudul(elemen) {
     }
 }
 
-// ✅ SALIN ALAMAT
 function salinTeks(idElemen, tombol) {
     const elemen = document.getElementById(idElemen);
     const teks = elemen.textContent.trim();
