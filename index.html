@@ -21,6 +21,7 @@
             --putih: #f8f9fa;
             --biru-utama: #165DFF;  /* Biru tua untuk Judul */
             --biru-sub: #4080ff;     /* Biru muda untuk Subjudul */
+            --hijau-wa: #25d366;
         }
 
         body {
@@ -114,6 +115,7 @@
             transition: all 0.2s ease;
             white-space: nowrap;
             text-align: center;
+            text-decoration: none;
         }
         .tombol-menu.aktif {
             background-color: var(--biru-utama);
@@ -142,7 +144,7 @@
             display: block;
         }
 
-        /* ✅ IFRAME LANGSUNG TAMPIL PENUH */
+        /* ✅ IFRAME LANGSUNG TERBUKA & BISA DIBUKA */
         iframe {
             width: 100%;
             height: 85vh;
@@ -151,10 +153,11 @@
             display: block;
             overflow: auto;
             -webkit-overflow-scrolling: touch;
+            background-color: #ffffff;
         }
 
         /* ==========================================
-           ✅ BAGIAN PANDUAN - WARNA BERBEDA JELAS
+           ✅ BAGIAN PANDUAN - JARAK & WARNA
         ========================================== */
         .wadah-panduan {
             background-color: #f0f2f5;
@@ -186,14 +189,21 @@
             transform: rotate(180deg);
         }
 
-        /* ✅ ISI DALAM BAGIAN - AWALNYA TERTUTUP */
+        /* ✅ ISI DALAM BAGIAN - BERI JARAK AGAR TIDAK LENGKET */
         .isi-bagian {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
+            padding: 0 10px; /* JARAK KIRI KANAN */
+            background-color: #f0f2f5;
+        }
+        body.gelap .isi-bagian {
+            background-color: #2c3e50;
         }
         .judul-bagian.buka + .isi-bagian {
-            max-height: 200px; /* Cukup untuk subjudul saja */
+            max-height: 200px;
+            padding-top: 15px;  /* ✅ JARAK ATAS AGAR TIDAK LENGKET */
+            padding-bottom: 10px; /* ✅ JARAK BAWAH */
         }
 
         /* ✅ SUBJUDUL: MELEPAS VANBELT - BIRU MUDA & BIASA */
@@ -208,7 +218,9 @@
             align-items: center;
             cursor: pointer;
             margin: 0;
-            text-decoration: none; /* Hilangkan garis bawah link */
+            border-radius: 8px; /* SUDUT BULAT SEDIKIT AGAR RAPI */
+            text-decoration: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .panah-subjudul {
             font-size: 16px;
@@ -262,7 +274,7 @@
         }
 
         /* ==========================================
-           ✅ TOMBOL WA - SESUAI PERMINTAAN
+           ✅ TOMBOL WA + TANYA JENIS WA
         ========================================== */
         .kontak-wa {
             position: fixed;
@@ -270,11 +282,11 @@
             right: 20px;
             z-index: 99;
         }
-        .link-wa {
+        .tombol-utama-wa {
             display: flex;
             align-items: center;
             text-decoration: none;
-            background: #25d366;
+            background: var(--hijau-wa);
             color: white;
             padding: 10px;
             border-radius: 50px;
@@ -282,7 +294,10 @@
             overflow: hidden;
             white-space: nowrap;
             transition: all 0.3s ease;
-            max-width: 44px; /* Awalnya cuma lingkaran/logo */
+            max-width: 44px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
         }
         .logo-wa {
             width: 22px;
@@ -297,18 +312,21 @@
 
         /* ✅ DI KOMPUTER: Muncul tulisan saat diarahkan */
         @media (min-width: 769px) {
-            .link-wa:hover {
-                max-width: 200px; /* Melebar saat diarahkan */
+            .tombol-utama-wa:hover {
+                max-width: 200px;
                 padding: 10px 18px;
             }
-            .link-wa:hover .teks-wa {
+            .tombol-utama-wa:hover .teks-wa {
                 opacity: 1;
+            }
+            .pilihan-wa {
+                bottom: 70px;
             }
         }
 
         /* ✅ DI HP: Langsung tampil lengkap */
         @media (max-width: 768px) {
-            .link-wa {
+            .tombol-utama-wa {
                 max-width: 200px;
                 padding: 10px 16px;
                 border-radius: 25px;
@@ -316,9 +334,67 @@
             .teks-wa {
                 opacity: 1;
             }
+            .pilihan-wa {
+                bottom: 80px;
+            }
         }
 
-        /* ✅ PERBAIKAN KHUSUS LAYAR HP KECIL */
+        /* ✅ MENU PILIHAN JENIS WA */
+        .pilihan-wa {
+            position: absolute;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+            overflow: hidden;
+            width: 200px;
+            transform: translateY(20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .kontak-wa.buka .pilihan-wa {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        body.gelap .pilihan-wa {
+            background: #34495e;
+        }
+        .teks-pilihan {
+            padding: 10px 15px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
+        body.gelap .teks-pilihan {
+            color: #ccc;
+            border-bottom-color: #444;
+        }
+        .pilihan-wa a {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #eee;
+        }
+        body.gelap .pilihan-wa a {
+            color: #ecf0f1;
+            border-bottom-color: #444;
+        }
+        .pilihan-wa a:last-child {
+            border-bottom: none;
+        }
+        .pilihan-wa a:hover {
+            background: #f1f1f1;
+        }
+        body.gelap .pilihan-wa a:hover {
+            background: #444;
+        }
+
+        /* ✅ PERBAIKAN HP KECIL */
         @media (max-width: 400px) {
             .judul-utama { font-size: 22px; }
             .tombol-menu { min-width: 75px; font-size: 0.78rem; padding: 8px 4px; }
@@ -354,38 +430,33 @@
 
     <div class="wadah-konten">
 
-        <!-- ✅ FORMULIR - LANGSUNG TERBUKA PENUH -->
+        <!-- ✅ FORMULIR - LANGSUNG TERBUKA DI BAWAH -->
         <div id="tab-form" class="isi-konten aktif">
             <iframe src="https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg" allow="fullscreen"></iframe>
         </div>
 
-        <!-- ✅ CEK LAPORAN - LANGSUNG TERBUKA PENUH -->
+        <!-- ✅ CEK LAPORAN - LANGSUNG TERBUKA DI BAWAH -->
         <div id="tab-laporan" class="isi-konten">
             <iframe src="https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe" allow="fullscreen"></iframe>
         </div>
 
-        <!-- ✅ PANDUAN - WARNA BERBEDA, KLIK SUBJUDUL BUKA LINK ASLI DI TAB BARU -->
+        <!-- ✅ PANDUAN - SUDAH ADA JARAK, WARNA BEDA, LINK ASLI -->
         <div id="tab-panduan" class="isi-konten">
             <div class="wadah-panduan">
-
-                <!-- ✅ JUDUL: MESIN ES KRIM (BIRU TUA, TEBAL) -->
                 <div class="judul-bagian" onclick="bukaTutupJudul(this)">
                     <span class="teks-indo">Mesin Es Krim</span><span class="teks-cina">冰淇淋機</span>
                     <span class="panah-judul">▼</span>
                 </div>
-
-                <div class="isi-bagian">
-                    <!-- ✅ SUBJUDUL: MELEPAS VANBELT (BIRU MUDA, KLIK BUKA LINK ASLI) -->
+                <div class="isi-bagian"> <!-- ✅ SUDAH DIBERI JARAK DI CSS -->
                     <a href="https://h07pxwx74k7.feishu.cn/file/B2PJbAxfToiRHoxhwegcoONPnnc" target="_blank" class="subjudul-bagian">
                         <span class="teks-indo">Melepas Vanbelt</span><span class="teks-cina">拆卸皮帶</span>
-                        <span class="panah-subjudul">↗</span> <!-- Ikon buka tab baru -->
+                        <span class="panah-subjudul">↗</span>
                     </a>
                 </div>
-
             </div>
         </div>
 
-        <!-- ✅ REIMBURSEMENT - LANGSUNG TERBUKA PENUH -->
+        <!-- ✅ REIMBURSEMENT - LANGSUNG TERBUKA DI BAWAH -->
         <div id="tab-reimbursement" class="isi-konten">
             <iframe src="https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge" allow="fullscreen"></iframe>
         </div>
@@ -401,11 +472,9 @@
                         <p><strong class="teks-indo">Alamat:</strong><strong class="teks-cina">地址：</strong> Gudang Momoyo, Jl. Industri VIII No.8, RT.002/RW.003, Pasir Jaya, Kec. Jatiuwung, Kota Tangerang, Banten 15135</p>
                     </div>
                     <button class="tombol-salin" onclick="salinTeks('alamat-gudang', this)">
-                        <span class="teks-indo">📋 Salin Alamat Gudang</span>
-                        <span class="teks-cina">📋 複製倉庫地址</span>
+                        <span class="teks-indo">📋 Salin Alamat Gudang</span><span class="teks-cina">📋 複製倉庫地址</span>
                     </button>
                 </div>
-
                 <div class="kotak-alamat">
                     <h3 class="judul-alamat">🏫 <span class="teks-indo">Training Center</span><span class="teks-cina">培訓中心</span></h3>
                     <div class="isi-alamat" id="alamat-training">
@@ -414,8 +483,7 @@
                         <p><strong class="teks-indo">Alamat:</strong><strong class="teks-cina">地址：</strong> Momoyo Training Center, Jl. HOS Cokroaminoto, RT.3/RW.9, Larangan Utara, Kec. Larangan, Kota Tangerang, Banten 15154</p>
                     </div>
                     <button class="tombol-salin" onclick="salinTeks('alamat-training', this)">
-                        <span class="teks-indo">📋 Salin Alamat Training Center</span>
-                        <span class="teks-cina">📋 複製培訓中心地址</span>
+                        <span class="teks-indo">📋 Salin Alamat Training Center</span><span class="teks-cina">📋 複製培訓中心地址</span>
                     </button>
                 </div>
             </div>
@@ -423,13 +491,19 @@
 
     </div>
 
-    <!-- ✅ TOMBOL WA -->
-    <div class="kontak-wa">
-        <a href="https://wa.me/6281398495855" target="_blank" class="link-wa">
+    <!-- ✅ TOMBOL WA - TANYA JENIS WA DULU -->
+    <div class="kontak-wa" id="kontakWa">
+        <button class="tombol-utama-wa" onclick="bukaPilihanWa()">
             <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WA" class="logo-wa">
             <span class="teks-wa teks-indo">Hubungi Kami</span>
             <span class="teks-wa teks-cina">聯繫我們</span>
-        </a>
+        </button>
+        <div class="pilihan-wa">
+            <div class="teks-pilihan teks-indo">Pilih Aplikasi WA:</div>
+            <div class="teks-pilihan teks-cina">選擇通訊方式：</div>
+            <a href="https://wa.me/6281398495855" target="_blank">💬 WhatsApp Biasa</a>
+            <a href="https://wa.me/6281398495855?app_absent=0" target="_blank">💼 WhatsApp Bisnis</a>
+        </div>
     </div>
 
 <script>
@@ -466,7 +540,7 @@ function bukaTab(nama) {
     document.getElementById('tab-' + nama).classList.add('aktif');
 }
 
-// --- BUKA TUTUP JUDUL UTAMA (Panduan) ---
+// --- BUKA TUTUP JUDUL UTAMA ---
 function bukaTutupJudul(elemen) {
     elemen.classList.toggle('buka');
     let isi = elemen.nextElementSibling;
@@ -479,11 +553,23 @@ function bukaTutupJudul(elemen) {
     }
 }
 
+// --- BUKA TUTUP PILIHAN WA ---
+function bukaPilihanWa() {
+    document.getElementById('kontakWa').classList.toggle('buka');
+}
+
+// --- TUTUP PILIHAN WA KLIK DILUAR ---
+document.addEventListener('click', function(e) {
+    const kotak = document.getElementById('kontakWa');
+    if (!kotak.contains(e.target)) {
+        kotak.classList.remove('buka');
+    }
+});
+
 // ✅ SALIN ALAMAT
 function salinTeks(idElemen, tombol) {
     const elemen = document.getElementById(idElemen);
     const teks = elemen.textContent.trim();
-    
     navigator.clipboard.writeText(teks).then(() => {
         const teksAwal = tombol.innerHTML;
         tombol.innerHTML = '<span class="teks-indo">✅ Berhasil Disalin!</span><span class="teks-cina">✅ 複製成功！</span>';
