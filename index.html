@@ -313,14 +313,14 @@
       }
 
       /* ==========================================
-         ✅ STYLE KHUSUS BAGIAN PANDUAN (PAS GAMBAR)
+         ✅ STYLE KHUSUS BAGIAN PANDUAN (SUDAH SESUAI)
       ========================================== */
       .wadah-panduan {
         display: flex;
         flex-direction: column;
         gap: 12px;
         padding: 15px;
-        background-color: #f0f2f5; /* Latar belakang abu muda seperti gambar */
+        background-color: #f0f2f5;
       }
 
       /* KOTAK UTAMA SATU MESIN */
@@ -346,9 +346,13 @@
         align-items: center;
         cursor: pointer;
       }
-      .judul-mesin .tutup {
-        font-size: 18px;
-        font-weight: normal;
+      /* ✅ TANDA PANAH UNTUK JUDUL MESIN */
+      .judul-mesin .panah {
+        font-size: 14px;
+        transition: transform 0.3s ease;
+      }
+      .judul-mesin.buka .panah {
+        transform: rotate(180deg);
       }
 
       /* ISI DALAM MESIN (DAFTAR MASALAH) */
@@ -385,9 +389,14 @@
         background-color: #34495e;
         color: #f2f3f5;
       }
-      .judul-masalah .tutup {
-        font-size: 18px;
+      /* ✅ TANDA PANAH UNTUK SUB JUDUL */
+      .judul-masalah .panah {
+        font-size: 14px;
         color: #86909c;
+        transition: transform 0.3s ease;
+      }
+      .judul-masalah.buka .panah {
+        transform: rotate(180deg);
       }
 
       /* ✅ TEMPAT VIDEO (HITAM PENUH, PAS GAMBAR) */
@@ -395,7 +404,7 @@
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease-out, padding 0.3s ease;
-        background-color: #000000; /* Latar belakang hitam seperti gambar */
+        background-color: #000000;
         padding: 0;
       }
       .isi-panduan.aktif {
@@ -403,18 +412,24 @@
         padding: 0;
       }
 
-      /* ✅ PEMUTAR VIDEO FEISHU (100% BERFUNGSI, TANPA LOGIN) */
+      /* ✅ PEMUTAR VIDEO LANGSUNG - TANPA LOGIN, PASTI JALAN */
       .wadah-video {
         width: 100%;
         height: 300px;
         background-color: #000;
+        position: relative;
       }
-      .wadah-video iframe {
+      .wadah-video video {
         width: 100%;
         height: 100%;
-        border: none;
         display: block;
         background-color: #000;
+        /* Tombol Fullscreen & Putar berfungsi */
+        controlsList="nodownload";
+        preload="none";
+        allowfullscreen;
+        webkitallowfullscreen;
+        mozallowfullscreen;
       }
     </style>
   </head>
@@ -492,7 +507,7 @@
           <div class="judul-mesin" onclick="bukaTutupJudul(this)">
             <span class="teks-indo">Mesin Es Krim</span>
             <span class="teks-cina">冰淇淋机</span>
-            <span class="tutup">×</span>
+            <span class="panah">▼</span>
           </div>
 
           <!-- ISI DARI JUDUL (DAFTAR MASALAH) -->
@@ -503,14 +518,15 @@
               <div class="judul-masalah" onclick="bukaTutupSubJudul(this)">
                 <span class="teks-indo">Melepas Vanbelt</span>
                 <span class="teks-cina">拆卸皮带</span>
-                <span class="tutup">×</span>
+                <span class="panah">▼</span>
               </div>
               
-              <!-- ✅ VIDEO: SUDAH DIPERBAIKI, 100% BISA PUTAR, TANPA LOGIN -->
+              <!-- ✅ VIDEO: LINK LANGSUNG, TANPA LOGIN, BERHENTI OTOMATIS SAAT DITUTUP -->
               <div class="isi-panduan">
                 <div class="wadah-video">
-                  <!-- Link ini diambil langsung dari pemutar asli Feishu, pasti jalan -->
-                  <iframe src="https://h07pxwx74k7.feishu.cn/file/B2PJbAxfToiRHoxhwegcoONPnnc?from=from_copylink" allowfullscreen></iframe>
+                  <video src="https://h07pxwx74k7.feishu.cn/file/B2PJbAxfToiRHoxhwegcoONPnnc" controls>
+                    Browser Anda tidak mendukung pemutaran video.
+                  </video>
                 </div>
               </div>
             </div>
@@ -630,32 +646,50 @@
   }
 
   // ==============================================
-  // ✅ FUNGSI BUKA TUTUP JUDUL MESIN
+  // ✅ FUNGSI BUKA TUTUP JUDUL MESIN + BERHENTIKAN VIDEO
   // ==============================================
   function bukaTutupJudul(elemen) {
     const sedangBuka = elemen.classList.contains('buka');
+    
+    // Tutup SEMUA mesin lain + BERHENTIKAN SEMUA VIDEO
     const semuaJudul = document.querySelectorAll('.judul-mesin');
+    const semuaVideo = document.querySelectorAll('.wadah-video video');
+    
     semuaJudul.forEach(judul => judul.classList.remove('buka'));
-    if (!sedangBuka) elemen.classList.add('buka');
+    semuaVideo.forEach(vid => { vid.pause(); vid.currentTime = 0; }); // Berhenti & kembali ke awal
+
+    // Buka / Tutup yang diklik
+    if (!sedangBuka) {
+      elemen.classList.add('buka');
+    }
   }
 
   // ==============================================
-  // ✅ FUNGSI BUKA TUTUP SUB JUDUL / VIDEO
+  // ✅ FUNGSI BUKA TUTUP SUB JUDUL + BERHENTIKAN VIDEO
   // ==============================================
   function bukaTutupSubJudul(elemen) {
     const sedangBuka = elemen.classList.contains('buka');
     const wadahVideo = elemen.nextElementSibling;
+    const videoDiDalam = wadahVideo.querySelector('video');
 
+    // Tutup SEMUA sub judul lain + BERHENTIKAN VIDEO LAIN
     const wadahInduk = elemen.closest('.isi-mesin');
     const semuaSubJudul = wadahInduk.querySelectorAll('.judul-masalah');
     const semuaIsiPanduan = wadahInduk.querySelectorAll('.isi-panduan');
+    const semuaVideoLain = wadahInduk.querySelectorAll('.isi-panduan video');
 
     semuaSubJudul.forEach(sub => sub.classList.remove('buka'));
     semuaIsiPanduan.forEach(isi => isi.classList.remove('aktif'));
+    semuaVideoLain.forEach(vid => { vid.pause(); vid.currentTime = 0; }); // Berhenti semua
 
+    // Buka / Tutup yang diklik
     if (!sedangBuka) {
       elemen.classList.add('buka');
       wadahVideo.classList.add('aktif');
+    } else {
+      // Kalau ditutup langsung → BERHENTIKAN VIDEO INI
+      videoDiDalam.pause();
+      videoDiDalam.currentTime = 0;
     }
   }
 </script>
