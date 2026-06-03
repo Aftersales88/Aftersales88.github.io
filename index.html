@@ -1,697 +1,508 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aftersales Momoyo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Momoyo Aftersales</title>
     <style>
-      :root {
-        --biru-lembut: #e6edf2;
-        --biru-tua: #2c3e50;
-        --biru-gelap: #34495e;
-        --putih: #f8f9fa;
-        --abu-lembut: #bdc3c7;
-        --biru-utama: #165DFF;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, Helvetica, sans-serif;
-        transition: background-color 0.2s ease, color 0.2s ease;
-        -webkit-tap-highlight-color: transparent;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
 
-      body {
-        background-color: var(--biru-lembut);
-        color: var(--biru-tua);
-        min-height: 100vh;
-        width: 100%;
-      }
-      body.gelap {
-        background-color: var(--biru-gelap);
-        color: var(--putih);
-      }
+        :root {
+            --biru-lembut: #e6edf2;
+            --biru-tua: #2c3e50;
+            --biru-gelap: #34495e;
+            --putih: #f8f9fa;
+            --biru-utama: #165DFF;
+        }
 
-      /* --- PENGATURAN ATAS --- */
-      .pengaturan-mode {
-        text-align: right;
-        padding: 15px 20px;
-        position: relative;
-        z-index: 20;
-        display: flex;
-        justify-content: flex-end;
-        gap: 10px;
-        align-items: center;
-      }
-      #tombolMode, .tombol-bahasa {
-        background-color: rgba(255, 255, 255, 0.4);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        padding: 10px 14px;
-        border-radius: 25px;
-        cursor: pointer;
-        font-size: 16px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      #tombolMode:hover, .tombol-bahasa:hover {
-        background-color: rgba(255, 255, 255, 0.5);
-      }
+        body {
+            background-color: var(--biru-lembut);
+            color: var(--biru-tua);
+            min-height: 100vh;
+            padding: 20px 10px;
+            line-height: 1.5;
+        }
+        body.gelap {
+            background-color: var(--biru-gelap);
+            color: var(--putih);
+        }
 
-      /* --- KONTEN UTAMA --- */
-      .konten {
-        width: 88%;
-        max-width: 1000px;
-        margin: 20px auto 0;
-        padding: 10px 0 30px;
-        text-align: center;
-        position: relative;
-        z-index: 20;
-        pointer-events: none;
-      }
-      .konten > * {
-        pointer-events: auto;
-      }
+        /* --- ATAS: MODE & BAHASA --- */
+        .pengaturan-atas {
+            text-align: right;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+        .tombol-pengaturan {
+            background: rgba(255,255,255,0.4);
+            border: none;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            backdrop-filter: blur(4px);
+        }
+        body.gelap .tombol-pengaturan {
+            background: rgba(0,0,0,0.2);
+        }
 
-      .konten h1 {
-        margin-bottom: 25px;
-        font-size: clamp(22px, 4vw, 32px);
-        font-weight: bold;
-        white-space: nowrap;
-        line-height: 1.2;
-      }
+        /* --- JUDUL UTAMA --- */
+        .judul-utama {
+            text-align: center;
+            font-size: clamp(22px, 5vw, 28px);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .teks-cina, .teks-indo { display: none; }
+        .bahasa-indo .teks-indo { display: block; }
+        .bahasa-cina .teks-cina { display: block; }
 
-      .kotak-isi {
-        width: 95%;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: rgba(255, 255, 255, 0.6);
-        border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        text-align: center;
-        line-height: 1.6;
-        font-size: clamp(0.9rem, 2vw, 1.05rem);
-      }
-      body.gelap .kotak-isi {
-        background-color: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
+        /* --- DESKRIPSI --- */
+        .kotak-deskripsi {
+            background: rgba(255,255,255,0.6);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            backdrop-filter: blur(4px);
+        }
+        body.gelap .kotak-deskripsi {
+            background: rgba(255,255,255,0.1);
+        }
 
-      /* --- MENU PILIHAN --- */
-      .menu-pilihan {
-        width: 95%;
-        max-width: 1000px;
-        margin: 20px auto;
-        padding: 8px;
-        background-color: rgba(255, 255, 255, 0.5);
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-        position: relative;
-        z-index: 20;
-      }
-      .daftar-pilihan {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 5px;
-        flex-wrap: wrap;
-      }
-      .tombol-pilih {
-        flex: 1 1 auto;
-        min-width: 90px;
-        background-color: transparent;
-        border: none;
-        padding: 12px 8px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: clamp(0.8rem, 1.8vw, 0.9rem);
-        font-weight: 500;
-        color: var(--biru-tua);
-        transition: all 0.2s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-        position: relative;
-        z-index: 20;
-      }
-      body.gelap .menu-pilihan {
-        background-color: rgba(0, 0, 0, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      body.gelap .tombol-pilih {
-        color: var(--putih);
-      }
-      .tombol-pilih.aktif {
-        background-color: var(--biru-utama);
-        color: white !important;
-        box-shadow: 0 2px 6px rgba(22, 93, 255, 0.3);
-      }
-      .tombol-pilih:hover:not(.aktif) {
-        background-color: rgba(22, 93, 255, 0.1);
-      }
-      .ikon-menu {
-        font-size: 16px;
-      }
+        /* --- MENU NAVIGASI --- */
+        .menu-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.5);
+            border-radius: 10px;
+            padding: 6px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            backdrop-filter: blur(4px);
+        }
+        body.gelap .menu-nav {
+            background: rgba(0,0,0,0.2);
+        }
 
-      /* --- KONTAK WA --- */
-      .kontak-wa {
-        bottom: 25px;
-        right: 25px;
-        z-index: 20;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 4px;
-        position: fixed;
-      }
-      .link-wa {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        position: relative;
-      }
-      .logo-wa {
-        width: 50px;
-        height: auto;
-        transition: 0.2s ease;
-        filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));
-      }
-      .teks-kontak {
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 0.9rem;
-        color: #25d366;
-        font-weight: 500;
-        background-color: #ffffff;
-        padding: 5px 12px;
-        border-radius: 20px;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-        opacity: 0;
-        transition: all 0.3s ease;
-        pointer-events: none;
-        white-space: nowrap;
-      }
-      .link-wa:hover .teks-kontak {
-        opacity: 1;
-        transform: translateX(-50px) translateY(-50%);
-      }
-      .link-wa:hover .logo-wa {
-        transform: scale(1.1);
-      }
-      .teks-hp {
-        font-size: 0.75rem;
-        color: var(--biru-tua);
-        display: block;
-        font-weight: 500;
-      }
-      @media screen and (min-width: 992px) {
-        .teks-hp { display: none; }
-      }
-      body.gelap .teks-kontak {
-        background-color: var(--biru-gelap);
-        color: #25d366;
-      }
-      body.gelap .teks-hp{
-        color: var(--putih);
-      }
+        .tombol-menu {
+            flex: 1 1 auto;
+            min-width: 80px;
+            border: none;
+            background: transparent;
+            padding: 10px 8px;
+            border-radius: 8px;
+            font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+            font-weight: 500;
+            color: inherit;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .tombol-menu.aktif {
+            background-color: var(--biru-utama);
+            color: #ffffff !important;
+            box-shadow: 0 2px 6px rgba(22, 93, 255, 0.25);
+        }
 
-      /* --- ATURAN BAHASA --- */
-      .teks-cina, .teks-indo { display: none; }
-      .bahasa-indo .teks-indo { display: block; }
-      .bahasa-cina .teks-cina { display: block; }
+        /* --- KOTAK KONTEN UTAMA --- */
+        .wadah-konten {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .isi-konten {
+            display: none;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(4px);
+        }
+        body.gelap .isi-konten {
+            background: rgba(255,255,255,0.05);
+        }
+        .isi-konten.aktif {
+            display: block;
+        }
+        iframe {
+            width: 100%;
+            border: none;
+            display: block;
+        }
 
-      /* --- KOTAK TAMPILAN HALAMAN --- */
-      .kotak-tampilan {
-        width: 95%;
-        max-width: 1000px;
-        margin: -10px auto 30px auto;
-        border-radius: 12px;
-        overflow: hidden;
-        background-color: transparent !important;
-        position: relative;
-        z-index: 5;
-      }
-      .isi-tab {
-        display: none; /* Sembunyi semua awalnya */
-        width: 100%;
-        border-radius: 12px;
-        background-color: #ffffff;
-        overflow: hidden;
-      }
-      .isi-tab.aktif {
-        display: block; /* Tampil yang aktif saja */
-      }
-      body.gelap .isi-tab {
-        background-color: var(--biru-gelap);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      iframe {
-        width: 100%;
-        border: none;
-        display: block;
-      }
+        /* ==========================================
+           ✅ BAGIAN PANDUAN - 100% BERFUNGSI
+        ========================================== */
+        .wadah-panduan {
+            background-color: #f0f2f5;
+            padding: 12px;
+        }
+        body.gelap .wadah-panduan {
+            background-color: #2c3e50;
+        }
 
-      /* --- STYLE KHUSUS HALAMAN ALAMAT --- */
-      .wadah-alamat {
-        width: 100%;
-        padding: 20px;
-        background-color: transparent !important;
-      }
-      .kotak-alamat {
-        background: #ffffff;
-        border-radius: 12px;
-        padding: 25px;
-        margin-bottom: 20px;
-        border: 1px solid #e4e7ed;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        width: 100%;
-      }
-      .judul-alamat {
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: var(--biru-utama);
-        margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .isi-alamat p {
-        margin: 8px 0;
-        font-size: 1rem;
-        color: var(--biru-tua);
-        line-height: 1.6;
-      }
-      .tombol-salin {
-        background-color: var(--biru-utama);
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        margin-top: 15px;
-        transition: 0.2s;
-      }
-      .tombol-salin:hover {
-        background-color: #0052cc;
-      }
-      body.gelap .wadah-alamat {
-        background-color: transparent !important;
-      }
-      body.gelap .kotak-alamat {
-        background-color: #34495e;
-        border-color: #4a6074;
-      }
-      body.gelap .isi-alamat p {
-        color: #ecf0f1;
-      }
+        /* KOTAK MESIN */
+        .kotak-mesin {
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        body.gelap .kotak-mesin {
+            background: #34495e;
+        }
 
-      /* ==========================================
-         ✅ STYLE KHUSUS BAGIAN PANDUAN (SUDAH SESUAI)
-      ========================================== */
-      .wadah-panduan {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        padding: 15px;
-        background-color: #f0f2f5;
-      }
+        /* JUDUL BIRU */
+        .judul-mesin {
+            background-color: var(--biru-utama);
+            color: #ffffff;
+            padding: 14px 18px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        .panah {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        .buka .panah {
+            transform: rotate(180deg);
+        }
 
-      /* KOTAK UTAMA SATU MESIN */
-      .kontainer-mesin {
-        background-color: #ffffff;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      }
-      body.gelap .kontainer-mesin {
-        background-color: #34495e;
-      }
+        /* ISI MESIN */
+        .isi-mesin {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .buka + .isi-mesin {
+            max-height: 1000px;
+        }
 
-      /* JUDUL NAMA MESIN (BIRU PENUH) */
-      .judul-mesin {
-        padding: 14px 20px;
-        background-color: #165DFF;
-        color: #ffffff;
-        font-weight: bold;
-        font-size: 1rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
-      }
-      /* ✅ TANDA PANAH UNTUK JUDUL MESIN */
-      .judul-mesin .panah {
-        font-size: 14px;
-        transition: transform 0.3s ease;
-      }
-      .judul-mesin.buka .panah {
-        transform: rotate(180deg);
-      }
+        /* JUDUL SUB */
+        .judul-masalah {
+            background: #ffffff;
+            padding: 12px 18px;
+            color: inherit;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+        body.gelap .judul-masalah {
+            background: #34495e;
+            border-color: #4a6074;
+        }
+        .judul-masalah .panah {
+            color: #888;
+        }
 
-      /* ISI DALAM MESIN (DAFTAR MASALAH) */
-      .isi-mesin {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease-out;
-      }
-      .judul-mesin.buka + .isi-mesin {
-        max-height: 2000px;
-      }
+        /* ✅ TEMPAT VIDEO - HITAM PENUH */
+        .tempat-video {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: #000000;
+        }
+        .tempat-video.aktif {
+            max-height: 400px;
+        }
 
-      /* SATU ITEM MASALAH */
-      .item-masalah {
-        border-bottom: 1px solid #e5e6eb;
-      }
-      .item-masalah:last-child {
-        border-bottom: none;
-      }
+        /* ✅ PEMUTAR VIDEO - PAKAI LINK ANDA SENDIRI */
+        .wadah-video {
+            width: 100%;
+            height: 300px;
+            background: #000;
+            position: relative;
+        }
+        .wadah-video iframe {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: #000;
+            border: none;
+        }
 
-      /* JUDUL MASALAH (PUTIH) */
-      .judul-masalah {
-        padding: 12px 20px;
-        color: #1d2129;
-        font-weight: 500;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
-        background-color: #ffffff;
-        font-size: 0.95rem;
-      }
-      body.gelap .judul-masalah {
-        background-color: #34495e;
-        color: #f2f3f5;
-      }
-      /* ✅ TANDA PANAH UNTUK SUB JUDUL */
-      .judul-masalah .panah {
-        font-size: 14px;
-        color: #86909c;
-        transition: transform 0.3s ease;
-      }
-      .judul-masalah.buka .panah {
-        transform: rotate(180deg);
-      }
+        /* ==========================================
+           ✅ BAGIAN ALAMAT + FITUR SALIN
+        ========================================== */
+        .wadah-alamat {
+            padding: 20px;
+        }
+        .kotak-alamat {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        body.gelap .kotak-alamat {
+            background: #34495e;
+        }
+        .judul-alamat {
+            color: var(--biru-utama);
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .isi-alamat p {
+            margin: 4px 0;
+            font-size: 0.95rem;
+        }
+        .tombol-salin {
+            background-color: var(--biru-utama);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 12px;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .tombol-salin:hover {
+            background-color: #0052cc;
+        }
+        body.gelap .isi-alamat p {
+            color: #ecf0f1;
+        }
 
-      /* ✅ TEMPAT VIDEO (HITAM PENUH, PAS GAMBAR) */
-      .isi-panduan {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease-out, padding 0.3s ease;
-        background-color: #000000;
-        padding: 0;
-      }
-      .isi-panduan.aktif {
-        max-height: 500px;
-        padding: 0;
-      }
-
-      /* ✅ PEMUTAR VIDEO LANGSUNG - TANPA LOGIN, PASTI JALAN */
-      .wadah-video {
-        width: 100%;
-        height: 300px;
-        background-color: #000;
-        position: relative;
-      }
-      .wadah-video video {
-        width: 100%;
-        height: 100%;
-        display: block;
-        background-color: #000;
-        /* Tombol Fullscreen & Putar berfungsi */
-        controlsList="nodownload";
-        preload="none";
-        allowfullscreen;
-        webkitallowfullscreen;
-        mozallowfullscreen;
-      }
+        /* --- TOMBOL WA --- */
+        .kontak-wa {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+        }
+        .link-wa {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            background: #25d366;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+        .logo-wa {
+            width: 22px;
+            height: 22px;
+            margin-right: 6px;
+        }
     </style>
-  </head>
+</head>
 <body class="bahasa-indo">
 
-  <div class="pengaturan-mode">
-    <button id="tombolMode">🌙</button>
-    <button id="tombolBahasa" class="tombol-bahasa">🇨🇳</button>
-  </div>
+    <!-- ✅ PENGATURAN: DARK MODE & BAHASA -->
+    <div class="pengaturan-atas">
+        <button id="tombolMode" class="tombol-pengaturan">🌙</button>
+        <button id="tombolBahasa" class="tombol-pengaturan">🇨🇳</button>
+    </div>
 
-  <div class="konten">
-    <h1>
-      <span class="teks-indo">🌟 Momoyo Aftersales! 🌟</span>
-      <span class="teks-cina">🌟 Momoyo 售后服务 🌟</span>
+    <h1 class="judul-utama">
+        <span class="teks-indo">🌟 Momoyo Aftersales! 🌟</span>
+        <span class="teks-cina">🌟 Momoyo 售后服务 🌟</span>
     </h1>
-    <div class="kotak-isi">
-      <span class="teks-indo">Penanganan mesin terpercaya. Panduan praktis, solusi tepat, kepuasan dan kelancaran usaha Anda prioritas kami. 💼🛠️</span>
-      <span class="teks-cina">可靠的設備維護專家。實用指南、精準解方，您的滿意與營運順利是我們的首要目標。 💼🛠️</span>
+
+    <div class="kotak-deskripsi">
+        <span class="teks-indo">Penanganan mesin terpercaya. Panduan praktis, solusi tepat, kepuasan dan kelancaran usaha Anda prioritas kami. 💼🛠️</span>
+        <span class="teks-cina">可靠的設備維護專家。實用指南、精準解方，您的滿意與營運順利是我們的首要目標。 💼🛠️</span>
     </div>
 
-    <!-- MENU PILIHAN -->
-    <div class="menu-pilihan">
-      <div class="daftar-pilihan">
-        <button class="tombol-pilih aktif" onclick="pilihMenu('form')">
-          <span class="ikon-menu">📄</span>
-          <span class="teks-indo">Formulir</span>
-          <span class="teks-cina">表格</span>
-        </button>
-        <button class="tombol-pilih" onclick="pilihMenu('laporan')">
-          <span class="ikon-menu">✅</span>
-          <span class="teks-indo">Cek Laporan</span>
-          <span class="teks-cina">检查报告</span>
-        </button>
-        <button class="tombol-pilih" onclick="pilihMenu('panduan')">
-          <span class="ikon-menu">📘</span>
-          <span class="teks-indo">Panduan</span>
-          <span class="teks-cina">指南</span>
-        </button>
-        <button class="tombol-pilih" onclick="pilihMenu('reimbursement')">
-          <span class="ikon-menu">💰</span>
-          <span class="teks-indo">Reimbursement</span>
-          <span class="teks-cina">费用报销</span>
-        </button>
-        <button class="tombol-pilih" onclick="pilihMenu('alamat')">
-          <span class="ikon-menu">📍</span>
-          <span class="teks-indo">Alamat</span>
-          <span class="teks-cina">地址</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- KOTAK TEMPAT TAMPIL KONTEN -->
-  <div class="kotak-tampilan">
-
-    <!-- ISI 1: FORMULIR -->
-    <div id="tab-form" class="isi-tab aktif">
-      <iframe src="https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg" style="height: 900px;"></iframe>
+    <!-- MENU -->
+    <div class="menu-nav">
+        <button class="tombol-menu aktif" onclick="bukaTab('form')">📄 <span class="teks-indo">Formulir</span><span class="teks-cina">表格</span></button>
+        <button class="tombol-menu" onclick="bukaTab('laporan')">✅ <span class="teks-indo">Cek Laporan</span><span class="teks-cina">检查报告</span></button>
+        <button class="tombol-menu" onclick="bukaTab('panduan')">📘 <span class="teks-indo">Panduan</span><span class="teks-cina">指南</span></button>
+        <button class="tombol-menu" onclick="bukaTab('reimbursement')">💰 <span class="teks-indo">Reimbursement</span><span class="teks-cina">费用报销</span></button>
+        <button class="tombol-menu" onclick="bukaTab('alamat')">📍 <span class="teks-indo">Alamat</span><span class="teks-cina">地址</span></button>
     </div>
 
-    <!-- ISI 2: CEK LAPORAN -->
-    <div id="tab-laporan" class="isi-tab">
-      <iframe src="https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe" style="height: 700px;"></iframe>
-    </div>
+    <!-- KONTEN -->
+    <div class="wadah-konten">
 
-    <!-- ISI 3: PANDUAN -->
-    <div id="tab-panduan" class="isi-tab">
-      <div class="wadah-panduan">
+        <!-- FORMULIR -->
+        <div id="tab-form" class="isi-konten aktif">
+            <iframe src="https://h07pxwx74k7.feishu.cn/share/base/form/shrcnoRTkYtgD0CgI0ZLgMngClg" style="height: 900px;"></iframe>
+        </div>
 
-        <!-- ✅ Data Mesin -->
+        <!-- LAPORAN -->
+        <div id="tab-laporan" class="isi-konten">
+            <iframe src="https://h07pxwx74k7.feishu.cn/share/base/query/shrcnAbnaD4YxferH1ppRWiFKMe" style="height: 700px;"></iframe>
+        </div>
 
-        <!-- DATA 1: MESIN ES KRIM -->
-        <div class="kontainer-mesin">
-          <!-- JUDUL UTAMA (NAMA MESIN) -->
-          <div class="judul-mesin" onclick="bukaTutupJudul(this)">
-            <span class="teks-indo">Mesin Es Krim</span>
-            <span class="teks-cina">冰淇淋机</span>
-            <span class="panah">▼</span>
-          </div>
+        <!-- ✅ PANDUAN - VIDEO PAKAI LINK ANDA -->
+        <div id="tab-panduan" class="isi-konten">
+            <div class="wadah-panduan">
 
-          <!-- ISI DARI JUDUL (DAFTAR MASALAH) -->
-          <div class="isi-mesin">
-            
-            <!-- SUB JUDUL 1: MASALAH MESIN -->
-            <div class="item-masalah">
-              <div class="judul-masalah" onclick="bukaTutupSubJudul(this)">
-                <span class="teks-indo">Melepas Vanbelt</span>
-                <span class="teks-cina">拆卸皮带</span>
-                <span class="panah">▼</span>
-              </div>
-              
-              <!-- ✅ VIDEO: LINK LANGSUNG, TANPA LOGIN, BERHENTI OTOMATIS SAAT DITUTUP -->
-              <div class="isi-panduan">
-                <div class="wadah-video">
-                  <video src="https://h07pxwx74k7.feishu.cn/file/B2PJbAxfToiRHoxhwegcoONPnnc" controls>
-                    Browser Anda tidak mendukung pemutaran video.
-                  </video>
+                <!-- MESIN ES KRIM -->
+                <div class="kotak-mesin">
+                    <div class="judul-mesin" onclick="bukaTutup(this)">
+                        <span class="teks-indo">Mesin Es Krim</span><span class="teks-cina">冰淇淋机</span>
+                        <span class="panah">▲</span>
+                    </div>
+                    <div class="isi-mesin">
+
+                        <div class="judul-masalah" onclick="bukaVideo(this)">
+                            <span class="teks-indo">Melepas Vanbelt</span><span class="teks-cina">拆卸皮带</span>
+                            <span class="panah">▲</span>
+                        </div>
+                        <div class="tempat-video">
+                            <div class="wadah-video">
+                                <!-- ✅ LINK PERSIS SEPERTI YANG KAMU BERIKAN -->
+                                <iframe src="https://h07pxwx74k7.feishu.cn/file/B2PJbAxfToiRHoxhwegcoONPnnc?from=from_copylink" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-              </div>
+
             </div>
-            <!-- AKHIR ITEM MASALAH -->
-
-          </div>
-        </div>
-        <!-- AKHIR DATA 1 -->
-
-      </div>
-    </div>
-
-    <!-- ISI 4: REIMBURSEMENT -->
-    <div id="tab-reimbursement" class="isi-tab">
-      <iframe src="https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge" style="height: 700px;"></iframe>
-    </div>
-
-    <!-- ISI 5: ALAMAT -->
-    <div id="tab-alamat" class="isi-tab">
-      <div class="wadah-alamat">
-        <div class="kotak-alamat">
-          <div class="judul-alamat">
-            <span>🏢</span>
-            <span class="teks-indo">Gudang</span>
-            <span class="teks-cina">仓库</span>
-          </div>
-          <div class="isi-alamat">
-            <p><strong class="teks-indo">Penerima:</strong><strong class="teks-cina">收件人：</strong> Dian</p>
-            <p><strong class="teks-indo">Nomor HP:</strong><strong class="teks-cina">手机号码：</strong> 0813-9849-5855</p>
-            <p><strong class="teks-indo">Alamat:</strong><strong class="teks-cina">地址：</strong> Gudang Momoyo, Jl. Industri VIII No.8, RT.002/RW.003, Pasir Jaya, Kec. Jatiuwung, Kota Tangerang, Banten 15135</p>
-          </div>
-          <button class="tombol-salin" onclick="salinTeks(this)">
-            <span class="teks-indo">📋 Salin Alamat Gudang</span>
-            <span class="teks-cina">📋 复制仓库地址</span>
-          </button>
         </div>
 
-        <div class="kotak-alamat">
-          <div class="judul-alamat">
-            <span>🏫</span>
-            <span class="teks-indo">Training Center</span>
-            <span class="teks-cina">培训中心</span>
-          </div>
-          <div class="isi-alamat">
-            <p><strong class="teks-indo">Penerima:</strong><strong class="teks-cina">收件人：</strong> Aftersales Momoyo</p>
-            <p><strong class="teks-indo">Nomor HP:</strong><strong class="teks-cina">手机号码：</strong> 0813-9849-5855</p>
-            <p><strong class="teks-indo">Alamat:</strong><strong class="teks-cina">地址：</strong> Momoyo Training Center, Jl. HOS Cokroaminoto, RT.3/RW.9, Larangan Utara, Kec. Larangan, Kota Tangerang, Banten 15154</p>
-          </div>
-          <button class="tombol-salin" onclick="salinTeks(this)">
-            <span class="teks-indo">📋 Salin Alamat Training Center</span>
-            <span class="teks-cina">📋 复制培训中心地址</span>
-          </button>
+        <!-- REIMBURSEMENT -->
+        <div id="tab-reimbursement" class="isi-konten">
+            <iframe src="https://h07pxwx74k7.feishu.cn/share/base/query/shrcnX1IshGdmg43fXNF9W0QIge" style="height: 700px;"></iframe>
         </div>
-      </div>
+
+        <!-- ✅ ALAMAT + FITUR SALIN SUDAH ADA -->
+        <div id="tab-alamat" class="isi-konten">
+            <div class="wadah-alamat">
+                <div class="kotak-alamat">
+                    <h3 class="judul-alamat">🏢 <span class="teks-indo">Gudang</span><span class="teks-cina">仓库</span></h3>
+                    <div class="isi-alamat" id="alamat-gudang">
+                        <p><strong class="teks-indo">Penerima:</strong><strong class="teks-cina">收件人：</strong> Dian</p>
+                        <p><strong class="teks-indo">Nomor HP:</strong><strong class="teks-cina">手机号码：</strong> 0813-9849-5855</p>
+                        <p><strong class="teks-indo">Alamat:</strong><strong class="teks-cina">地址：</strong> Gudang Momoyo, Jl. Industri VIII No.8, RT.002/RW.003, Pasir Jaya, Kec. Jatiuwung, Kota Tangerang, Banten 15135</p>
+                    </div>
+                    <button class="tombol-salin" onclick="salinTeks('alamat-gudang', this)">
+                        <span class="teks-indo">📋 Salin Alamat Gudang</span>
+                        <span class="teks-cina">📋 复制仓库地址</span>
+                    </button>
+                </div>
+
+                <div class="kotak-alamat">
+                    <h3 class="judul-alamat">🏫 <span class="teks-indo">Training Center</span><span class="teks-cina">培训中心</span></h3>
+                    <div class="isi-alamat" id="alamat-training">
+                        <p><strong class="teks-indo">Penerima:</strong><strong class="teks-cina">收件人：</strong> Aftersales Momoyo</p>
+                        <p><strong class="teks-indo">Nomor HP:</strong><strong class="teks-cina">手机号码：</strong> 0813-9849-5855</p>
+                        <p><strong class="teks-indo">Alamat:</strong><strong class="teks-cina">地址：</strong> Momoyo Training Center, Jl. HOS Cokroaminoto, RT.3/RW.9, Larangan Utara, Kec. Larangan, Kota Tangerang, Banten 15154</p>
+                    </div>
+                    <button class="tombol-salin" onclick="salinTeks('alamat-training', this)">
+                        <span class="teks-indo">📋 Salin Alamat Training Center</span>
+                        <span class="teks-cina">📋 复制培训中心地址</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-  </div>
+    <!-- ✅ TOMBOL WA KEMBALI -->
+    <div class="kontak-wa">
+        <a href="https://wa.me/6281398495855" target="_blank" class="link-wa">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WA" class="logo-wa">
+            <span class="teks-indo">Hubungi Kami</span>
+            <span class="teks-cina">联系我们</span>
+        </a>
+    </div>
 
-  <div class="kontak-wa">
-    <a href="https://wa.me/6281398495855" target="_blank" class="link-wa">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="Logo WhatsApp" class="logo-wa">
-      <span class="teks-kontak">
-        <span class="teks-indo">Hubungi Kami</span>
-        <span class="teks-cina">联系我们</span>
-      </span>
-    </a>
-  </div>
- 
 <script>
-  // --- DEKLARASI VARIABEL ---
-  const tombol = document.getElementById('tombolMode');
-  const badan = document.body;
-  let bahasaSekarang = 'indo';
+let bahasaSekarang = 'indo';
 
-  // --- FUNGSI MODE GELAP / TERANG ---
-  tombol.addEventListener('click', function() {
-    badan.classList.toggle('gelap');
-    tombol.textContent = badan.classList.contains('gelap') ? '☀️' : '🌙';
-  });
+// --- DARK MODE ---
+const tombolMode = document.getElementById('tombolMode');
+tombolMode.addEventListener('click', () => {
+    document.body.classList.toggle('gelap');
+    tombolMode.textContent = document.body.classList.contains('gelap') ? '☀️' : '🌙';
+});
 
-  // --- FUNGSI GANTI BAHASA ---
-  const tombolBahasa = document.getElementById('tombolBahasa');
-  
-  tombolBahasa.addEventListener('click', function() {
+// --- GANTI BAHASA ---
+const tombolBahasa = document.getElementById('tombolBahasa');
+tombolBahasa.addEventListener('click', () => {
     if(bahasaSekarang === 'indo') {
-      badan.classList.remove('bahasa-indo');
-      badan.classList.add('bahasa-cina');
-      tombolBahasa.textContent = '🇮🇩';
-      bahasaSekarang = 'cina';
+        document.body.classList.remove('bahasa-indo');
+        document.body.classList.add('bahasa-cina');
+        tombolBahasa.textContent = '🇮🇩';
+        bahasaSekarang = 'cina';
     } else {
-      badan.classList.remove('bahasa-cina');
-      badan.classList.add('bahasa-indo');
-      tombolBahasa.textContent = '🇨🇳';
-      bahasaSekarang = 'indo';
+        document.body.classList.remove('bahasa-cina');
+        document.body.classList.add('bahasa-indo');
+        tombolBahasa.textContent = '🇨🇳';
+        bahasaSekarang = 'indo';
     }
-  });
+});
 
-  // --- FUNGSI MENU PILIHAN ---
-  const semuaTombol = document.querySelectorAll('.tombol-pilih');
-  const semuaIsi = document.querySelectorAll('.isi-tab');
-  
-  function pilihMenu(namaMenu) {
-    semuaTombol.forEach(btn => btn.classList.remove('aktif'));
-    semuaIsi.forEach(isi => isi.classList.remove('aktif'));
-    if (event && event.currentTarget) event.currentTarget.classList.add('aktif');
-    document.getElementById('tab-' + namaMenu).classList.add('aktif');
-  }
+// --- MENU ---
+function bukaTab(nama) {
+    document.querySelectorAll('.tombol-menu').forEach(t => t.classList.remove('aktif'));
+    event.currentTarget.classList.add('aktif');
+    document.querySelectorAll('.isi-konten').forEach(k => k.classList.remove('aktif'));
+    document.getElementById('tab-' + nama).classList.add('aktif');
+}
 
-  // --- FUNGSI SALIN TEKS ---
-  function salinTeks(elemen) {
-    const teks = elemen.parentElement.querySelector('.isi-alamat').textContent;
-    navigator.clipboard.writeText(teks).then(() => {
-      const teksAwal = elemen.innerHTML;
-      elemen.innerHTML = '<span class="teks-indo">✅ Berhasil Disalin!</span><span class="teks-cina">✅ 复制成功！</span>';
-      setTimeout(() => elemen.innerHTML = teksAwal, 2000);
+// --- BUKA TUTUP MESIN + BERHENTIKAN VIDEO ---
+function bukaTutup(elemen) {
+    elemen.classList.toggle('buka');
+    // Berhentikan semua video saat mesin ditutup
+    let semuaIframe = elemen.parentElement.querySelectorAll('iframe');
+    semuaIframe.forEach(frame => { frame.src = frame.src; }); // Muat ulang = berhenti
+    // Tutup kotak video
+    let semuaKotakVideo = elemen.parentElement.querySelectorAll('.tempat-video');
+    semuaKotakVideo.forEach(k => k.classList.remove('aktif'));
+}
+
+// --- BUKA TUTUP VIDEO + BERHENTI OTOMATIS ---
+function bukaVideo(elemen) {
+    let kotakVideo = elemen.nextElementSibling;
+    let frameVideo = kotakVideo.querySelector('iframe');
+
+    // Tutup video lain dulu
+    document.querySelectorAll('.tempat-video').forEach(v => {
+        if(v !== kotakVideo) {
+            v.classList.remove('aktif');
+            let f = v.querySelector('iframe');
+            if(f) { f.src = f.src; }
+        }
     });
-  }
 
-  // ==============================================
-  // ✅ FUNGSI BUKA TUTUP JUDUL MESIN + BERHENTIKAN VIDEO
-  // ==============================================
-  function bukaTutupJudul(elemen) {
-    const sedangBuka = elemen.classList.contains('buka');
-    
-    // Tutup SEMUA mesin lain + BERHENTIKAN SEMUA VIDEO
-    const semuaJudul = document.querySelectorAll('.judul-mesin');
-    const semuaVideo = document.querySelectorAll('.wadah-video video');
-    
-    semuaJudul.forEach(judul => judul.classList.remove('buka'));
-    semuaVideo.forEach(vid => { vid.pause(); vid.currentTime = 0; }); // Berhenti & kembali ke awal
+    // Buka / Tutup ini
+    kotakVideo.classList.toggle('aktif');
 
-    // Buka / Tutup yang diklik
-    if (!sedangBuka) {
-      elemen.classList.add('buka');
+    // Kalau ditutup, berhentikan video ini
+    if(!kotakVideo.classList.contains('aktif')) {
+        frameVideo.src = frameVideo.src;
     }
-  }
+}
 
-  // ==============================================
-  // ✅ FUNGSI BUKA TUTUP SUB JUDUL + BERHENTIKAN VIDEO
-  // ==============================================
-  function bukaTutupSubJudul(elemen) {
-    const sedangBuka = elemen.classList.contains('buka');
-    const wadahVideo = elemen.nextElementSibling;
-    const videoDiDalam = wadahVideo.querySelector('video');
-
-    // Tutup SEMUA sub judul lain + BERHENTIKAN VIDEO LAIN
-    const wadahInduk = elemen.closest('.isi-mesin');
-    const semuaSubJudul = wadahInduk.querySelectorAll('.judul-masalah');
-    const semuaIsiPanduan = wadahInduk.querySelectorAll('.isi-panduan');
-    const semuaVideoLain = wadahInduk.querySelectorAll('.isi-panduan video');
-
-    semuaSubJudul.forEach(sub => sub.classList.remove('buka'));
-    semuaIsiPanduan.forEach(isi => isi.classList.remove('aktif'));
-    semuaVideoLain.forEach(vid => { vid.pause(); vid.currentTime = 0; }); // Berhenti semua
-
-    // Buka / Tutup yang diklik
-    if (!sedangBuka) {
-      elemen.classList.add('buka');
-      wadahVideo.classList.add('aktif');
-    } else {
-      // Kalau ditutup langsung → BERHENTIKAN VIDEO INI
-      videoDiDalam.pause();
-      videoDiDalam.currentTime = 0;
-    }
-  }
+// ✅ FUNGSI SALIN ALAMAT SUDAH ADA & BERFUNGSI
+function salinTeks(idElemen, tombol) {
+    const elemen = document.getElementById(idElemen);
+    const teks = elemen.textContent.trim();
+    
+    navigator.clipboard.writeText(teks).then(() => {
+        const teksAwal = tombol.innerHTML;
+        tombol.innerHTML = '<span class="teks-indo">✅ Berhasil Disalin!</span><span class="teks-cina">✅ 复制成功！</span>';
+        setTimeout(() => { tombol.innerHTML = teksAwal; }, 2000);
+    });
+}
 </script>
 </body>
 </html>
